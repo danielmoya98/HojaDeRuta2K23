@@ -1,0 +1,48 @@
+﻿<UserControl x:Class="HojadeRuta2K23.UserControls.ControlPerfil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:HojadeRuta2K23.UserControls"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             mc:Ignorable="d"
+             d:DesignHeight="90" d:DesignWidth="300" Background="Transparent">
+    
+
+    
+    
+    <Border Background="White" CornerRadius="20" >
+    <Grid Background="Transparent">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition Width="110"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Border Grid.Column="0" CornerRadius="15" Height="75" Width="75" Margin="0 0 0 0 ">
+            <Border.Background>
+                <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png"></ImageBrush>
+            </Border.Background>
+        </Border>
+        
+        <StackPanel Grid.Column="1">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" VerticalAlignment="Center" Margin="0 5 0 0">
+                    <Label FontSize="10" FontWeight="SemiBold" >Edgar Zambrana.</Label>
+                </StackPanel>
+                <StackPanel Grid.Row="1" HorizontalAlignment="Left"  Margin=" 5 -12  0 0">
+                    <TextBlock TextWrapping="Wrap" Width="100" Foreground="DimGray" FontSize="10" > Hola necesito mas informacion! , por favor.</TextBlock>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Orientation="Vertical" VerticalAlignment="Center">
+            <Icon:PackIconMaterial HorizontalAlignment="Center" Kind="Send" Height="25" Width="25"  />
+        </StackPanel>
+    </Grid>
+    </Border>
+</UserControl>

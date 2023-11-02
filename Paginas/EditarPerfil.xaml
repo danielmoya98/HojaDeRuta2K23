@@ -51,7 +51,10 @@
                         <Button Padding="5 0 0 0 " Height="30" FontSize="15" BorderBrush="Black" FontWeight="SemiBold"
                                 HorizontalContentAlignment="Left" BorderThickness="3 0 0 0" Foreground="Black"
                                 Background="Transparent">
-                            Detalles de Cuenta
+                            <StackPanel Orientation="Horizontal">
+                                <Icon:PackIconMaterial Margin="5 0 0 0" Kind="Account" Height="20" Width="20" Style="{StaticResource gridButtonIcon}" />
+                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Detalles de cuenta</TextBlock>
+                            </StackPanel>
                         </Button>
                         <!--
                         <Button Padding="5 0 0 0 " HorizontalContentAlignment="Left" Height="30" FontSize="15" BorderBrush="Transparent" Background="Transparent">Cuenta Administrador</Button>
@@ -62,7 +65,7 @@
 
                 </Grid>
             </StackPanel>
-            <Border Grid.Column="1" Background="WhiteSmoke" CornerRadius="0 25 25 0">
+            <Border Grid.Column="1" Background="WhiteSmoke" CornerRadius="0 25 25 0" BorderBrush="#9e0044" BorderThickness="3 0 0 0">
                 <StackPanel Grid.Column="1" Orientation="Vertical">
                     <Grid>
                         <Grid.RowDefinitions>
@@ -77,15 +80,15 @@
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Margin="15 20 0 0 ">
-                            <Label FontWeight="SemiBold" FontSize="15">Nombres*</Label>
-                            <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
-                            <Label FontWeight="SemiBold" FontSize="15">Apellidos*</Label>
-                            <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
-                            <Label Margin="0 50 0 0 " FontWeight="SemiBold" FontSize="15">Correo Electronico*</Label>
-                            <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
-                            <Label FontWeight="SemiBold" FontSize="15">Descripcion*</Label>
-                            <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="150" HorizontalAlignment="Left"></TextBox>
-                            <Label FontWeight="SemiBold" FontSize="15">Genero*</Label>
+                            <Label FontWeight="SemiBold" FontSize="15">Nombres *</Label>
+                            <TextBox Background="WhiteSmoke" Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
+                            <Label FontWeight="SemiBold" FontSize="15">Apellidos *</Label>
+                            <TextBox Background="WhiteSmoke" Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
+                            <Label Margin="0 50 0 0 " FontWeight="SemiBold" FontSize="15">Correo Electronico *</Label>
+                            <TextBox Background="WhiteSmoke" Foreground="Black" Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left"></TextBox>
+                            <Label FontWeight="SemiBold" FontSize="15">Descripcion *</Label>
+                            <TextBox TextWrapping="Wrap" Background="WhiteSmoke" Style="{StaticResource TextBoxWithRoundedCorners}" Margin="5 0 0 0" Width="305" Height="150" HorizontalAlignment="Left"></TextBox>
+                            <Label FontWeight="SemiBold" FontSize="15">Genero * (Opcional)</Label>
                             <ComboBox  Margin="5 0 0 0" Width="305" Height="25" HorizontalAlignment="Left" ></ComboBox>
                             
                             

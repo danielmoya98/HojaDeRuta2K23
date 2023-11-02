@@ -183,7 +183,7 @@
     </Page.Resources>
 
 
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <ScrollViewer VerticalScrollBarVisibility="Hidden">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="400"></RowDefinition>
@@ -197,7 +197,6 @@
                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
                     </ImageBrush>
                 </Border.Background>
-
             </Border>
 
             <Grid Grid.Row="1" Margin="25 -120 40 0" Panel.ZIndex="2">
@@ -214,7 +213,7 @@
                                 <Border Height="90" Width="90" CornerRadius="15">
                                     <Border.Background>
                                         <ImageBrush
-                                            ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
+                                            ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/44110f877fb9796236f3d9c9cc3677da.gif">
 
                                         </ImageBrush>
                                     </Border.Background>

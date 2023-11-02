@@ -231,5 +231,10 @@ namespace HojadeRuta2K23
         {
            Close();
         }
+
+        private void ADministracionUsuariosClick(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new AdministracionUsuarios());
+        }
     }
 }

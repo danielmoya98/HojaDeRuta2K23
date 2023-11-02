@@ -100,7 +100,7 @@
                         </StackPanel>-->
 
                         <Button  Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
-                                 HorizontalAlignment="Left" Click="PerfilClikck">
+                                 HorizontalAlignment="Left" Click="ADministracionUsuariosClick">
                             <StackPanel Orientation="Horizontal">
                                 <!--
                                 <Border CornerRadius="50" Background="Black" Height="40" Width="40"></Border>

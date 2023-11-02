@@ -241,5 +241,10 @@ namespace HojadeRuta2K23
         {
             frame.NavigationService.Navigate(new Tramites());
         }
+
+        private void Tareas_OnClick(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Tareas());
+        }
     }
 }

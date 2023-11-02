@@ -3,19 +3,18 @@ using System.Windows.Controls;
 
 namespace HojadeRuta2K23.Paginas;
 
-public partial class Tramites : Page
+public partial class Tareas : Page
 {
     public List<member> usuarios = new List<member>();
 
-    public Tramites()
+    public Tareas()
     {
         InitializeComponent();
-
         usuarios.Add(new member
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -28,7 +27,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -40,7 +39,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -52,7 +51,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -64,7 +63,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -76,7 +75,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -88,7 +87,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -100,7 +99,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -112,7 +111,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -122,10 +121,9 @@ public partial class Tramites : Page
         });
         usuarios.Add(new member
         {
-            
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",

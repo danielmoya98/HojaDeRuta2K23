@@ -81,7 +81,7 @@
 
                             <Button Name="CategoriasButton" Style="{DynamicResource PopupButtonStyle}"
                                     Padding=" 22 0 0 0"
-                                    HorizontalAlignment="Left" Click="ButtonBase7_OnClick">
+                                    HorizontalAlignment="Left" Click="Tareas_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="StarBox" Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Tareas" Style="{StaticResource menuButtonText}" />

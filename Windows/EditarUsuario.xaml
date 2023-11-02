@@ -1,0 +1,100 @@
+﻿<Window x:Class="HojadeRuta2K23.Windows.EditarUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:HojadeRuta2K23.Windows"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="EditarUsuario" Height="650" Width="400" Background="Transparent" AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Estilos/EditarPerfil.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="25" Background="White">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <Label Margin="10" FontWeight="SemiBold" FontSize="25">Editar Usuario</Label>
+                    <iconPacks:PackIconMaterial Kind="CloseCircle" Height="20" Margin="165 0 0 0" Width="20"
+                                                Style="{StaticResource gridButtonIcon}" />
+
+                </StackPanel>
+                <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Vertical" Margin="0 5 0 0">
+                    <Border CornerRadius="15" Height="100" Width="100" VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                        <Border.Background>
+                            <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"></ImageBrush>
+                        </Border.Background>
+                    </Border>
+                    <Button Margin="0 15 0 0 " Height="30" Width="150"
+                            Style="{StaticResource gridEditButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="CameraAccount" Height="20" Width="20"
+                                                        Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Cambiar Imagen </TextBlock>
+                        </StackPanel>
+                    </Button>
+
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label FontWeight="SemiBold" Margin="10">Nombre</Label>
+                        <TextBox Margin="15 0 0 0 " Width="100" HorizontalAlignment="Left"></TextBox>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical" Margin="80 0 0 0 ">
+                        <Label FontWeight="SemiBold" Margin="10">Apellido</Label>
+                        <TextBox Margin="15 0 0 0 " Width="100" HorizontalAlignment="Left"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label FontWeight="SemiBold" Margin="10">Email</Label>
+                    <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="15 0 0 0 " Width="295" Height="70" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBox>
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical">
+                    <Label FontWeight="SemiBold" Margin="10 10 0 0">Celular</Label>
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox FontWeight="SemiBold" Margin="15 10 0 0"  Width="40">Email</ComboBox>
+                        <TextBox Margin="0 10 0 0 " Width="255"  Padding="5" HorizontalAlignment="Left"></TextBox>
+                    </StackPanel>
+                </StackPanel>
+
+
+                <StackPanel Orientation="Vertical">
+                    <Label FontWeight="SemiBold" Margin="10">Email</Label>
+                    <TextBox Margin="15 0 0 0 " Width="295" HorizontalAlignment="Left"></TextBox>
+                </StackPanel>
+                
+                <StackPanel HorizontalAlignment="Right">
+                    <Button Margin="0 25 30 0 " Height="30" Width="Auto"
+                            Style="{StaticResource gridEditButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Update" Height="15" Width="15"
+                                                        Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Actualizar </TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+            </StackPanel>
+        </Grid>
+
+
+    </Border>
+</Window>

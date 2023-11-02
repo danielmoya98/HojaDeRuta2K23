@@ -5,11 +5,13 @@
         <TargetFramework>net7.0-windows</TargetFramework>
         <Nullable>enable</Nullable>
         <UseWPF>true</UseWPF>
+        <UserSecretsId>9b586e05-cf58-4797-afb7-3bdd103d791d</UserSecretsId>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
       <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+
 
     </ItemGroup>
 

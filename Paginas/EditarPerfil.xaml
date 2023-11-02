@@ -17,8 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
-    
-    
+      
     <Border CornerRadius="25" Background="White" Width="720" Panel.ZIndex="1">
         <Grid>
             <Grid.ColumnDefinitions>

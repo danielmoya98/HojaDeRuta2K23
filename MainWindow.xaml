@@ -26,8 +26,7 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <Border Name="Main_uno" CornerRadius="25" Padding="15" Background="#F7F6F4" MouseDown="Border_MouseDown"
-            MouseLeftButtonDown="Border_MouseLeftButtonDown">
+    <Border Name="Main_uno" CornerRadius="25" Padding="15" Background="#F7F6F4">
    
         <Grid>
             <Grid.RowDefinitions>
@@ -61,15 +60,16 @@
                                FontSize="20"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Margin="60 0 0 0" />
+                               Margin="60 0 0 0"
+                               MouseDoubleClick="Univalle_OnMouseDoubleClick"/>
 
 
                         <!-- Start: MenuItem -->
                         <StackPanel Orientation="Horizontal" Margin=" 210 0 0 0" HorizontalAlignment="Left">
 
 
-                            <Button Name="ClientesButton" Style="{DynamicResource PopupButtonStyle}"
-                                    Padding=" 22 0 0 0"
+                            <Button Name="ClientesButton" Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center"
+                                    Padding="10"
                                     HorizontalAlignment="Center" Click="Tramites_OnClick">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                     <Icon:PackIconMaterial HorizontalAlignment="Center" Kind="Server"
@@ -79,8 +79,8 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="CategoriasButton" Style="{DynamicResource PopupButtonStyle}"
-                                    Padding=" 22 0 0 0"
+                            <Button Name="CategoriasButton" Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center" Margin="5 0 0 0"
+                                    Padding="10"
                                     HorizontalAlignment="Left" Click="Tareas_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="StarBox" Style="{StaticResource menuButtonIcon}" />
@@ -92,11 +92,11 @@
                                     Padding=" 22 0 0 0"
                                     HorizontalAlignment="Left" Click="Inventario_OnClick">
                                 
-                                <StackPanel Orientation="Horizontal">
+                                <!--<StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Message"
                                                            Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Mensajes" Style="{StaticResource menuButtonText}" />
-                                </StackPanel>
+                                </StackPanel>-->
                             </Button>
 
                         </StackPanel>
@@ -108,7 +108,7 @@
                             <TextBox BorderBrush="White" Width="100" Margin="15" Background="Transparent" Foreground="White" BorderThickness="0 0 0 2"></TextBox>
                         </StackPanel>-->
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ADministracionUsuariosClick">
                                 <StackPanel Orientation="Horizontal">
                                     <!--
@@ -119,7 +119,7 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="PerfilClikck">
                                 <StackPanel Orientation="Horizontal">
                                     <!--
@@ -130,15 +130,15 @@
                             </Button>
 
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
-                                    HorizontalAlignment="Left" Click="Inventario_OnClick">
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
+                                    HorizontalAlignment="Left" Click="Notificaciones_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Bell" Style="{StaticResource menuButtonIcon}" />
                                 </StackPanel>
                             </Button>
 
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ButtonBase7_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ThemeLightDark"
@@ -146,19 +146,15 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 22 0 0 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center"
                                     HorizontalAlignment="Left" Click="SalirClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="LogoutVariant"
                                                            Style="{StaticResource menuButtonIcon}" />
                                 </StackPanel>
                             </Button>
-
                         </StackPanel>
-
-
                     </Grid>
-
                 </Grid>
             </Border>
             <Frame Grid.Row="1" Background="Transparent" NavigationUIVisibility="Hidden" Name="frame" Width="Auto"

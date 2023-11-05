@@ -8,7 +8,7 @@
       xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
       mc:Ignorable="d"
       Title="AdministracionUsuarios" Height="Auto" Width="1280">
-    
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -16,7 +16,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <Grid>
 
         <Grid.RowDefinitions>
@@ -40,7 +40,7 @@
                     <TextBox Margin="5 0 5 0 " Background="Transparent" Height="25" Width="150"></TextBox>
                     <iconPacks:PackIconMaterial Kind="AccountSearch" Height="20" Width="20"
                                                 Style="{StaticResource gridButtonIcon}" Margin="0 0 15 0 " />
-                    <ComboBox   SelectedIndex="0" Name="ComboBoxVistas"  Margin="5 0 15 0" Width="150" Height="25" >
+                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas" Margin="5 0 15 0" Width="150" Height="25">
                         <ComboBoxItem Content="Vista Cuadriculada" />
                         <ComboBoxItem Content="Vista Lista" />
                     </ComboBox>
@@ -48,11 +48,11 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right">
 
-                    <ComboBox Margin="5 0 80 0" Width="150" Height="25">
+                    <ComboBox Margin="15 0 10 0" Width="150" Height="25">
                         <ComboBoxItem Content="Mas Recientes" />
                         <ComboBoxItem Content="Mas Antiguos" />
                     </ComboBox>
-                    <Button Margin="0 0 60 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <Button Margin="0 0 8 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Click="AgregarUsuario_OnClick" Style="{StaticResource gridEditButton}">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
@@ -61,63 +61,104 @@
                         </StackPanel>
                     </Button>
 
+                    <!--toggleButton-->
+                    <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center"
+                                  Height="30" Width="30"
+                                  BorderThickness="0" Background="MediumVioletRed" Margin="5,15,70,15">
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="HideStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="hola"
+                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
+                                                         From="250"
+                                                         To="0" Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ShowStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="hola"
+                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
+                                                         From="0"
+                                                         To="250" Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                    </ToggleButton>
+
+
                 </StackPanel>
             </Grid>
         </StackPanel>
 
         <!--vista lista-->
-        <StackPanel Grid.Row="1" Visibility="Hidden" Name="VistaLista">
+        <StackPanel Grid.Row="1" Visibility="Hidden" Name="VistaLista" Width="Auto">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1000"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
-                 <DataGrid   RowStyle="{DynamicResource DataGridRowStyle1}"
-                VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
-                            ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                  CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
-                  Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False" Width="auto"
-                                    Binding="{Binding Id}" />
-                <DataGridTemplateColumn Header="Nombre Completo" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Height="50" Width="50" CornerRadius="15">
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
-                                    </Border.Background>
-                                </Border>
-                                <TextBlock VerticalAlignment="Center" Margin="7 0 0 0" Text="{Binding NombreCompleto}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-                <DataGridTextColumn Header="Profesion" Binding="{Binding Profesion}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Celular" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Ubicacion" Binding="{Binding Ubicacion}" IsReadOnly="True" Width="*" />
-                <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
-                                    <iconPacks:PackIconMaterial Kind="ViewDashboard"   />
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-                
-                
-                
-                <StackPanel Grid.Column="1" Orientation="Vertical">
-                    <Grid>
+
+                <DataGrid Margin="0 0 15 0" RowStyle="{DynamicResource DataGridRowStyle1}"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                          CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
+                          Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False"
+                                            Width="auto"
+                                            Binding="{Binding Id}" />
+                        <DataGridTemplateColumn Header="Nombre Completo" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Height="50" Width="50" CornerRadius="15">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
+                                                   Text="{Binding NombreCompleto}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Profesion" Binding="{Binding Profesion}" IsReadOnly="True"
+                                            Width="*" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Celular" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Ubicacion" Binding="{Binding Ubicacion}" IsReadOnly="True"
+                                            Width="*" />
+                        <DataGridTemplateColumn Header="Opciones" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                        <Button Margin="0 0 0 0" Style="{StaticResource gridEditButton}">
+                                            <iconPacks:PackIconMaterial Kind="ViewDashboard" />
+                                        </Button>
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
+                                            <iconPacks:PackIconMaterial Kind="ViewDashboard" />
+                                        </Button>
+                                        <Button Margin="5 0 10 0" Style="{StaticResource gridEditButton}">
+                                            <iconPacks:PackIconMaterial Kind="ViewDashboard" />
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+                <!--Ver Datos del Usuario - vista lateral-->
+                <StackPanel Grid.Column="1" Orientation="Vertical" Visibility="Visible" Width="0" Name="hola">
+                    <Grid Visibility="Visible">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"></RowDefinition>
                             <RowDefinition Height="*"></RowDefinition>
@@ -127,7 +168,9 @@
                             <Border CornerRadius="15" Height="150" Width="150" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"></ImageBrush>
+                                    <ImageBrush
+                                        ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif">
+                                    </ImageBrush>
                                 </Border.Background>
                             </Border>
                         </StackPanel>
@@ -182,6 +225,8 @@
                     </Grid>
 
                 </StackPanel>
+                
+
             </Grid>
 
         </StackPanel>
@@ -191,6 +236,7 @@
         <StackPanel Grid.Row="1" Height="Auto" Visibility="Visible" Name="VistaCuadriculada">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
+                    <uc:CardAdministracionUsuario  Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif" Nombre="Daniel Moya" Estado="Activo" Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
@@ -211,9 +257,6 @@
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
                     <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
-                    <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
-                    <uc:CardAdministracionUsuario Height="200" Width="170" Margin="3"></uc:CardAdministracionUsuario>
-
                 </WrapPanel>
             </ScrollViewer>
         </StackPanel>

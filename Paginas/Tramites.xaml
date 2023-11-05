@@ -9,7 +9,7 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d"
       Title="Tramites" Height="Auto" Width="1280">
-    
+
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,7 +17,7 @@
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Page.Resources>
-    
+
     <Grid>
 
 
@@ -25,7 +25,7 @@
             <RowDefinition Height="100"> </RowDefinition>
             <RowDefinition Height="*"> </RowDefinition>
         </Grid.RowDefinitions>
-       
+
         <StackPanel Margin="0 10 0 0">
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -38,28 +38,29 @@
                     <Label Margin="5 0 0 0 " FontWeight="SemiBold" FontSize="20">Tramites</Label>
                     <Label Margin="5 0 0 0" Foreground="Gray">Lorem Ipsum ...</Label>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0 0 15 0">
+                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                            HorizontalAlignment="Right" Margin="0 0 15 0">
                     <StackPanel Orientation="Horizontal">
                         <iconPacks:PackIconMaterial Kind="AccountSearch" Height="20" Width="20"
                                                     Style="{StaticResource gridButtonIcon}" Margin="0 0 0 0 " />
 
                         <TextBox Margin="0 0 5 0 " Background="Transparent" Height="25" Width="150"></TextBox>
-             
+
                     </StackPanel>
-                    <ComboBox   SelectedIndex="0" Name="ComboBoxVistas"  Margin="5 0 15 0" Width="150" Height="25" >
-                        <ComboBoxItem Content="Vista Cuadriculada"/>
-                        <ComboBoxItem Content="Vista Lista"/>
+                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas" Margin="5 0 15 0" Width="150" Height="25">
+                        <ComboBoxItem Content="Vista Cuadriculada" />
+                        <ComboBoxItem Content="Vista Lista" />
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right">
 
-                    <ComboBox Margin="5 0 80 0" Width="150" Height="25" SelectedIndex="0">
+                    <ComboBox Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="0">
                         <ComboBoxItem Content="En Curso" />
                         <ComboBoxItem Content="En Progreso" />
                         <ComboBoxItem Content="Finalizados" />
                     </ComboBox>
-                    <Button Margin="0 0 60 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <Button Margin="0 0 5 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Style="{StaticResource gridEditButton}">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
@@ -68,73 +69,107 @@
                         </StackPanel>
                     </Button>
 
+                    <!--toggleButton-->
+                    <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center"
+                                  Height="30" Width="30"
+                                  BorderThickness="0" Background="MediumVioletRed" Margin="5,15,70,15">
+                        <ToggleButton.Triggers>
+                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="HideStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="hola2"
+                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
+                                                         From="280"
+                                                         To="0" Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="ToggleButton.Checked">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="ShowStackPanel">
+                                        <DoubleAnimation Storyboard.TargetName="hola2"
+                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
+                                                         From="0"
+                                                         To="280" Duration="0:0:0.5">
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ToggleButton.Triggers>
+                    </ToggleButton>
+
                 </StackPanel>
             </Grid>
         </StackPanel>
 
         <!--vista lista-->
-        <StackPanel Grid.Row="1" Visibility="Visible" Name="VistaLista">
+        <StackPanel Grid.Row="1" Visibility="Hidden" Name="VistaLista">
             <Grid>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1000"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                
-                 <DataGrid   RowStyle="{DynamicResource DataGridRowStyle1}"
-                VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
-                            ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                  CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
-                  Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto">
-            <DataGrid.Columns>
-                <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False" Width="auto"
-                                    Binding="{Binding Id}" />
-                <DataGridTemplateColumn Header="Nombre" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Border Height="50" Width="50" CornerRadius="15">
-                                    <Border.Background>
-                                        <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
-                                    </Border.Background>
-                                </Border>
-                                <TextBlock VerticalAlignment="Center" Margin="7 0 0 0" Text="{Binding NombreCompleto}"></TextBlock>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                
-                <DataGridTextColumn Header="Tipo" Binding="{Binding Profesion}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Estado" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Remitente" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
-                <DataGridTextColumn Header="Remite" Binding="{Binding Ubicacion}" IsReadOnly="True" Width="*" />
-                <DataGridTemplateColumn Header="Progreso" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200" Value="50" HorizontalAlignment="Center">
-                                </ProgressBar>
-                                <Label Margin="5 0 0 0 "  FontSize="10">50%</Label>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
-                                    <iconPacks:PackIconMaterial Kind="ViewDashboard"   />
-                                </Button>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-                
-                
-                
-                <StackPanel Grid.Column="1" Orientation="Vertical">
+
+                <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                          CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
+                          Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto"
+                          Margin="0 0 10 0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False"
+                                            Width="auto"
+                                            Binding="{Binding Id}" />
+                        <DataGridTemplateColumn Header="Nombre" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Height="50" Width="50" CornerRadius="15">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
+                                                   Text="{Binding NombreCompleto}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTextColumn Header="Tipo" Binding="{Binding Profesion}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Remitente" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Remite" Binding="{Binding Ubicacion}" IsReadOnly="True" Width="*" />
+                        <DataGridTemplateColumn Header="Progreso" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200"
+                                                     Value="50" HorizontalAlignment="Center">
+                                        </ProgressBar>
+                                        <Label Margin="5 0 0 0 " FontSize="10">50%</Label>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
+                                            <iconPacks:PackIconMaterial Kind="ViewDashboard" />
+                                        </Button>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+
+
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="0" Name="hola2">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="150"></RowDefinition>
@@ -145,7 +180,9 @@
                             <Border CornerRadius="15" Height="150" Width="150" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    <ImageBrush ImageSource="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png"></ImageBrush>
+                                    <ImageBrush
+                                        ImageSource="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png">
+                                    </ImageBrush>
                                 </Border.Background>
                             </Border>
                         </StackPanel>
@@ -191,10 +228,11 @@
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <StackPanel Orientation="Horizontal">
-                                    <Label Margin="25 0 0 0 "  FontWeight="SemiBold" FontSize="10">Progreso</Label>
-                                    <Label Margin="130 0 0 0 "  FontSize="10">50%</Label>
+                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Progreso</Label>
+                                    <Label Margin="130 0 0 0 " FontSize="10">50%</Label>
                                 </StackPanel>
-                                    <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200" Value="50" HorizontalAlignment="Center">
+                                <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200" Value="50"
+                                             HorizontalAlignment="Center">
                                 </ProgressBar>
 
                             </StackPanel>
@@ -208,31 +246,163 @@
 
 
         <!--vista cuadriculada-->
-        <StackPanel Grid.Row="1" Height="Auto" Visibility="Hidden" Name="VistaCuadriculada">
+        <StackPanel Grid.Row="1" Height="Auto" Visibility="Visible" Name="VistaCuadriculada">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200" Width="170" Margin="3"></userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
 
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
+                        Margin="3">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="En Espera"
+                                              NumeroVistas="3"
+                                              Tarea="Revisión de Documentos"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
+
+                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
+                                              Height="200"
+                                              EstadoTramite="Completado"
+                                              NumeroVistas="10"
+                                              Tarea="Aprobación Final"
+                                              Width="170"
+                                              Margin="3">
+                    </userControls:TramiteCard>
                 </WrapPanel>
             </ScrollViewer>
         </StackPanel>

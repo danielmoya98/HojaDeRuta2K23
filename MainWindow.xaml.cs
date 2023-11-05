@@ -246,5 +246,15 @@ namespace HojadeRuta2K23
         {
             frame.NavigationService.Navigate(new Tareas());
         }
+
+        private void Notificaciones_OnClick(object sender, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Notificaciones());
+        }
+
+        private void Univalle_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            frame.NavigationService.Navigate(new Dashboard());
+        }
     }
 }

@@ -21,94 +21,16 @@
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions> 
         <WrapPanel Grid.Column="0" Orientation="Horizontal"  Margin="0 5 0 0" Width="Auto">
-        <!--<materialDesign:Card MouseDoubleClick="Control_OnMouseDoubleClick" Height="200" Width="700" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="200"></ColumnDefinition>
-                    <ColumnDefinition Width="500"></ColumnDefinition>
-                    
-                </Grid.ColumnDefinitions>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\exam.png" Height="150" Width="150" Margin=" 20 0 0 0"></Image>
-                </StackPanel>
-                <StackPanel Grid.Column="1">
-                    <TextBlock TextWrapping="Wrap" Margin="20" Foreground="White" FontSize="15">asdasdasdasasdasdasdasdasdasdasdasdasdasdsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdasdsadasddsadasas</TextBlock>
-                </StackPanel>
-            </Grid>
-        </materialDesign:Card>
-        <materialDesign:Card  Margin=" 20 0 0 0" Height="200" Width="530" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background>
-        </materialDesign:Card>
-            <materialDesign:Card Margin="0 20 0 0 " Height="200" Width="530" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background></materialDesign:Card>
-            <materialDesign:Card  Margin=" 20 20 0 0" Height="200" Width="700" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background></materialDesign:Card>    
-            <materialDesign:Card  Margin=" 0 20 0 0" Height="225" Width="300" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background></materialDesign:Card>    
-            <materialDesign:Card  Margin=" 20 20 0 0" Height="225" Width="300" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background></materialDesign:Card>    
-            <materialDesign:Card  Margin=" 20 20 0 0" Height="225" Width="200" UniformCornerRadius="15" >
-            <materialDesign:Card.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <LinearGradientBrush.GradientStops>
-                        <GradientStop Color="DarkGray" Offset="0.0" />
-                        <GradientStop Color="#9e0044" Offset="1.0" />
-                    </LinearGradientBrush.GradientStops>
-                </LinearGradientBrush>
-            </materialDesign:Card.Background></materialDesign:Card>    -->
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="170"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="250"></uc:CardTwo>
-        <uc:CardTwo Margin="8" Height="300" Width="170"></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="170"></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Desing" TituloLargo="asdsadasdasdasdasda" Icono="Check" Color1="Yellow" Color2="Black" Margin="8" Height="300" Width="170"></uc:CardTwo>
         </WrapPanel>
     </Grid>
 </Page>

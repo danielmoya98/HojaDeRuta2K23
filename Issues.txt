@@ -1,8 +1,6 @@
 // TODO: Hacer el diseño del chat en la interfaz de tramites
-// TODO: Animaciones Laterales en cada interfaz
 // TODO: Rehacer algunas ventanas como la de {EditarPerfil , CrearUsuario , EditarUsuario}
 // TODO: Completar los textos de los modulos.
-// TODO: Realizar los DepencyProperties en cada UserControl
 // TODO: Realizar modo oscuro.
 // TODO: Agregar sonidos a los botones
 // TODO: Implementar Notiicaciones Push

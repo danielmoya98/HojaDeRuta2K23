@@ -1,13 +1,8 @@
-// TODO: Hacer el diseño del chat en la interfaz de tramites
 // TODO: Rehacer algunas ventanas como la de {EditarPerfil , CrearUsuario , EditarUsuario}
-// TODO: Completar los textos de los modulos.
 // TODO: Realizar modo oscuro.
 // TODO: Agregar sonidos a los botones
 // TODO: Implementar Notiicaciones Push
 // TODO: Hacer la version movil con .NET MAUI
-// TODO: Hacer el Splash Screen
-// TODO: Hacer el login.
-// TODO: Buscar un nombre para la aplicacion {TaskWave}
 // TODO: Hacer cambios en los datagrids
 // TODO: Posible creacion de nuevos UserControls
-// TODO: Posible creacion de interfaz para Notificaciones.
+

@@ -194,7 +194,7 @@
                     Panel.ZIndex="1" VerticalAlignment="Top">
                 <Border.Background>
                     <ImageBrush
-                        ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
+                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
                     </ImageBrush>
                 </Border.Background>
             </Border>

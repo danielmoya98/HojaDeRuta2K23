@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace HojadeRuta2K23.Paginas;
 
@@ -16,10 +18,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
 
@@ -29,10 +31,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -41,10 +43,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -53,10 +55,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -65,10 +67,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -77,10 +79,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -89,10 +91,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -101,10 +103,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -113,10 +115,10 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
         usuarios.Add(new member
@@ -125,15 +127,18 @@ public partial class Tareas : Page
             Foto =
                 "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
             NombreCompleto = "Control De Notas",
-            Profesion = "Tramite",
+            Profesion = "Secretaria",
             Email = "En Curso",
-            Celular = "Lic. Jorge Padilla",
-            Ubicacion = "Daniel Moya",
+            Celular = "Alta",
+            Ubicacion = "11/12/2023",
             Operations = "Operación 1"
         });
 
         membersDataGrid.ItemsSource = usuarios;
     }
+    
+    
+
 
     public class member
     {
@@ -145,5 +150,13 @@ public partial class Tareas : Page
         public string Celular { get; set; }
         public string Ubicacion { get; set; }
         public string Operations { get; set; }
+    }
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new NuevaTarea());
+        }
     }
 }

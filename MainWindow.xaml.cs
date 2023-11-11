@@ -256,5 +256,11 @@ namespace HojadeRuta2K23
         {
             frame.NavigationService.Navigate(new Dashboard());
         }
+
+        private void Buscar_OnClick(object sender, RoutedEventArgs e)
+        {
+
+            frame.NavigationService.Navigate(new Buscador());
+        }
     }
 }

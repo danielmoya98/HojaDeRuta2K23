@@ -14,14 +14,14 @@
       xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
       xmlns:local="clr-namespace:HojadeRuta2K23.Paginas"
       mc:Ignorable="d"
-      Title="Dashboard" Height="660" Width="1280">
+      Title="Dashboard" Height="670" Width="1280">
 
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions> 
         <WrapPanel Grid.Column="0" Orientation="Horizontal"  Margin="0 5 0 0" Width="Auto">
-            <uc:CardTwo Titulo="Tareas" TituloLargo="Nuestro módulo de tareas te proporciona un sistema de gestión de tareas eficiente y efectivo. Recibe alertas instantáneas sobre nuevas tareas asignadas, actualizaciones de estado y eventos importantes relacionados con tus tareas pendientes" Icono="archive"  Color1="#9e0044" Color2="gray" Margin="8" Height="300" Width="250" ></uc:CardTwo>
+            <uc:CardTwo Titulo="Tareas" TituloLargo="Nuestro módulo de tareas te proporciona un sistema de gestión de tareas eficiente y efectivo. Recibe alertas instantáneas sobre nuevas tareas asignadas, actualizaciones de estado y eventos importantes relacionados con tus tareas pendientes" Icono="archive"  Color1="#9e0044" Color2="gray" Margin="8" Height="300" Width="250"  ></uc:CardTwo>
             <uc:CardTwo Titulo="Tramites" TituloLargo="El módulo de trámites es tu herramienta central para administrar y dar seguimiento a todos los procesos administrativos. Recibe actualizaciones en tiempo real sobre el progreso de tus trámites y gestiona eficazmente los documentos y datos relacionados." Icono="folder" Color1="#9e0044" Color2="gray" Margin="8" Height="300" Width="250" ></uc:CardTwo>
             <uc:CardTwo Titulo="Admin" TituloLargo="El módulo de administrador te otorga el control total sobre la gestión de usuarios en el sistema. Con esta poderosa herramienta, puedes crear, configurar y supervisar cuentas de usuario de manera eficiente." Icono="AccountStar"  Color1="#9e0044" Color2="gray" Margin="8" Height="300" Width="250" ></uc:CardTwo>
             <uc:CardTwo Titulo="Mensajes" TituloLargo="El módulo de mensajes es el núcleo de la comunicación en nuestro sistema. Facilita la interacción instantánea entre usuarios, permitiéndoles enviar y recibir mensajes de manera eficaz. " Icono="Message"  Color1="#9e0044" Color2="gray" Margin="8" Height="300" Width="250" ></uc:CardTwo>

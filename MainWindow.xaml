@@ -4,13 +4,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:uc="clr-namespace:HojadeRuta2K23.UserControls"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:media="clr-namespace:System.Windows.Media;assembly=PresentationCore"
+        xmlns:animation="clr-namespace:System.Windows.Media.Animation;assembly=PresentationCore"
+        xmlns:hc="https://handyorg.github.io/handycontrol"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:local="clr-namespace:HojadeRuta2K23"
@@ -45,14 +48,35 @@
                     <Grid Grid.Column="0">
                         <Border
                             Margin="15 0 0 0"
-                            Width="32" Height="32"
+                            Width="38" Height="38"
                             HorizontalAlignment="Left">
                             <Border.Background>
                                 <ImageBrush
                                     ImageSource="C:\Users\Alienware\RiderProjects\SIVVALLE\Images\LOGO UNIVALLE-02.png"
                                     Stretch="Uniform" />
                             </Border.Background>
+                            <Border.RenderTransformOrigin>
+                                <Point>0.5, 0.5</Point>
+                            </Border.RenderTransformOrigin>
+                            <Border.RenderTransform>
+                                <RotateTransform x:Name="logoRotation" />
+                            </Border.RenderTransform>
+                            <Border.Triggers>
+                                <EventTrigger RoutedEvent="Loaded">
+                                    <BeginStoryboard>
+                                        <Storyboard RepeatBehavior="Forever">
+                                            <DoubleAnimation
+                                                Storyboard.TargetName="logoRotation"
+                                                Storyboard.TargetProperty="Angle"
+                                                To="360"
+                                                Duration="0:0:10"
+                                                RepeatBehavior="Forever" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </EventTrigger>
+                            </Border.Triggers>
                         </Border>
+
 
                         <Label Content="UNIVALLE"
                                Foreground="{DynamicResource PrimaryTextColor}"
@@ -98,7 +122,7 @@
                                     <TextBlock Text="Mensajes" Style="{StaticResource menuButtonText}" />
                                 </StackPanel>-->
                             </Button>
-
+                      
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin=" 0 0 25 0" HorizontalAlignment="Right">
@@ -136,6 +160,13 @@
                                     <Icon:PackIconMaterial Kind="Bell" Style="{StaticResource menuButtonIcon}" />
                                 </StackPanel>
                             </Button>
+                            
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
+                                    HorizontalAlignment="Left"  Click="Buscar_OnClick">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="FileSearch" Style="{StaticResource menuButtonIcon}" />
+                                </StackPanel>
+                            </Button>
 
 
                             <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
@@ -162,6 +193,4 @@
             </Frame>
         </Grid>
     </Border>
-
-
 </Window>

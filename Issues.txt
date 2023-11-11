@@ -1,8 +1,7 @@
-// TODO: Rehacer algunas ventanas como la de {EditarPerfil , CrearUsuario , EditarUsuario}
 // TODO: Realizar modo oscuro.
 // TODO: Agregar sonidos a los botones
 // TODO: Implementar Notiicaciones Push
 // TODO: Hacer la version movil con .NET MAUI
-// TODO: Hacer cambios en los datagrids
 // TODO: Posible creacion de nuevos UserControls
+
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:HojadeRuta2K23.Windows"
         xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
         mc:Ignorable="d"
-        Title="AgregarUsuario" Height="650" Width="400" Background="Transparent" AllowsTransparency="True"
+        Title="AgregarUsuario"  Height="620" Width="400" Background="Transparent" AllowsTransparency="True"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Window.Resources>
@@ -20,36 +20,34 @@
     <Border CornerRadius="25" Background="White">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="220"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical">
+            <StackPanel HorizontalAlignment="Center" Orientation="Vertical">
                 <StackPanel Grid.Row="0" Orientation="Horizontal">
                     <Label Margin="10" FontWeight="SemiBold" FontSize="25">Crear Usuario</Label>
-                    <iconPacks:PackIconMaterial Kind="CloseCircle" Height="20" Margin="170 0 0 0" Width="20"
-                                                Style="{StaticResource gridButtonIcon}" />
-
+                   
                 </StackPanel>
                 <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Vertical" Margin="0 5 0 0">
                     <Border CornerRadius="15" Height="100" Width="100" VerticalAlignment="Center"
                             HorizontalAlignment="Center">
-                        <iconPacks:PackIconMaterial Kind="AccountPlus" HorizontalAlignment="Center" Height="70" Width="70"
-                                                    Style="{StaticResource gridButtonIcon}" />
-
+                        <Border.Background>
+                            <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"></ImageBrush>
+                        </Border.Background>
                     </Border>
                     <Button Margin="0 15 0 0 " Height="30" Width="150"
                             Style="{StaticResource gridEditButton}">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="CameraAccount" Height="20" Width="20"
                                                         Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Agregar Imagen </TextBlock>
+                            <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Agregar imagen </TextBlock>
                         </StackPanel>
                     </Button>
 
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Row="1" Orientation="Vertical">
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Orientation="Vertical">
                         <Label FontWeight="SemiBold" Margin="10">Nombre</Label>
@@ -62,7 +60,7 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Vertical">
-                    <Label FontWeight="SemiBold" Margin="10">Email</Label>
+                    <Label FontWeight="SemiBold" Margin="10">Descripcion</Label>
                     <TextBox Style="{StaticResource TextBoxWithRoundedCorners}" Margin="15 0 0 0 " Width="295" Height="70" TextWrapping="Wrap" HorizontalAlignment="Left"></TextBox>
                 </StackPanel>
 
@@ -80,13 +78,21 @@
                     <TextBox Margin="15 0 0 0 " Width="295" HorizontalAlignment="Left"></TextBox>
                 </StackPanel>
                 
-                <StackPanel HorizontalAlignment="Right">
-                    <Button Margin="0 25 30 0 " Height="30" Width="Auto"
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <Button Margin="0 25 0 0 " Height="30" Width="100"
                             Style="{StaticResource gridEditButton}">
                         <StackPanel Orientation="Horizontal">
-                            <iconPacks:PackIconMaterial Kind="Update" Height="15" Width="15"
+                            <iconPacks:PackIconMaterial Kind="Cancel" Height="15" Width="15"
                                                         Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock HorizontalAlignment="Left" Padding="7 0 7 0 " FontWeight="SemiBold">Crear</TextBlock>
+                            <TextBlock Padding="5 0 0 0 " FontWeight="SemiBold"> Cancelar </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button Margin="10 25 0 0 " Height="30" Width="100"
+                            Style="{StaticResource gridEditButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Creation" Height="15" Width="15"
+                                                        Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="5 0 0 0 " FontWeight="SemiBold"> Crear </TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>

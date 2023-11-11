@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 
 namespace HojadeRuta2K23.Paginas;
 
@@ -135,6 +137,14 @@ public partial class Tramites : Page
         });
 
         membersDataGrid.ItemsSource = usuarios;
+    }
+    
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new NuevaTarea());
+        }
     }
 
     public class member

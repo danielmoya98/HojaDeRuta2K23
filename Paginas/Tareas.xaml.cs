@@ -12,6 +12,8 @@ public partial class Tareas : Page
     public Tareas()
     {
         InitializeComponent();
+        ComboBoxVistas.Items.Add("Vista Cuadriculada");
+        ComboBoxVistas.Items.Add("Vista Lista");
         usuarios.Add(new member
         {
             Id = "1",
@@ -135,9 +137,12 @@ public partial class Tareas : Page
         });
 
         membersDataGrid.ItemsSource = usuarios;
+    
     }
-    
-    
+
+   
+
+
 
 
     public class member
@@ -158,5 +163,24 @@ public partial class Tareas : Page
         {
             NavigationService.Navigate(new NuevaTarea());
         }
+    }
+
+
+    private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (ComboBoxVistas.SelectedIndex >= 0 && ComboBoxVistas.SelectedIndex < ComboBoxVistas.Items.Count)
+        {
+            if (ComboBoxVistas.SelectedIndex == 0)
+            {
+                VistaCuadriculada.Visibility = Visibility.Visible;
+                VistaLista.Visibility = Visibility.Hidden;
+            }
+            else if (ComboBoxVistas.SelectedIndex == 1)
+            {
+                VistaCuadriculada.Visibility = Visibility.Hidden;
+                VistaLista.Visibility = Visibility.Visible;
+            }
+        }
+
     }
 }

@@ -46,11 +46,8 @@
                     <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Horizontal"
                                 Margin="0 0 0 0 ">
                         <Label Margin="25 0 0 0 " VerticalAlignment="Bottom" FontWeight="SemiBold" FontSize="15">Filtrar</Label>
-                        <ComboBox Margin="30 0 0 0 " Width="200"
-                                  HorizontalAlignment="Left">
-                            
-                            <ComboBoxItem>Tramites</ComboBoxItem>
-                            <ComboBoxItem>Tareas</ComboBoxItem>
+                        <ComboBox SelectedIndex="0" Name="buscador" Margin="30 0 0 0 " Width="200"
+                                  HorizontalAlignment="Left" SelectionChanged="Buscador_OnSelectionChanged">
                         </ComboBox>
                     </StackPanel>
                 </StackPanel>
@@ -125,7 +122,7 @@
 
 
                 <!--vista lateral TAREAS - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Name="hola1" Width="280" Visibility="Hidden">
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Hidden" Name="tareas" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -216,7 +213,7 @@
                 </StackPanel>
 
                 <!--vista lateral Tramites - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible">
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible" Name="tramites">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>

@@ -12,6 +12,8 @@ public partial class Tramites : Page
     public Tramites()
     {
         InitializeComponent();
+        ComboBoxVistas.Items.Add("Vista Cuadriculada");
+        ComboBoxVistas.Items.Add("Vista Lista");
 
         usuarios.Add(new member
         {
@@ -157,5 +159,21 @@ public partial class Tramites : Page
         public string Celular { get; set; }
         public string Ubicacion { get; set; }
         public string Operations { get; set; }
+    }
+
+    private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        
+        if (ComboBoxVistas.SelectedIndex == 0)
+        {
+            VistaCuadriculada.Visibility = Visibility.Visible;
+            VistaLista.Visibility = Visibility.Hidden;
+        }
+        else if (ComboBoxVistas.SelectedIndex == 1)
+        {
+            VistaCuadriculada.Visibility = Visibility.Hidden;
+            VistaLista.Visibility = Visibility.Visible;
+        }
+
     }
 }

@@ -41,9 +41,7 @@
                     <TextBox Margin="5 0 5 0 " Background="Transparent" Height="25" Width="150"></TextBox>
                     <iconPacks:PackIconMaterial Kind="AccountSearch" Height="20" Width="20"
                                                 Style="{StaticResource gridButtonIcon}" Margin="0 0 15 0 " />
-                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas" Margin="5 0 15 0" Width="150" Height="25">
-                        <ComboBoxItem Content="Vista Cuadriculada" />
-                        <ComboBoxItem Content="Vista Lista" />
+                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas" SelectionChanged="ComboBoxVistas_OnSelectionChanged" Margin="5 0 15 0" Width="150" Height="25">
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"

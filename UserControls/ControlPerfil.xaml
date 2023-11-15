@@ -20,7 +20,11 @@
         </Grid.ColumnDefinitions>
         <Border Grid.Column="0" CornerRadius="15" Height="75" Width="75" Margin="0 0 0 0 ">
             <Border.Background>
+                <!--
                 <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png"></ImageBrush>
+           
+            -->
+                Black
             </Border.Background>
         </Border>
         

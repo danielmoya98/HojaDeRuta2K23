@@ -19,7 +19,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -32,7 +32,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -44,7 +44,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -56,7 +56,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -68,7 +68,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -80,7 +80,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -92,7 +92,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -104,7 +104,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -116,7 +116,7 @@ public partial class Tramites : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",
@@ -129,7 +129,7 @@ public partial class Tramites : Page
             
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-documentos-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Tramite",
             Email = "En Curso",

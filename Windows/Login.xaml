@@ -28,7 +28,10 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" VerticalAlignment="Top" Height="130" CornerRadius="25 25 0 0" Width="300" >
                <Border.Background>
+               Black
+                   <!--
                    <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png" ></ImageBrush>
+               -->
                </Border.Background>
                 
                 <!--<Path Data="M128.947 55.0602C88.8158 61.3692 46.329 74.7813 0 69.9724V0H400V96.9289C356.103 122.482 347.368 139.371 261.842 103.238C176.316 67.1046 169.079 48.7512 128.947 55.0602Z" >

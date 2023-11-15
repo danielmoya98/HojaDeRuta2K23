@@ -534,12 +534,10 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -547,8 +545,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -556,12 +553,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -569,8 +564,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -578,12 +572,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -591,8 +583,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -600,12 +591,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -613,8 +602,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -622,12 +610,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -635,8 +621,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -644,12 +629,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -657,8 +640,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"
@@ -666,12 +648,10 @@
                                               Margin="3">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
                         Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
                         Margin="3">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="En Espera"
                                               NumeroVistas="3"
                                               Tarea="Revisión de Documentos"
@@ -679,8 +659,7 @@
                                               Margin="3">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Foto="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"
-                                              Height="200"
+                    <userControls:TramiteCard Height="200"
                                               EstadoTramite="Completado"
                                               NumeroVistas="10"
                                               Tarea="Aprobación Final"

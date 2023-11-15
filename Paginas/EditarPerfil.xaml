@@ -33,7 +33,10 @@
                     <StackPanel Grid.Row="0" VerticalAlignment="Center">
                         <Border Height="250" Width="250" CornerRadius="15">
                             <Border.Background>
+                            Black
+                                <!--
                                 <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png"></ImageBrush>
+                            -->
                             </Border.Background>
                             <StackPanel>
                                 <Border CornerRadius="15" Background="Black" Opacity="0.6" Height="250" Width="250" VerticalAlignment="Center">

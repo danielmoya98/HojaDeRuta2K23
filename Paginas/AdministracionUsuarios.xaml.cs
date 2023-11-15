@@ -22,7 +22,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -35,7 +35,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -47,7 +47,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -60,7 +60,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -72,7 +72,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -85,7 +85,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -98,7 +98,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -111,7 +111,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -123,7 +123,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -136,7 +136,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -148,7 +148,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -161,7 +161,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -173,7 +173,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -186,7 +186,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",
@@ -198,7 +198,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "Pablo Chambi",
             Profesion = "Ingeniero",
             Email = "pablo@example.com",
@@ -211,7 +211,7 @@ public partial class AdministracionUsuarios : Page
         {
             Id = "2",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\44110f877fb9796236f3d9c9cc3677da.gif",
+                "",
             NombreCompleto = "María López",
             Profesion = "Diseñadora",
             Email = "maria@example.com",

@@ -18,7 +18,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -31,7 +31,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -43,7 +43,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -55,7 +55,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -67,7 +67,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -79,7 +79,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -91,7 +91,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -103,7 +103,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -115,7 +115,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",
@@ -127,7 +127,7 @@ public partial class Tareas : Page
         {
             Id = "1",
             Foto =
-                "C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png",
+                "",
             NombreCompleto = "Control De Notas",
             Profesion = "Secretaria",
             Email = "En Curso",

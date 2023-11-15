@@ -312,9 +312,10 @@
                                         <Border CornerRadius="15" Height="150" Width="150" VerticalAlignment="Center"
                                                 HorizontalAlignment="Center">
                                             <Border.Background>
-                                                <ImageBrush
+                                                Black
+                                                <!--<ImageBrush
                                                     ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-carpeta-48.png">
-                                                </ImageBrush>
+                                                </ImageBrush>-->
                                             </Border.Background>
                                         </Border>
                                     </StackPanel>
@@ -542,12 +543,10 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -556,12 +555,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -570,12 +567,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -584,12 +579,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -598,12 +591,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -612,12 +603,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -626,12 +615,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -640,12 +627,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -654,12 +639,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -668,12 +651,10 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Enviar Informe"
                         EstadoTarea="Pendiente"
                         NumeroVistas="0"
@@ -682,7 +663,6 @@
                         Margin="3">
                     </userControls:TareaCard>
                     <userControls:TareaCard
-                        Foto="C:\\Users\\Alienware\\RiderProjects\\HojadeRuta2K23\\Imagenes\\icons8-carpeta-48.png"
                         Tarea="Llenar Formularios" EstadoTarea="Finalizado" NumeroVistas="2" Height="200" Width="170"
                         Margin="3">
                     </userControls:TareaCard>

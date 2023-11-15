@@ -33,7 +33,10 @@
                     <Border CornerRadius="15" Height="100" Width="100" VerticalAlignment="Center"
                             HorizontalAlignment="Center">
                         <Border.Background>
+                            <!--
                             <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"></ImageBrush>
+                        -->
+                            Black
                         </Border.Background>
                     </Border>
                     <Button Margin="0 15 0 0 " Height="30" Width="150"

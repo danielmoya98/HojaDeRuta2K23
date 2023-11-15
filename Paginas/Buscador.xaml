@@ -133,9 +133,10 @@
                             <Border CornerRadius="15" Height="130" Width="130" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    <ImageBrush
+                                   Black
+                                    <!--<ImageBrush
                                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-carpeta-48.png">
-                                    </ImageBrush>
+                                    </ImageBrush>-->
                                 </Border.Background>
                             </Border>
                         </StackPanel>
@@ -224,9 +225,10 @@
                             <Border CornerRadius="15" Height="130" Width="130" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    <ImageBrush
+                                    Black
+                                    <!--<ImageBrush
                                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/icons8-documentos-48.png">
-                                    </ImageBrush>
+                                    </ImageBrush>-->
                                 </Border.Background>
                             </Border>
                         </StackPanel>

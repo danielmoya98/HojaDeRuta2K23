@@ -113,23 +113,19 @@
 
                         <!--Person Items-->
                         <userControls:Item Title="Pablo Chambi"
-                                 Image="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"
                                  Message="HOLA !!!"
                                  Color="#9e0044"
                                  MessageCount="2" />
 
                         <userControls:Item Title="Mijael Ortega"
-                                 Image="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"
                                  Message="HOLA !!!"
                                   />
 
                         <userControls:Item Title="Vianka"
-                                 Image="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"
                                  Message="HOLA !!!"
                                   />
 
                         <userControls:Item Title="Daniel Moya"
-                                 Image="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"
                                  Message="HOLA !!!"
                                  Color="#9e0044"
                                 

@@ -30,7 +30,10 @@
            </StackPanel>
             
             <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 0 0 0 ">
+                <!--
                 <Image  Source="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-documentos-48.png"></Image>
+            -->
+                
             </StackPanel>
             
             

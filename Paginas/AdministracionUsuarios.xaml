@@ -167,9 +167,10 @@
                             <Border CornerRadius="15" Height="150" Width="150" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    <ImageBrush
+                                    Black
+                                    <!--<ImageBrush
                                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif">
-                                    </ImageBrush>
+                                    </ImageBrush>-->
                                 </Border.Background>
                             </Border>
                         </StackPanel>

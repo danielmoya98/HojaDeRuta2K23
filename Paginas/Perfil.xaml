@@ -256,17 +256,26 @@
                                     <Label FontWeight="SemiBold" Margin=" 0 5 0 0 ">Redes Sociales </Label>
                                     <Ellipse Margin="5 0 0 0 " Height="20" Width="20" >
                                         <Ellipse.Fill>
+                                            <!--
                                             <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-facebook-nuevo-48.png"></ImageBrush>
+                                        -->
+                                            Black
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <Ellipse Margin="5 0 0 0 " Height="20" Width="20" >
                                         <Ellipse.Fill>
+                                            <!--
                                             <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/icons8-twitter-circled-48.png"></ImageBrush>
+                                        -->
+                                            Black
                                         </Ellipse.Fill>
                                     </Ellipse>
                                     <Ellipse Margin="5 0 0 0 " Height="20" Width="20" >
                                         <Ellipse.Fill>
+                                            <!--
                                             <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/icons8-whatsapp-48.png"></ImageBrush>
+                                        -->
+                                            Black
                                         </Ellipse.Fill>
                                     </Ellipse>
                                 </StackPanel>
@@ -277,10 +286,10 @@
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Border Height="90" Width="90" CornerRadius="15">
                                     <Border.Background>
-                                        <ImageBrush
+                                Transparent
+                                        <!--<ImageBrush
                                             ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
-
-                                        </ImageBrush>
+                                        </ImageBrush>-->
                                     </Border.Background>
                                 </Border>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin=" 15 0 0 0 ">
@@ -305,10 +314,13 @@
                             <StackPanel Orientation="Horizontal" Visibility="Hidden">
                                 <Border Height="90" Width="90" CornerRadius="15">
                                     <Border.Background>
+                                   Transparent
+                                        <!--
                                         <ImageBrush
                                             ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Captura de pantalla 2023-10-30 093610.png">
 
                                         </ImageBrush>
+                                    -->
                                     </Border.Background>
                                 </Border>
                                 <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin=" 15 0 0 0 ">

@@ -12,8 +12,16 @@
       <PackageReference Include="HandyControls" Version="3.4.5" />
       <PackageReference Include="MahApps.Metro.IconPacks.Material" Version="4.11.0" />
       <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+      <PackageReference Include="Microsoft.Data.SqlClient" Version="5.1.2" />
 
 
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Modo Claro\UserControlsLight\" />
+      <Folder Include="Modo Claro\WindowsLight\" />
+      <Folder Include="ModoOscuro\UserControlsDark\" />
+      <Folder Include="ModoOscuro\WindowsDark\" />
     </ItemGroup>
 
 

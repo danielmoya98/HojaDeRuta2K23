@@ -3,5 +3,6 @@
 // TODO: Implementar Notiicaciones Push
 // TODO: Hacer la version movil con .NET MAUI
 // TODO: Posible creacion de nuevos UserControls
+// TODO: unificar todo administracion de usarios apartir de animacion DepencyObjects..
 
 

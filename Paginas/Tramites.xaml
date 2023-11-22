@@ -40,14 +40,9 @@
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right" Margin="0 0 15 0">
-                    <StackPanel Orientation="Horizontal">
-                        <iconPacks:PackIconMaterial Kind="AccountSearch" Height="20" Width="20"
-                                                    Style="{StaticResource gridButtonIcon}" Margin="0 0 0 0 " />
-
-                        <TextBox Margin="0 0 5 0 " Background="Transparent" Height="25" Width="150"></TextBox>
-
-                    </StackPanel>
-                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas" SelectionChanged="ComboBoxVistas_OnSelectionChanged" Margin="5 0 15 0" Width="150" Height="25">
+                    <ComboBox SelectedIndex="0" Name="ComboBoxVistas"
+                              SelectionChanged="ComboBoxVistas_OnSelectionChanged" Margin="5 0 15 0" Width="150"
+                              Height="25">
                     </ComboBox>
                 </StackPanel>
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
@@ -67,7 +62,7 @@
                                     <Storyboard x:Name="HideStackPanel">
                                         <DoubleAnimation Storyboard.TargetName="hola3"
                                                          Storyboard.TargetProperty="Height" BeginTime="0:0:0"
-                                                         From="150"
+                                                         From="250"
                                                          To="0" Duration="0:0:0.5">
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -79,14 +74,14 @@
                                         <DoubleAnimation Storyboard.TargetName="hola3"
                                                          Storyboard.TargetProperty="Height" BeginTime="0:0:0"
                                                          From="0"
-                                                         To="150" Duration="0:0:0.5">
+                                                         To="250" Duration="0:0:0.5">
                                         </DoubleAnimation>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
                         </ToggleButton.Triggers>
                     </ToggleButton>
-                    
+
                     <ToggleButton x:Name="Tg_Btn2" Grid.Column="1" VerticalAlignment="Center"
                                   Height="30" Width="30"
                                   BorderThickness="0" Background="MediumVioletRed" Margin="5,15,70,15">
@@ -131,100 +126,137 @@
 
                 <!--vista nueva tramite-->
                 <StackPanel Orientation="Vertical">
-                     <StackPanel Orientation="Vertical" Height="0" Name="hola3">
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Nombre:</Label>
-                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                     HorizontalAlignment="Left">
-                            </TextBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Paterno:</Label>
-                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                     HorizontalAlignment="Left">
-                            </TextBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Materno:</Label>
-                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                     HorizontalAlignment="Left">
-                            </TextBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Numero de celular:</Label>
-                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                     HorizontalAlignment="Left">
-                            </TextBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de tramite</Label>
-                            <ComboBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
-                                      HorizontalAlignment="Left" Width="150">
-                                <ComboBoxItem>Solicitud de cambio de carrera</ComboBoxItem>
-                                <ComboBoxItem>Solicitud programacion tardia</ComboBoxItem>
-                                <ComboBoxItem>Solicitud de certificado de notas</ComboBoxItem>
-                                <ComboBoxItem>Solicitud de inicio de grado</ComboBoxItem>
-                                <ComboBoxItem>Certificado de trabajo</ComboBoxItem>
-                                <ComboBoxItem>Solicitud de Licencia</ComboBoxItem>
-                            </ComboBox>
+                    <StackPanel Orientation="Vertical" Height="0" Name="hola3">
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Nombre:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Paterno:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Materno:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Numero de celular:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Carnet Identidad:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Correo Electronico:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                        Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Direccion:</Label>
+                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="138"
+                                         HorizontalAlignment="Left">
+                                </TextBox>
+                            </StackPanel>
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                     Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea:</Label>
-                            <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
-                                     HorizontalAlignment="Left" Width="300">
-                            </TextBox>
+                            <StackPanel Orientation="Horizontal" Height="auto">
+                                <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                            Margin="0 10 0 0 ">
+                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Celular de Referencia:</Label>
+                                    <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                             HorizontalAlignment="Left">
+                                    </TextBox>
+                                </StackPanel>
+
+                                <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                            Margin="0 10 0 0 ">
+                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de tramite</Label>
+                                    <ComboBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+                                              HorizontalAlignment="Left" Width="150">
+                                        <ComboBoxItem>Solicitud de cambio de carrera</ComboBoxItem>
+                                        <ComboBoxItem>Solicitud programacion tardia</ComboBoxItem>
+                                        <ComboBoxItem>Solicitud de certificado de notas</ComboBoxItem>
+                                        <ComboBoxItem>Solicitud de inicio de grado</ComboBoxItem>
+                                        <ComboBoxItem>Certificado de trabajo</ComboBoxItem>
+                                        <ComboBoxItem>Solicitud de Licencia</ComboBoxItem>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                            Margin="0 10 0 0 ">
+                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea:</Label>
+                                    <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
+                                             HorizontalAlignment="Left" Width="858">
+                                    </TextBox>
+                                </StackPanel>
+
+                            </StackPanel>
                         </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                    Margin="0 10 0 0 ">
+                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Documentos Adjuntos</Label>
+                            <StackPanel Orientation="Horizontal">
 
 
-                    </StackPanel>
-                    
-                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                Margin="0 10 0 0 ">
-                        <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Documentos Adjuntos</Label>
-                       <StackPanel Orientation="Horizontal">
-                           
-                           <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                   Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                        Style="{StaticResource gridEditButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
                                                                Style="{StaticResource gridButtonIcon}" />
                                    -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Subir del sistema</TextBlock>
-                               </StackPanel>
-                           </Button>
-                           <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                   Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Subir del sistema</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                        Style="{StaticResource gridEditButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--
                                    <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
                                                                Style="{StaticResource gridButtonIcon}" />
                                    -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Escanear y Subir</TextBlock>
-                               </StackPanel>
-                           </Button>
-                           <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                   Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Escanear y Subir</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button Margin="740 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                        Style="{StaticResource gridEditButton}">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--
                                    <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
                                                                Style="{StaticResource gridButtonIcon}" />
                                    -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Registrar Tramite</TextBlock>
-                               </StackPanel>
-                           </Button>
-                       </StackPanel>
-                        
-                       
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Crear Nuevo Tramite</TextBlock>
+                                    </StackPanel>
+                                </Button>
+
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
 
                     <StackPanel Grid.Row="1">
@@ -507,7 +539,7 @@
                                                             Width="20"
                                                             Style="{StaticResource gridButtonIcon}" />
                                                         -->
-                                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Volver</TextBlock>
+                                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar </TextBlock>
                                                     </StackPanel>
                                                 </Button>
                                             </StackPanel>
@@ -529,7 +561,6 @@
         </StackPanel>
 
 
-       
         <StackPanel Grid.Row="1" Height="Auto" Visibility="Visible" Name="VistaCuadriculada">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
@@ -669,7 +700,7 @@
                 </WrapPanel>
             </ScrollViewer>
         </StackPanel>
- 
+
 
     </Grid>
 </Page>

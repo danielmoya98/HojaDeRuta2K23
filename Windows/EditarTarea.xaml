@@ -34,8 +34,15 @@
                 <DatePicker  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </DatePicker>
                 <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva Prioridad:</Label>
                 <ComboBox  BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </ComboBox>
+                <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Documentos Adjuntos:</Label>
+                <Button Margin="30 0 0  0" Height="30" Width="225" BorderBrush="Transparent"
+                        Style="{StaticResource gridEditButton}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  FontWeight="SemiBold"> Adjuntar </TextBlock>
+                    </StackPanel>
+                </Button>
                 <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva descripcion:</Label>
-                <TextBox Style="{StaticResource TextBoxWithRoundedCorners}"  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" Height="100" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </TextBox>
+                <TextBox Style="{StaticResource TextBoxWithRoundedCorners}"  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" Height="50" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </TextBox>
 
                 
             </StackPanel>

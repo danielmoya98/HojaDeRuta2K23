@@ -16,7 +16,10 @@ public partial class AdministracionUsuarios : Page
         InitializeComponent();
         ComboBoxVistas.Items.Add("Vista Cuadriculada");
         ComboBoxVistas.Items.Add("Vista Lista");
-
+        
+        Combo.Items.Add("Funcionario");
+        Combo.Items.Add("cliente");
+   
             
         usuarios.Add(new member
         {
@@ -235,6 +238,20 @@ public partial class AdministracionUsuarios : Page
         public string Operations { get; set; }
     }
 
+    private void Combo_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (Combo.SelectedIndex == 0)
+        {
+            funcionario.Visibility = Visibility.Visible;
+            cliente.Visibility = Visibility.Collapsed;
+        }
+        if (Combo.SelectedIndex == 1)
+        {
+            cliente.Visibility = Visibility.Visible;
+            funcionario.Visibility = Visibility.Collapsed;
+        }
+    }
+    
     private void AgregarUsuario_OnClick(object sender, RoutedEventArgs e)
     {
         AgregarUsuario hola = new AgregarUsuario();

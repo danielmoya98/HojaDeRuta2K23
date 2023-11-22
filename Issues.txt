@@ -1,8 +1,16 @@
 // TODO: Realizar modo oscuro.
+// TODO: Realizar modo claro.
 // TODO: Agregar sonidos a los botones
 // TODO: Implementar Notiicaciones Push
 // TODO: Hacer la version movil con .NET MAUI
 // TODO: Posible creacion de nuevos UserControls
 // TODO: unificar todo administracion de usarios apartir de animacion DepencyObjects..
+
+                                    CAMBIOS INTERFAZ
+// TODO:  TRAMITES - TARJETAS MAS GRANDES - MAS MARGIN Y LOS MISMOS DATOS DEL DATAGRID.
+
+// TODO:  PERFIL - AGREGAR DEPARTAMENTO / TIPO FUNCIONARIO / CI / TEAMS / WHATSAPP / LINKENDIN / OUTLOOK
+
+
 
 

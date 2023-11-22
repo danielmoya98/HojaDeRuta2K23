@@ -227,14 +227,8 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0 50 0 0 ">
-                                <Label FontWeight="SemiBold" FontSize="15">Informacion del Perfil</Label>
-                                <Icon:PackIconMaterial Margin="150 0 0 0" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="AccountEdit" Height="15" Width="15" MouseDoubleClick="Control_OnMouseDoubleClick" />
+                                <Label FontWeight="SemiBold" FontSize="15" >Informacion del Perfil</Label>
                             </StackPanel>
-
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Margin="5" FontSize="13" Width="250" Foreground="DimGray" TextWrapping="Wrap">Un licenciado es un profesional altamente capacitado que ha coma dermite abordar problemas y desafíos de manera crítica y creativa. Además, son capaces de comunicarse de manera efectiva, tanto oen colaborar con otros prlas hadisciplina.</TextBlock>
-                            </StackPanel>
-
                             <StackPanel Orientation="Vertical" Margin="0 0 0 0">
                                 <StackPanel Orientation="Horizontal">
                                     <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Nombre Completo : </Label>
@@ -243,6 +237,18 @@
                                 <StackPanel Orientation="Horizontal">
                                     <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Celular : </Label>
                                     <Label  Margin=" 0 5 0 0 "> 45456456 </Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Carnet Identidad : </Label>
+                                    <Label  Margin=" 0 5 0 0 "> 16572110 </Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Departamento : </Label>
+                                    <Label  Margin=" 0 5 0 0 "> Centro de computo </Label>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Tipo Funcionario : </Label>
+                                    <Label  Margin=" 0 5 0 0 "> A </Label>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
                                     <Label FontWeight="SemiBold" Margin=" 0 5 0 0 "> Correo Electronico : </Label>
@@ -266,6 +272,14 @@
                                         <Ellipse.Fill>
                                             <!--
                                             <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/icons8-twitter-circled-48.png"></ImageBrush>
+                                        -->
+                                            Black
+                                        </Ellipse.Fill>
+                                    </Ellipse>
+                                    <Ellipse Margin="5 0 0 0 " Height="20" Width="20" >
+                                        <Ellipse.Fill>
+                                            <!--
+                                            <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes/icons8-whatsapp-48.png"></ImageBrush>
                                         -->
                                             Black
                                         </Ellipse.Fill>

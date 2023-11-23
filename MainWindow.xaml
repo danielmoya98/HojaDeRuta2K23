@@ -132,7 +132,15 @@
                             <Icon:PackIconMaterial Kind="SelectSearch" Foreground="White" VerticalAlignment="Center" Height="18" Width="18"/>
                             <TextBox BorderBrush="White" Width="100" Margin="15" Background="Transparent" Foreground="White" BorderThickness="0 0 0 2"></TextBox>
                         </StackPanel>-->
-
+                            <Button  Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center" Margin="5 0 50 0"
+                                    Padding="10"
+                                    HorizontalAlignment="Left" Click="Buscar_OnClick">
+                                <StackPanel Orientation="Horizontal">
+                                    <Icon:PackIconMaterial Kind="AccountSearch" Style="{StaticResource menuButtonIcon}" />
+                                    <TextBlock Text="Buscador" Style="{StaticResource menuButtonText}" />
+                                </StackPanel>
+                            </Button>
+                            
                             <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ADministracionUsuariosClick">
                                 <StackPanel Orientation="Horizontal">
@@ -162,14 +170,6 @@
                                 </StackPanel>
                             </Button>
                             
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
-                                    HorizontalAlignment="Left"  Click="Buscar_OnClick">
-                                <StackPanel Orientation="Horizontal">
-                                    <Icon:PackIconMaterial Kind="FileSearch" Style="{StaticResource menuButtonIcon}" />
-                                </StackPanel>
-                            </Button>
-
-
                             <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ButtonBase7_OnClick">
                                 <StackPanel Orientation="Horizontal">

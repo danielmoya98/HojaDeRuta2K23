@@ -2,9 +2,9 @@
 
 namespace HojadeRuta2K23.Windows;
 
-public partial class DocumentosAdjuntos : Window
+public partial class RechazarTramite : Window
 {
-    public DocumentosAdjuntos()
+    public RechazarTramite()
     {
         InitializeComponent();
     }

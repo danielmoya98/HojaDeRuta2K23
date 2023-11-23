@@ -30,4 +30,9 @@ public partial class BtnAdmitir : Window
             combo.Visibility = Visibility.Collapsed;
         }   
     }
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        Close();
+    }
 }

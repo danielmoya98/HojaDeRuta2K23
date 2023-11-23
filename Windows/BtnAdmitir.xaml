@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:HojadeRuta2K23.Windows"
         mc:Ignorable="d"
-        Title="BtnAdmitir"  Height="150" Width="250"
+        Title="BtnAdmitir"  Height="180" Width="250"
         AllowsTransparency="True"  WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -16,9 +16,21 @@
         </ResourceDictionary>
     </Window.Resources>
     
-    <Border Background="White" CornerRadius="15" VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="150">
-        <Grid Background="Transparent" VerticalAlignment="Center">
-            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Height="Auto"  Margin="0 0 0 0 ">
+    <Border Background="White" CornerRadius="15"  VerticalAlignment="Center" HorizontalAlignment="Center" Width="250" Height="180">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" >
+                <Button  Visibility="Visible" Margin="0 0 10 0 "  Click="ButtonBase_OnClick" Height="20" Width="20" Padding="0" VerticalContentAlignment="Center" BorderBrush="Transparent"
+                        Style="{StaticResource gridEditButton1}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  Height="21" FontWeight="SemiBold"> x </TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical" Height="Auto"  Margin="0 0 0 30 ">
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
                     <CheckBox Checked="Flujo_OnChecked" Unchecked="Flujo_OnUnchecked" Name="flujo" VerticalAlignment="Center"></CheckBox>
                     <Label Foreground="DarkRed" HorizontalContentAlignment="Center" Margin="0 0 0 0" FontSize="10" FontWeight="SemiBold"  >¿Activar flujo Manual? </Label>
@@ -39,6 +51,7 @@
                     </StackPanel>
                 </Button>
             </StackPanel>
+
         </Grid>
     </Border>
 </Window>

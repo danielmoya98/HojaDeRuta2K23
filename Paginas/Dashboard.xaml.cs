@@ -14,6 +14,38 @@ public partial class Dashboard : Page
 
     private void Control_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
     {
+    }
+
+    private void Tareas_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new Tareas());
+        }
+    }
+
+    private void Tramites_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new Tramites());
+        }
+    }
+
+    private void Admin_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new AdministracionUsuarios());
+        }
+    }
+
+    private void Perfil_OnClick(object sender, RoutedEventArgs e)
+    {
         
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new Perfil());
+        }
     }
 }

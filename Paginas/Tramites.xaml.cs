@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using HojadeRuta2K23.Windows;
 using MaterialDesignThemes.Wpf;
@@ -14,8 +16,8 @@ public partial class Tramites : Page
     public Tramites()
     {
         InitializeComponent();
-        ComboBoxVistas.Items.Add("Vista Cuadriculada");
-        ComboBoxVistas.Items.Add("Vista Lista");
+        // ComboBoxVistas.Items.Add("Vista Cuadriculada");
+        // ComboBoxVistas.Items.Add("Vista Lista");
 
         usuarios.Add(new member
         {
@@ -163,7 +165,7 @@ public partial class Tramites : Page
         public string Operations { get; set; }
     }
 
-    private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    /*private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         
         if (ComboBoxVistas.SelectedIndex == 0)
@@ -177,7 +179,7 @@ public partial class Tramites : Page
             VistaLista.Visibility = Visibility.Visible;
         }
 
-    }
+    }*/
 
     private void CheckBox1_OnChecked(object sender, RoutedEventArgs e)
     {
@@ -224,5 +226,50 @@ public partial class Tramites : Page
     {
         Cod_tramite cod = new Cod_tramite();
         cod.ShowDialog();
+    }
+
+    private void MiBotonV_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 280;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Collapsed;
+        miBotonV1.Visibility = Visibility.Visible;
+    }
+
+    private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 280;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Visible;
+        miBotonV1.Visibility = Visibility.Collapsed;
+    }
+
+    private void ver_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 500;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
+    }
+
+    private void ocultar_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 500;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
+
     }
 }

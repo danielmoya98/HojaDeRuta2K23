@@ -32,6 +32,18 @@ public partial class TramiteCard : UserControl
     public static readonly DependencyProperty TareaProperty =
         DependencyProperty.Register("Tramite", typeof(String), typeof(TramiteCard));
     
+    
+    //propiedad Tramite//  
+    public String Codigo
+    {
+        get { return (String)GetValue(CodigoProperty); }
+        set { SetValue(CodigoProperty, value); }
+    }
+    
+    public static readonly DependencyProperty CodigoProperty =
+        DependencyProperty.Register("Codigo", typeof(String), typeof(TramiteCard));
+
+    
     //propiedad EstadoTramite//  
     public String EstadoTramite
     {
@@ -42,6 +54,18 @@ public partial class TramiteCard : UserControl
     public static readonly DependencyProperty EstadoTramiteProperty =
         DependencyProperty.Register("EstadoTramite", typeof(String), typeof(TramiteCard));
 
+    
+    //propiedad EstadoTramite//  
+    public String Progress
+    {
+        get { return (String)GetValue(ProgressProperty); }
+        set { SetValue(ProgressProperty, value); }
+    }
+    
+    public static readonly DependencyProperty ProgressProperty =
+        DependencyProperty.Register("Progress", typeof(String), typeof(TramiteCard));
+
+    
     //propiedad NumeroVistas//  
     public String NumeroVistas
     {

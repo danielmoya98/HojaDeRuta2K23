@@ -260,14 +260,16 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        
+        <!--hover de la celda-->
 
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#9e0044" />
+                <Setter Property="Background" Value="#c8c8c8" />
                 <Setter Property="Foreground" Value="#ffffff" />
             </Trigger>
             <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Background" Value="#9e0044" />
+                <Setter Property="Background" Value="#c8c8c8" />
                 <Setter Property="Foreground" Value="#ffffff" />
             </Trigger>
             <MultiTrigger>

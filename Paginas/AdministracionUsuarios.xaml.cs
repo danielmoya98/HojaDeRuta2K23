@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Common;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Animation;
 using HojadeRuta2K23.Windows;
 using MaterialDesignThemes.Wpf;
 
@@ -14,9 +16,9 @@ public partial class AdministracionUsuarios : Page
     public AdministracionUsuarios()
     {
         InitializeComponent();
-        ComboBoxVistas.Items.Add("Vista Cuadriculada");
-        ComboBoxVistas.Items.Add("Vista Lista");
-        
+        // ComboBoxVistas.Items.Add("Vista Cuadriculada");
+        // ComboBoxVistas.Items.Add("Vista Lista");
+        //
         Combo.Items.Add("Funcionario");
         Combo.Items.Add("cliente");
    
@@ -254,10 +256,18 @@ public partial class AdministracionUsuarios : Page
     
     private void AgregarUsuario_OnClick(object sender, RoutedEventArgs e)
     {
-        AgregarUsuario hola = new AgregarUsuario();
-        hola.ShowDialog();
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 250;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+
+        miBoton.Visibility = Visibility.Collapsed;
+        miBoton1.Visibility = Visibility.Visible;
     }
 
+    /*
     private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         
@@ -272,5 +282,42 @@ public partial class AdministracionUsuarios : Page
             VistaLista.Visibility = Visibility.Visible;
         }
 
+    }
+    */
+
+    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 250;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBoton.Visibility = Visibility.Visible;
+        miBoton1.Visibility = Visibility.Collapsed;
+    }
+
+    private void MiBotonV_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 250;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola.BeginAnimation(StackPanel.WidthProperty, animation);
+        miBotonV1.Visibility = Visibility.Visible;
+        miBotonV.Visibility = Visibility.Collapsed;
+    }
+
+    private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 250;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola.BeginAnimation(StackPanel.WidthProperty, animation);
+        miBotonV.Visibility = Visibility.Visible;
+        miBotonV1.Visibility = Visibility.Collapsed;
     }
 }

@@ -38,13 +38,13 @@
                     <Label Margin="5 0 0 0 " FontWeight="SemiBold" FontSize="20">Tramites</Label>
                     <Label Margin="5 0 0 0" Foreground="Gray">Lorem Ipsum ...</Label>
                 </StackPanel>
-                <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
+                <!--<StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right" Margin="0 0 15 0">
                     <ComboBox SelectedIndex="0" Name="ComboBoxVistas"
                               SelectionChanged="ComboBoxVistas_OnSelectionChanged" Margin="5 0 15 0" Width="150"
                               Height="25">
                     </ComboBox>
-                </StackPanel>
+                </StackPanel>-->
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right">
 
@@ -53,65 +53,23 @@
                         <ComboBoxItem Content="En Progreso" />
                         <ComboBoxItem Content="Finalizados" />
                     </ComboBox>
-                    <ToggleButton x:Name="Tg_Btn" Grid.Column="1" VerticalAlignment="Center"
-                                  Height="30" Width="30"
-                                  BorderThickness="0" Background="MediumVioletRed" Margin="5,15,70,15">
-                        <ToggleButton.Triggers>
-                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="HideStackPanel">
-                                        <DoubleAnimation Storyboard.TargetName="hola3"
-                                                         Storyboard.TargetProperty="Height" BeginTime="0:0:0"
-                                                         From="280"
-                                                         To="0" Duration="0:0:0.5">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="ShowStackPanel">
-                                        <DoubleAnimation Storyboard.TargetName="hola3"
-                                                         Storyboard.TargetProperty="Height" BeginTime="0:0:0"
-                                                         From="0"
-                                                         To="280" Duration="0:0:0.5">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ToggleButton.Triggers>
-                    </ToggleButton>
-
-                    <ToggleButton x:Name="Tg_Btn2" Grid.Column="1" VerticalAlignment="Center"
-                                  Height="30" Width="30"
-                                  BorderThickness="0" Background="MediumVioletRed" Margin="5,15,70,15">
-                        <ToggleButton.Triggers>
-                            <EventTrigger RoutedEvent="ToggleButton.Unchecked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="HideStackPanelsss">
-                                        <DoubleAnimation Storyboard.TargetName="VistaDetallesTramite"
-                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
-                                                         From="500"
-                                                         To="0" Duration="0:0:0.5">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                            <EventTrigger RoutedEvent="ToggleButton.Checked">
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="ShowStackPanelsss">
-                                        <DoubleAnimation Storyboard.TargetName="VistaDetallesTramite"
-                                                         Storyboard.TargetProperty="Width" BeginTime="0:0:0"
-                                                         From="0"
-                                                         To="500" Duration="0:0:0.5">
-                                        </DoubleAnimation>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </ToggleButton.Triggers>
-                    </ToggleButton>
-
-
+                    <Button Name="miBotonV"   Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                            Click="MiBotonV_OnClick" Background="#9d0043" BorderBrush="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="Folder" Height="18" Width="18"
+                                                        Foreground="White" Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Tramite </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Name="miBotonV1"  Click="MiBotonV1_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                            Background="#9d0043" BorderBrush="Transparent">
+                        <StackPanel Orientation="Horizontal">
+                            <iconPacks:PackIconMaterial Kind="EyeOff" Height="18" Width="18"
+                                                        Foreground="White" Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar </TextBlock>
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -356,8 +314,8 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
-                                                        <iconPacks:PackIconMaterial Kind="ViewDashboard" />
+                                                    <Button Click="ver_OnClick" Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
+                                                        <iconPacks:PackIconMaterial Kind="ViewList" />
                                                     </Button>
                                                 </StackPanel>
                                             </DataTemplate>
@@ -554,7 +512,7 @@
                                                         <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Imprimir Hojas de Ruta</TextBlock>
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Margin="25 10 5 0" HorizontalAlignment="Left" Height="30"
+                                                <Button Margin="25 10 5 0" HorizontalAlignment="Left" Click="ocultar_OnClick" Height="30"
                                                         Width="172"
                                                         Style="{StaticResource gridEditButton}">
                                                     <StackPanel Orientation="Horizontal">
@@ -585,145 +543,64 @@
         </StackPanel>
 
 
-        <StackPanel Grid.Row="1" Height="Auto" Visibility="Hidden" Name="VistaCuadriculada">
+        <!--
+        <StackPanel Grid.Row="1" Height="Auto" Visibility="Visible" Name="VistaCuadriculada">
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <WrapPanel Grid.Row="1" Grid.Column="0" Height="Auto" HorizontalAlignment="Left">
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
-                    </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
-                    </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
-                    </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+ <userControls:TramiteCard
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
-                    </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+                    <userControls:TramiteCard
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
-                    </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
                     <userControls:TramiteCard
-                        Height="200" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="170"
-                        Margin="3">
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="En Espera"
-                                              NumeroVistas="3"
-                                              Tarea="Revisión de Documentos"
-                                              Width="170"
-                                              Margin="3">
+                    <userControls:TramiteCard
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
+                    </userControls:TramiteCard>
+                    <userControls:TramiteCard
+                        Height="250" EstadoTramite="En Curso" NumeroVistas="5" Tarea="Control de Notas" Width="200"
+                        Margin="0 5 10 10">
                     </userControls:TramiteCard>
 
-                    <userControls:TramiteCard Height="200"
-                                              EstadoTramite="Completado"
-                                              NumeroVistas="10"
-                                              Tarea="Aprobación Final"
-                                              Width="170"
-                                              Margin="3">
-                    </userControls:TramiteCard>
-                </WrapPanel>
+                    </WrapPanel>
             </ScrollViewer>
         </StackPanel>
+        -->
 
 
     </Grid>

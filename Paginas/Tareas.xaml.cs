@@ -1,7 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
+using HojadeRuta2K23.Windows;
+using MaterialDesignThemes.Wpf;
 
 namespace HojadeRuta2K23.Paginas;
 
@@ -12,8 +16,8 @@ public partial class Tareas : Page
     public Tareas()
     {
         InitializeComponent();
-        ComboBoxVistas.Items.Add("Vista Cuadriculada");
-        ComboBoxVistas.Items.Add("Vista Lista");
+        // ComboBoxVistas.Items.Add("Vista Cuadriculada");
+        // ComboBoxVistas.Items.Add("Vista Lista");
         usuarios.Add(new member
         {
             Id = "1",
@@ -166,7 +170,7 @@ public partial class Tareas : Page
     }
 
 
-    private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+    /*private void ComboBoxVistas_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
     {
         if (ComboBoxVistas.SelectedIndex >= 0 && ComboBoxVistas.SelectedIndex < ComboBoxVistas.Items.Count)
         {
@@ -181,6 +185,59 @@ public partial class Tareas : Page
                 VistaLista.Visibility = Visibility.Visible;
             }
         }
+
+    }*/
+
+    private void rechazar_OnClick(object sender, RoutedEventArgs e)
+    {
+        RechazarTarea rechazar = new RechazarTarea();
+        rechazar.ShowDialog();
+    }
+
+    private void Modificar_OnClick(object sender, RoutedEventArgs e)
+    {
+        EditarTarea edit = new EditarTarea();
+        edit.ShowDialog();
+    }
+
+    private void ocultar_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 500;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        VistaDetallesTarea.BeginAnimation(StackPanel.WidthProperty, animation);
+    }
+
+    private void MiBotonV_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 250;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Collapsed;
+        miBotonV1.Visibility = Visibility.Visible;
+    }
+
+    private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 250;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Visible;
+        miBotonV1.Visibility = Visibility.Collapsed;
+    }
+
+    private void ver_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 500;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        VistaDetallesTarea.BeginAnimation(StackPanel.WidthProperty, animation);
 
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        Title="Login" Height="550" Width="300"
+        Title="Login" Height="500" Width="300"
         AllowsTransparency="True"  WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -28,11 +28,13 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" VerticalAlignment="Top" Height="130" CornerRadius="25 25 0 0" Width="300" >
                <Border.Background>
-               Black
-                   <!--
-                   <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png" ></ImageBrush>
-               -->
+                   <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png"  >
+                       
+                   </ImageBrush>
+              
                </Border.Background>
+                
+                <Button  Click="ButtonBase_OnClick" Height="25" Width="25" Margin="245 -70 0 0" FontSize="25" Padding="0  -8 0 0 " > x </Button>
                 
                 <!--<Path Data="M128.947 55.0602C88.8158 61.3692 46.329 74.7813 0 69.9724V0H400V96.9289C356.103 122.482 347.368 139.371 261.842 103.238C176.316 67.1046 169.079 48.7512 128.947 55.0602Z" >
                     <Path.Fill>
@@ -43,32 +45,48 @@
             </Border>
             
             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical">
-                <Label Foreground="White" Margin="30 0 0 0" FontSize="30" FontWeight="SemiBold"  >Hello , There</Label>
-                <Label Foreground="White" Margin="30 0 0 0" FontSize="30" FontWeight="SemiBold"  >Welcome back</Label>
+                <Label Foreground="White" Margin="30 0 0 0" FontSize="30" FontWeight="SemiBold"  >Hermes</Label>
+                <TextBlock  TextWrapping="Wrap" Foreground="White" Margin="35 0 0 0" FontSize="10" Width="220"  FontWeight="SemiBold"  >Simplifica la gestión y alcanza tus metas de manera eficiente</TextBlock>
             </StackPanel>
             
-            <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 35 0 0 ">
-                <TextBox BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"> Email </TextBox>
-                <TextBox BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 30 0 0 " Width="225" Height="25">Contraseña</TextBox>
+            <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 20 0 0 ">
+                <TextBlock  Visibility="Collapsed" Name="Info" TextWrapping="Wrap" Foreground="White" Margin="35 0 0 20" FontSize="10" Width="220"  FontWeight="SemiBold"  >Se le enviara un contraseña temporal a su correo electronico.</TextBlock>
+                <TextBox Visibility="Collapsed" Name="RecuperarContraseña" materialDesign:HintAssist.Hint="Ingrese su Email" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"></TextBox>
+                <TextBox  Name="Email" materialDesign:HintAssist.Hint="Email" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"></TextBox>
+                <TextBox  Name="Contraseña" materialDesign:HintAssist.Hint="Contraseña" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 30 0 0 " Width="225" Height="25"></TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 25 0 0">
-                <Label FontWeight="Thin" >
+                <Label FontWeight="Thin" Name="recuperar" >
                     <TextBlock>
-                        <Hyperlink Foreground="#696E8E" NavigateUri="https://www.ejemplo.com">
+                        <Hyperlink Foreground="#696E8E" Click="Hyperlink_OnClick">
                             <Run Foreground="#696E8E" Text="Olvidaste tu contraseña?" />
+                        </Hyperlink>
+                    </TextBlock>
+                </Label>
+                <Label FontWeight="Thin" Visibility="Collapsed" Name="tengo" >
+                    <TextBlock>
+                        <Hyperlink Foreground="#696E8E" Click="Hyperlink2_OnClick">
+                            <Run Foreground="#696E8E" Text="Ya tengo mi cuenta." />
                         </Hyperlink>
                     </TextBlock>
                 </Label>
             </StackPanel>
             <StackPanel Grid.Row="4" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 15 0 0">
-                <Button Margin="0 15 0 0 " Height="30" Width="100" BorderBrush="Transparent"
-                        Style="{StaticResource gridEditButton}" Background="#733CCB">
+                <Button Name="iniciar" Margin="0 15 0 0 " Height="30" Width="100" BorderBrush="Transparent"
+                        Style="{StaticResource gridEditButton}" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  FontWeight="SemiBold"> Iniciar Sesion </TextBlock>
                     </StackPanel>
                 </Button>
-                <Label FontWeight="Thin" Margin="0 25 0 0 " >
+                
+                <Button Name="enviar" Visibility="Collapsed" Margin="0 15 0 0 " Height="30" Width="130" BorderBrush="Transparent"
+                        Style="{StaticResource gridEditButton}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  FontWeight="SemiBold"> Enviar Contraseña </TextBlock>
+                    </StackPanel>
+                </Button>
+                <Label Visibility="Collapsed" FontWeight="Thin" Margin="0 25 0 0 " >
                     <TextBlock>
                         <Run Foreground="#696E8E">¿Eres nuevo aqui? ,</Run>
                         <Hyperlink Foreground="#696E8E" NavigateUri="https://www.ejemplo.com">

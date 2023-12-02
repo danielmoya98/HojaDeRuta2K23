@@ -29,7 +29,7 @@
             <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"></ColumnDefinition>
-                    <ColumnDefinition Width="490"></ColumnDefinition>
+                    <ColumnDefinition Width="670"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
@@ -38,7 +38,7 @@
                     <Label Margin="5 0 0 0" Foreground="Gray">Lorem Ipsum ...</Label>
                 </StackPanel>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center"
-                            HorizontalAlignment="Right" Margin="0 0 15 0">
+                            HorizontalAlignment="Right" Margin="0 0 0 0">
                     <TextBox Margin="5 0 5 0 " Background="Transparent" Height="25" Width="150"></TextBox>
                     <iconPacks:PackIconMaterial Kind="AccountSearch" Height="20" Width="20"
                                                 Style="{StaticResource gridButtonIcon}" Margin="0 0 15 0 " />
@@ -54,7 +54,7 @@
                         <ComboBoxItem Content="Mas Recientes" />
                         <ComboBoxItem Content="Mas Antiguos" />
                     </ComboBox>
-                    <Button Name="miBoton" Margin="0 0 8 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <Button Name="miBoton" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Click="AgregarUsuario_OnClick" Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
@@ -63,7 +63,7 @@
                         </StackPanel>
                     </Button>
                     
-                    <Button Name="miBoton1" Click="ButtonBase_OnClick" Visibility="Collapsed" Margin="0 0 8 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <Button Name="miBoton1" Click="ButtonBase_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="EyeOff" Height="20" Width="20"
@@ -73,23 +73,23 @@
                         </StackPanel>
                     </Button>
                     
-                    <Button Name="miBotonV" Click="MiBotonV_OnClick" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <!--<Button Name="miBotonV" Click="MiBotonV_OnClick" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="ViewList" Height="20" Width="20"
                                                         Foreground="White" Style="{StaticResource gridButtonIcon}" />
                             <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ver Detalles </TextBlock>
                         </StackPanel>
-                    </Button>
+                    </Button>-->
                     
-                    <Button Visibility="Collapsed" Click="MiBotonV1_OnClick" Name="miBotonV1"  Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    <!--<Button Visibility="Collapsed" Click="MiBotonV1_OnClick" Name="miBotonV1"  Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="ViewList" Height="20" Width="20"
                                                         Foreground="White" Style="{StaticResource gridButtonIcon}" />
                             <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar Detalles</TextBlock>
                         </StackPanel>
-                    </Button>
+                    </Button>-->
                 
                 </StackPanel>
             </Grid>
@@ -263,7 +263,7 @@
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Acciones</Label>
                                     <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
                                        
-                                        <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                        <Button Margin="30 0 0 0" Name="crear" HorizontalAlignment="Right" Height="30" Width="150"
                                                 Style="{StaticResource gridEditButton}">
                                             <StackPanel Orientation="Horizontal">
                                                 <!--
@@ -271,6 +271,28 @@
                                                                Style="{StaticResource gridButtonIcon}" />
                                    -->
                                                 <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Crear Cliente</TextBlock>
+                                            </StackPanel>
+                                        </Button>
+                                        
+                                        <Button Visibility="Collapsed" Name="editar" Click="Editar_OnClick" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                                Style="{StaticResource gridEditButton}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <!--
+                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                                                               Style="{StaticResource gridButtonIcon}" />
+                                   -->
+                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Guardar Cambios</TextBlock>
+                                            </StackPanel>
+                                        </Button>
+                                        
+                                        <Button Visibility="Collapsed" Name="editar1" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150" Click="Editar_OnClick"
+                                                Style="{StaticResource gridEditButton}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <!--
+                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                                                               Style="{StaticResource gridButtonIcon}" />
+                                   -->
+                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar </TextBlock>
                                             </StackPanel>
                                         </Button>
                                     
@@ -331,8 +353,8 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                                    <Button Margin="0 0 0 0" Style="{StaticResource gridEditButton}">
-                                                        <iconPacks:PackIconMaterial Kind="AccountEdit" />
+                                                    <Button Margin="0 0 0 0" Style="{StaticResource gridEditButton}" Click="editarUsuario_OnClick">
+                                                        <iconPacks:PackIconMaterial Kind="AccountEdit"   />
                                                     </Button>
                                                     <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
                                                         <iconPacks:PackIconMaterial Kind="Cancel" />

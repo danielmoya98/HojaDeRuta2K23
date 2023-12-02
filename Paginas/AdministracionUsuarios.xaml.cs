@@ -265,6 +265,9 @@ public partial class AdministracionUsuarios : Page
 
         miBoton.Visibility = Visibility.Collapsed;
         miBoton1.Visibility = Visibility.Visible;
+        crear.Visibility = Visibility.Visible;
+        editar.Visibility = Visibility.Collapsed;
+        editar1.Visibility = Visibility.Collapsed;
     }
 
     /*
@@ -305,8 +308,8 @@ public partial class AdministracionUsuarios : Page
         animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
 
         hola.BeginAnimation(StackPanel.WidthProperty, animation);
-        miBotonV1.Visibility = Visibility.Visible;
-        miBotonV.Visibility = Visibility.Collapsed;
+        // miBotonV1.Visibility = Visibility.Visible;
+        // miBotonV.Visibility = Visibility.Collapsed;
     }
 
     private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
@@ -317,7 +320,30 @@ public partial class AdministracionUsuarios : Page
         animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
 
         hola.BeginAnimation(StackPanel.WidthProperty, animation);
-        miBotonV.Visibility = Visibility.Visible;
-        miBotonV1.Visibility = Visibility.Collapsed;
+        // miBotonV.Visibility = Visibility.Visible;
+        // miBotonV1.Visibility = Visibility.Collapsed;
+    }
+
+    private void editarUsuario_OnClick(object sender, RoutedEventArgs e)
+    {
+        crear.Visibility = Visibility.Collapsed;
+        editar.Visibility = Visibility.Visible;
+        editar1.Visibility = Visibility.Visible;
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 250;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+    }
+
+    private void Editar_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 250;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
     }
 }

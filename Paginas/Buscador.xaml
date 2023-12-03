@@ -8,7 +8,7 @@
       xmlns:userControls="clr-namespace:HojadeRuta2K23.UserControls"
       mc:Ignorable="d"
       Title="Buscador" Height="Auto" Width="1280">
-
+    
     <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,8 +18,8 @@
     </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"> </RowDefinition>
+            <RowDefinition Height="*"> </RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0 10 0 0">
@@ -64,71 +64,48 @@
                 </Grid.ColumnDefinitions>
 
                 <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
-          VerticalScrollBarVisibility="Auto"
-          HorizontalScrollBarVisibility="Hidden"
-          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-          CellStyle="{DynamicResource DataGridCellStyle1}"
-          x:Name="membersDataGrid"
-          Style="{DynamicResource DataGridStyle1}"
-          Grid.Column="0"
-          Height="Auto"
-          Width="Auto"
-          Margin="0 0 10 0 "
-          SelectionChanged="membersDataGrid_SelectionChanged">
+                          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+                          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+                          CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
+                          Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto"
+                          Margin="0 0 10 0 ">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Foreground="Black"
-                            Header="#"
-                            IsReadOnly="True"
-                            CanUserResize="False"
-                            Width="auto"
-                            Binding="{Binding IdTarea}" />
-                        <DataGridTextColumn Header="Remitente"
-                            Binding="{Binding RemitenteId}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Destinatario"
-                            Binding="{Binding DestinatarioId}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Código"
-                            Binding="{Binding CodigoTarea}"
-                            IsReadOnly="True"
-                            Width="auto" />
-                        <DataGridTextColumn Header="Estado"
-                            Binding="{Binding EstadoTarea}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Accion"
-                            Binding="{Binding Accion}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Prioridad"
-                            Binding="{Binding Prioridad}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Descripción"
-                            Binding="{Binding Descripcion}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Fecha Asignación"
-                            Binding="{Binding FechaAsignacion}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Fecha Límite"
-                            Binding="{Binding FechaLimite}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Fecha Finalización"
-                            Binding="{Binding FechaFinalizacion}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <DataGridTextColumn Header="Estado Registro"
-                            Binding="{Binding EstadoRegistro}"
-                            IsReadOnly="True"
-                            Width="*" />
-                        <!-- Agrega más columnas según sea necesario -->
+                        <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False"
+                                            Width="auto"
+                                            Binding="{Binding Id}" />
+                        <DataGridTemplateColumn Header="Nombre" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Border Height="50" Width="50" CornerRadius="15">
+                                            <Border.Background>
+                                                <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
+                                            </Border.Background>
+                                        </Border>
+                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
+                                                   Text="{Binding NombreCompleto}">
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
 
-                        <!-- Operaciones adicionales, por ejemplo, un botón para ver detalles -->
+                        <DataGridTextColumn Header="Tipo" Binding="{Binding Profesion}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Estado" Binding="{Binding Email}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Remitente" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Remite" Binding="{Binding Ubicacion}" IsReadOnly="True" Width="*" />
+                        <DataGridTemplateColumn Header="Progreso" IsReadOnly="True" Width="auto">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200"
+                                                     Value="50" HorizontalAlignment="Center">
+                                        </ProgressBar>
+                                        <Label Margin="5 0 0 0 " FontSize="10">50%</Label>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
@@ -144,9 +121,8 @@
                 </DataGrid>
 
 
-
                 <!--vista lateral TAREAS - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible" Name="tareas" >
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Hidden" Name="tareas" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -157,7 +133,7 @@
                             <Border CornerRadius="15" Height="130" Width="130" VerticalAlignment="Center"
                                     HorizontalAlignment="Center">
                                 <Border.Background>
-                                    Black
+                                   Black
                                     <!--<ImageBrush
                                         ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\icons8-carpeta-48.png">
                                     </ImageBrush>-->
@@ -176,30 +152,49 @@
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 25 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Codigo Tarea :</Label>
-                                <TextBox x:Name="CodigoTareaBuscar" Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                         HorizontalAlignment="Left" TextChanged="CodigoTareaBuscar_TextChanged">
+                                <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
+                                         HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Remitente</Label>
-                                <ComboBox x:Name="RemitenteTareaBuscar" Margin="30 0 0 0 " Width="200"
-                                          HorizontalAlignment="Left" SelectionChanged="RemitenteTareaBuscar_SelectionChanged">
+                                <ComboBox Margin="30 0 0 0 " Width="200"
+                                          HorizontalAlignment="Left">
+                                    <ComboBoxItem>Todos</ComboBoxItem>
+                                    <ComboBoxItem>Rector</ComboBoxItem>
+                                    <ComboBoxItem>Director Academico</ComboBoxItem>
+                                    <ComboBoxItem>Director de Marketing</ComboBoxItem>
+                                    <ComboBoxItem>Jefe de Sistemas</ComboBoxItem>
+                                    <ComboBoxItem>Jefe de Contabilidad</ComboBoxItem>
+                                    <ComboBoxItem>Auxiliar Academico</ComboBoxItem>
+                                    <ComboBoxItem>Auxiliar Contable</ComboBoxItem>
+                                    <ComboBoxItem>Auxiliar de Marketing</ComboBoxItem>
+                                    <ComboBoxItem>Secretaria de Rectorado</ComboBoxItem>
+                                    <ComboBoxItem>Secretaria</ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Estado de Tarea</Label>
-                                <ComboBox x:Name="EstadoTareaBuscar" Margin="30 0 0 0 " Width="200"
-                                          HorizontalAlignment="Left" SelectionChanged="EstadoTareaBuscar_SelectionChanged">
-
+                                <ComboBox Margin="30 0 0 0 " Width="200"
+                                          HorizontalAlignment="Left">
+                                    <ComboBoxItem>Todos</ComboBoxItem>
+                                    <ComboBoxItem>Pendientes</ComboBoxItem>
+                                    <ComboBoxItem>Realizados</ComboBoxItem>
+                                    <ComboBoxItem>Finalizados</ComboBoxItem>
+                                    <ComboBoxItem>Rechazados</ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Prioridad</Label>
-                                <ComboBox x:Name="PrioridadTareaBuscar" Margin="30 0 0 0 " Width="200"
-                                          HorizontalAlignment="Left" SelectionChanged="PrioridadTareaBuscar_SelectionChanged">
+                                <ComboBox Margin="30 0 0 0 " Width="200"
+                                          HorizontalAlignment="Left">
+                                    <ComboBoxItem>Todos</ComboBoxItem>
+                                    <ComboBoxItem>Alta</ComboBoxItem>
+                                    <ComboBoxItem>Media</ComboBoxItem>
+                                    <ComboBoxItem>Baja</ComboBoxItem>
                                 </ComboBox>
                             </StackPanel>
                             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
@@ -219,7 +214,7 @@
                 </StackPanel>
 
                 <!--vista lateral Tramites - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Hidden" Name="tramites">
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible" Name="tramites">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -266,7 +261,7 @@
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
-                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Apellido Materno</Label>
+                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Apellido Materno </Label>
                                     <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
                                              HorizontalAlignment="Left">
                                     </TextBox>

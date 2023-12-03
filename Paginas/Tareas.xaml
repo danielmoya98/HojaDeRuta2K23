@@ -20,8 +20,8 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"> </RowDefinition>
-            <RowDefinition Height="*"> </RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0 10 0 0">
@@ -45,14 +45,15 @@
                 <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center"
                             HorizontalAlignment="Right">
 
-                    <ComboBox Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="0">
-                        <ComboBoxItem Content="En Curso" />
-                        <ComboBoxItem Content="En Progreso" />
-                        <ComboBoxItem Content="Finalizados" />
+                    <ComboBox x:Name="FiltrosAsignacion" Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="-1" SelectionChanged="Filtros_SelectionChanged">
+                        <ComboBoxItem Content="Asignados por mi" />
+                        <ComboBoxItem Content="Asignados hacia mi" />
                     </ComboBox>
-                    <ComboBox Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="0">
-                        <ComboBoxItem Content="Asignadas a mi" />
-                        <ComboBoxItem Content="Asignadas por mi" />
+                    <ComboBox x:Name="Filtros" Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="-1" SelectionChanged="Filtros_SelectionChanged">
+                        <ComboBoxItem Content="Todos" />
+                        <ComboBoxItem Content="En Curso" />
+                        <ComboBoxItem Content="Finalizado" />
+                        <ComboBoxItem Content="Ninguno" Tag="{x:Null}" />
                     </ComboBox>
                     <!--<Button Margin="0 0 5 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Style="{StaticResource gridEditButton}" >
@@ -88,31 +89,28 @@
                     </Button>
                     -->
 
-                   
+
                     <Button Name="miBotonV" Click="MiBotonV_OnClick"  Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
-                            Background="#9d0043" BorderBrush="Transparent">
+         Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="File" Height="18" Width="18"
-                                                        Foreground="White" Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Tarea </TextBlock>
+                                     Foreground="White" Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Tarea</TextBlock>
                         </StackPanel>
                     </Button>
-                    
+
                     <Button Name="miBotonV1"  Click="MiBotonV1_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
-                            Background="#9d0043" BorderBrush="Transparent">
+         Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="EyeOff" Height="18" Width="18"
-                                                        Foreground="White" Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar </TextBlock>
+                                     Foreground="White" Style="{StaticResource gridButtonIcon}" />
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar</TextBlock>
                         </StackPanel>
                     </Button>
-
-
-
                 </StackPanel>
             </Grid>
         </StackPanel>
-        
+
         <!--vista lista-->
         <StackPanel Grid.Row="1" Visibility="Visible" Name="VistaLista">
             <Grid>
@@ -120,89 +118,78 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-                
+
                 <!--vista nueva trarea-->
                 <StackPanel Orientation="Vertical">
-                    
+
                     <StackPanel Orientation="Vertical" Name="hola3" Height="0" >
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                     Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha Limite:</Label>
-                            <DatePicker Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                        HorizontalAlignment="Left">
-                            </DatePicker>
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha Limite:</Label>
+                                <DatePicker Name="datepickerTarea" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+        HorizontalAlignment="Left">
+                                </DatePicker>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                    Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Destinatario</Label>
+                                <ComboBox x:Name="Destinatario" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+                  HorizontalAlignment="Left" Width="150">
+
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                    Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Prioridad</Label>
+                                <ComboBox Name="Prioridad" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+       HorizontalAlignment="Left" Width="150">
+                                    <ComboBoxItem>Alta</ComboBoxItem>
+                                    <ComboBoxItem>Baja</ComboBoxItem>
+                                    <ComboBoxItem>Media</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                    Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea:</Label>
+                                <TextBox x:Name="Descripcion" Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
+     HorizontalAlignment="Left" Width="675">
+                                </TextBox>
+                            </StackPanel>
+
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Destinatario</Label>
-                            <ComboBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
-                                      HorizontalAlignment="Left" Width="150">
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                                <ComboBoxItem>Secretaria</ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Prioridad</Label>
-                            <ComboBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
-                                      HorizontalAlignment="Left" Width="150">
-                                <ComboBoxItem>Alta</ComboBoxItem>
-                                <ComboBoxItem>Baja</ComboBoxItem>
-                                <ComboBoxItem>Media</ComboBoxItem>
-                            </ComboBox>
-                        </StackPanel>
-                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                    Margin="0 10 0 0 ">
-                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea:</Label>
-                            <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
-                                     HorizontalAlignment="Left" Width="675">
-                            </TextBox>
-                        </StackPanel>
-                        
-                    </StackPanel>
-                     <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                 Margin="0 10 0 0 ">
-                        <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Documentos Adjuntos</Label>
-                        <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
-                      <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                    Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                                                               Style="{StaticResource gridButtonIcon}" />
-                                   -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Subir del sistema</TextBlock>
-                               </StackPanel>
-                           </Button>
-                           <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                   Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--
-                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                                                               Style="{StaticResource gridButtonIcon}" />
-                                   -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Escanear y Subir</TextBlock>
-                               </StackPanel>
-                           </Button>
-                           <Button Margin="740 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                   Style="{StaticResource gridEditButton}">
-                               <StackPanel Orientation="Horizontal">
-                                   <!--
-                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                                                               Style="{StaticResource gridButtonIcon}" />
-                                   -->
-                                   <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Crear Nueva Tarea</TextBlock>
-                               </StackPanel>
-                           </Button>
-                           
-                       </StackPanel>
+                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Documentos Adjuntos</Label>
+                            <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
+                                <Button  x:Name="AddDocumento" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+    Style="{StaticResource gridEditButton}" Click="AddDocumento_Click" Cursor="Hand">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                               Style="{StaticResource gridButtonIcon}" />
+   -->
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Subir del sistema</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="ScannaDocumento" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+   Style="{StaticResource gridEditButton}" Click="ScannaDocumento_Click" Cursor="Hand">
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Escanear y Subir</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                                <Button x:Name="CrearTarea" Margin="740 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+   Style="{StaticResource gridEditButton}" Click="CrearTarea_Click" Cursor="Hand">
+                                    <StackPanel Orientation="Horizontal">
+                                        <!--
+   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                               Style="{StaticResource gridButtonIcon}" />
+   -->
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold">Crear Nueva Tarea</TextBlock>
+                                    </StackPanel>
+                                </Button>
+                            </StackPanel>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
 
 
                     <StackPanel Grid.Row="1">
@@ -212,18 +199,16 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
-                                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
-                                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                                      CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
-                                      Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto"
-                                      Width="Auto"
-                                      Margin="0 0 10 0 ">
+VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
+Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto"
+Margin="0 0 10 0 ">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True"
-                                                        CanUserResize="False"
-                                                        Width="auto"
-                                                        Binding="{Binding Id}" />
-                                    <DataGridTemplateColumn Header="Nombre" IsReadOnly="True" Width="auto">
+                  CanUserResize="False" Width="auto"
+                  Binding="{Binding Id}" />
+                                    <DataGridTemplateColumn Header="Codigo" IsReadOnly="True" Width="auto">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -234,53 +219,42 @@
                                                     </Border>
                                                     <StackPanel VerticalAlignment="Center" Orientation="Vertical">
                                                         <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
-                                                                   Text="{Binding NombreCompleto}">
-                                                        </TextBlock>
-                                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
-                                                                   Text="014-TUVs-4651">
+                             Text="{Binding CodigoTarea}">
                                                         </TextBlock>
                                                     </StackPanel>
-
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-
-                                    <DataGridTextColumn Header="Destinatario" Binding="{Binding Profesion}"
-                                                        IsReadOnly="True" Width="1*" />
+                                    <DataGridTextColumn Header="Destinatario" Binding="{Binding DestinatarioId}"
+                  IsReadOnly="True" Width="1*" />
                                     <DataGridTemplateColumn Header="Estado" IsReadOnly="True" Width="1*">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                    <Button Style="{StaticResource gridEditButton}"
-                                                            Content="{Binding Email}">
+                                                    <Button Style="{StaticResource gridEditButton}" Content="{Binding EstadoTarea}">
                                                     </Button>
                                                 </StackPanel>
                                             </DataTemplate>
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
-                                    <DataGridTextColumn Header="Prioridad" Binding="{Binding Celular}"
-                                                        IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="Fecha Asignacion" Binding="{Binding Ubicacion}"
-                                                        IsReadOnly="True" Width="*" />
-                                    <!--<DataGridTemplateColumn Header="Progreso" IsReadOnly="True" Width="auto">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <ProgressBar Margin="30 5 0 0" Foreground="#9e0044" Height="10" Width="200"
-                                                     Value="50" HorizontalAlignment="Center">
-                                        </ProgressBar>
-                                        <Label Margin="5 0 0 0 " FontSize="10">50%</Label>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>-->
+                                    <DataGridTextColumn Header="Prioridad" Binding="{Binding Prioridad}"
+                  IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Fecha Asignacion" Binding="{Binding FechaAsignacion}"
+                  IsReadOnly="True" Width="*" />
+
+
+                                    <DataGridTextColumn Header="Accion" Binding="{Binding Accion}" IsReadOnly="True" Width="1*"/>
+                                    <DataGridTextColumn Header="Fecha Limite" Binding="{Binding FechaLimite}" IsReadOnly="True" Width="1*"/>
+                                    <!--    <DataGridTextColumn Header="Fecha Finalizacion" Binding="{Binding FechaFinalizacion}" IsReadOnly="True" Width="1*"/>   Para Futuros Usos-->
+
                                     <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Click="ver_OnClick" Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
-                                                        <iconPacks:PackIconMaterial Kind="ViewList" />
+                                                    <Button Name="propiedades" Margin="5 0 0 0" Style="{StaticResource gridEditButton}" Click="propiedades_Click"
+              Tag="{Binding Id}">
+                                                        <iconPacks:PackIconMaterial Kind="ViewDashboard" />
                                                     </Button>
                                                 </StackPanel>
                                             </DataTemplate>
@@ -376,75 +350,68 @@
 
                                     <StackPanel Grid.Column="0" Orientation="Vertical">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 0 0 0 ">
+                Margin="0 0 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Codigo Tarea</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                014-TUvs-123456
+                                            <Label Name="CodigoTarea" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Destinatario</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                Secretaria
+                                            <Label Name="NombreDestinatario" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Prioridad</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                Media
+                                            <Label Name="PrioridadLBL" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha de Asigancion</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                12 de septiembre
+                                            <Label Name="FechaAsignacion" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
+
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha de Presentacion</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                22 de diciembre
+                                            <Label Name="FechaLimite" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha limite de presentacion</Label>
                                             <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
-                                                   HorizontalAlignment="Left">
-                                                23 de diciembre
+               HorizontalAlignment="Left">
+                                                
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="Red"
-                                                   HorizontalAlignment="Left">
-                                                Rechazado
+                                            <Label Name="Estado" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+               HorizontalAlignment="Left">
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea</Label>
-                                            <TextBlock Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
-                                                       HorizontalAlignment="Left" TextWrapping="Wrap" Width="250">
-                                                Realizar un Informe Detallado del rendimiento académico de los estudiantes de 3er semestre de la Carrera de Ingeniería Financiera hasta el primer momento evaluative
+                                            <TextBlock x:Name="Descripcio" Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
+                   HorizontalAlignment="Left" TextWrapping="Wrap" Width="250">
                                             </TextBlock>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 10 0 0 ">
+                Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Observacion a la tarea</Label>
-                                            <TextBlock Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
-                                                       HorizontalAlignment="Left" TextWrapping="Wrap" Width="250">
-                                                El informe no contiene las calificaciones de los trabajos y prácticas en aula.
+                                            <TextBlock Name="Observaciones" Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
+                   HorizontalAlignment="Left" TextWrapping="Wrap" Width="250">
                                             </TextBlock>
                                         </StackPanel>
                                     </StackPanel>
@@ -478,7 +445,7 @@
                                                         <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Rechazar</TextBlock>
                                                     </StackPanel>
                                                 </Button>
-                                                <Button Margin="25 15 5 0" HorizontalAlignment="Right" Height="30"
+                                                <Button x:Name="jajaja" Margin="25 15 5 0" HorizontalAlignment="Right" Height="30"
                                                         Width="100" Click="Modificar_OnClick"
                                                         Style="{StaticResource gridEditButton}">
                                                     <StackPanel Orientation="Horizontal">

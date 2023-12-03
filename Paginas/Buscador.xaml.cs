@@ -28,7 +28,7 @@ namespace HojadeRuta2K23.Paginas
             EstadoTareaBuscar.Items.Add("Todos");
             EstadoTareaBuscar.Items.Add("Recepcionada");
             EstadoTareaBuscar.Items.Add("Observada");
-            EstadoTareaBuscar.Items.Add("Finalizados");
+            EstadoTareaBuscar.Items.Add("Finalizado");
 
 
         }

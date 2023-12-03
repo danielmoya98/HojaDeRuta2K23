@@ -22,8 +22,8 @@
 
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"> </RowDefinition>
-            <RowDefinition Height="*"> </RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <StackPanel Margin="0 10 0 0">
@@ -58,16 +58,16 @@
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="Folder" Height="18" Width="18"
                                                         Foreground="White" Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Tramite </TextBlock>
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Tramite</TextBlock>
                         </StackPanel>
                     </Button>
-                    
+
                     <Button Name="miBotonV1"  Click="MiBotonV1_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="EyeOff" Height="18" Width="18"
                                                         Foreground="White" Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar </TextBlock>
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar</TextBlock>
                         </StackPanel>
                     </Button>
                 </StackPanel>
@@ -85,46 +85,48 @@
                 <!--vista nueva tramite-->
                 <StackPanel Orientation="Vertical">
                     <StackPanel Orientation="Vertical" Height="0" Name="hola3">
+
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+Margin="0 10 0 0 ">
+                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Carnet Identidad:</Label>
+                                <TextBox x:Name="txtCI" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+ HorizontalAlignment="Left" Cursor="" TextChanged="TxtCI_TextChanged">
+                                </TextBox>
+                            </StackPanel>
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Nombre:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                <TextBox x:Name="txtNombre" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Paterno:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                <TextBox x:Name="txtApellidoP" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Materno:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                <TextBox x:Name="txtApellidoM" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Numero de celular:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                <TextBox x:Name="txtCelular" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
-                            <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
-                                        Margin="0 10 0 0 ">
-                                <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Carnet Identidad:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
-                                         HorizontalAlignment="Left">
-                                </TextBox>
-                            </StackPanel>
+
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Correo Electronico:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                <TextBox x:Name="txtCorreoElectronico" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
@@ -132,7 +134,7 @@
                             <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                         Margin="0 10 0 0 ">
                                 <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Direccion:</Label>
-                                <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="138"
+                                <TextBox x:Name="txtDireccion" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="138"
                                          HorizontalAlignment="Left">
                                 </TextBox>
                             </StackPanel>
@@ -144,7 +146,7 @@
                                 <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Celular de Referencia:</Label>
-                                    <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                    <TextBox x:Name="txtCelularRef" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
                                              HorizontalAlignment="Left">
                                     </TextBox>
                                 </StackPanel>
@@ -152,7 +154,7 @@
                                 <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de tramite</Label>
-                                    <ComboBox Name="combo1" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+                                    <ComboBox x:Name="txtTipoTramite" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
                                               HorizontalAlignment="Left" Width="150">
                                         <ComboBoxItem>Solicitud de cambio de carrera</ComboBoxItem>
                                         <ComboBoxItem>Solicitud programacion tardia</ComboBoxItem>
@@ -167,7 +169,7 @@
                                 <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion de la tarea:</Label>
-                                    <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
+                                    <TextBox x:Name="txtDescripcionTramite" Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray"
                                              HorizontalAlignment="Left" Width="858">
                                     </TextBox>
                                 </StackPanel>
@@ -206,12 +208,12 @@
                             </StackPanel>
 
                             <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
-                                <Button Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                        Style="{StaticResource gridEditButton}">
+                                <Button  x:Name="AddDocumento" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+ Style="{StaticResource gridEditButton}" Click="AddDocumento_Click" Cursor="Hand">
                                     <StackPanel Orientation="Horizontal">
                                         <!--<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                                                               Style="{StaticResource gridButtonIcon}" />
-                                   -->
+                            Style="{StaticResource gridButtonIcon}" />
+-->
                                         <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Subir del sistema</TextBlock>
                                     </StackPanel>
                                 </Button>
@@ -248,69 +250,30 @@
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <DataGrid RowStyle="{DynamicResource DataGridRowStyle1}"
-                                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
-                                      ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
-                                      CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
-                                      Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto"
-                                      Width="Auto"
-                                      Margin="0 0 10 0">
+          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+          CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
+          Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto"
+          Margin="0 0 10 0">
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True"
-                                                        CanUserResize="False"
-                                                        Width="auto"
-                                                        Binding="{Binding Id}" />
-                                    <DataGridTemplateColumn Header="Nombre" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <Border Height="50" Width="50" CornerRadius="15">
-                                                        <Border.Background>
-                                                            <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
-                                                        </Border.Background>
-                                                    </Border>
-                                                    <StackPanel VerticalAlignment="Center" Orientation="Vertical">
-                                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
-                                                                   Text="{Binding NombreCompleto}">
-                                                        </TextBlock>
-                                                        <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
-                                                                   Text="014-TUVs-4651">
-                                                        </TextBlock>
-                                                    </StackPanel>
-
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-
-                                    <DataGridTextColumn Header="Nombre Interesado" Binding="{Binding Profesion}"
-                                                        IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="Tipo de Tramite" Binding="{Binding Email}"
-                                                        IsReadOnly="True" Width="*" />
-                                    <DataGridTemplateColumn Header="Estado" IsReadOnly="True" Width="1*">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                                    <Button Style="{StaticResource gridEditButton}"
-                                                            Content="{Binding Email}">
-                                                    </Button>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn Header="Progreso" IsReadOnly="True" Width="auto">
-                                        <DataGridTemplateColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <StackPanel Orientation="Horizontal">
-                                                    <ProgressBar Margin="0 5 0 0" Foreground="#9e0044" Height="10"
-                                                                 Width="100"
-                                                                 Value="50" HorizontalAlignment="Left">
-                                                    </ProgressBar>
-                                                    <Label Margin="5 0 0 0 " FontSize="10">50%</Label>
-                                                </StackPanel>
-                                            </DataTemplate>
-                                        </DataGridTemplateColumn.CellTemplate>
-                                    </DataGridTemplateColumn>
-                                    <DataGridTemplateColumn Header="Operations" IsReadOnly="True" Width="auto">
+                            CanUserResize="False" Width="auto"
+                            Binding="{Binding IdTramite}" />
+                                    <DataGridTextColumn Header="Tipo de Trámite" Binding="{Binding TipoTramiteId}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Cliente ID" Binding="{Binding ClienteId}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Código de Trámite" Binding="{Binding CodigoTramite}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Estado de Trámite" Binding="{Binding EstadoTramite}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Fecha de Inicio" Binding="{Binding FechaInicio}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Fecha de Finalización" Binding="{Binding FechaFinalizacion}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Estado de Registro" Binding="{Binding EstadoRegistro}"
+                            IsReadOnly="True" Width="*" />
+                                    <DataGridTemplateColumn Header="Operaciones" IsReadOnly="True" Width="auto">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
@@ -521,7 +484,7 @@
                                                             Width="20"
                                                             Style="{StaticResource gridButtonIcon}" />
                                                         -->
-                                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar </TextBlock>
+                                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar</TextBlock>
                                                     </StackPanel>
                                                 </Button>
                                             </StackPanel>

@@ -181,7 +181,7 @@ public partial class Tramites : Page
         tipoTramite = (int)txtTipoTramite.SelectedValue;
         diccion = txtDireccion.Text;
         descripcion = txtDescripcionTramite.Text;
-        
+        int clienteId = ObtenerClienteIdPorCI(ci);
 
         int funcionario = ObtenerFuncionarioIdPorCargo(App.MiVariableGlobal);
 
@@ -189,7 +189,7 @@ public partial class Tramites : Page
 
         if (usuarioExiste)
         {
-            int clienteId = ObtenerClienteIdPorCI(ci);
+
 
             if (clienteId != -1)
             {
@@ -197,7 +197,11 @@ public partial class Tramites : Page
 
                 if (nuevoTramiteId != -1)
                 {
-                    InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                    if (fileBytes != null)
+                    {
+                        InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                        fileBytes = null;
+                    }
                 }
                 else
                 {
@@ -221,10 +225,14 @@ public partial class Tramites : Page
                 {
                     int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, nuevoClienteId, descripcion);
 
-                    if(nuevoTramiteId != -1)
+                    if (nuevoTramiteId != -1)
                     {
-                        InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
-                        fileBytes = new byte[] { 0x00 };
+                        if (fileBytes != null)
+                        {
+                            InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                            fileBytes = null;
+                        }
+
                     }
                     else
                     {

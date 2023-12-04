@@ -16,7 +16,10 @@
     
         <Border CornerRadius="25">
                 <Border.Background>
+                Black
+                        <!--
                         <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Diseño sin título(1).png"></ImageBrush>
+                -->
                 </Border.Background>
                 <Grid >
                         <Grid.ColumnDefinitions>

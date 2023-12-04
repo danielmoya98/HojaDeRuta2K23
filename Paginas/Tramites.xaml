@@ -156,13 +156,7 @@ Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de tramite</Label>
                                     <ComboBox x:Name="txtTipoTramite" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
                                               HorizontalAlignment="Left" Width="150">
-                                        <ComboBoxItem>Solicitud de cambio de carrera</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud programacion tardia</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud de certificado de notas</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud de inicio de grado</ComboBoxItem>
-                                        <ComboBoxItem>Certificado de trabajo</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud de Licencia</ComboBoxItem>
-                                        <ComboBoxItem>Otros</ComboBoxItem>
+                                     
                                     </ComboBox>
                                 </StackPanel>
 
@@ -277,7 +271,7 @@ Margin="0 10 0 0 ">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Click="ver_OnClick" Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
+                                                    <Button Click="propiedades_Click" Margin="5 0 0 0" Style="{StaticResource gridEditButton}" Tag="{Binding IdTramite}">
                                                         <iconPacks:PackIconMaterial Kind="ViewList" />
                                                     </Button>
                                                 </StackPanel>
@@ -302,23 +296,21 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 0 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Codigo de hoja de ruta</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblCodigoHR" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
-                                                014-TUvs-123456
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Nombre Completo del interesado</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblInteresado" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
-                                                Secretaria
                                             </Label>
                                         </StackPanel>
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Numero de celular del intesado</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblCelularInteresado" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
                                                 Media
                                             </Label>
@@ -326,7 +318,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha de Inicio de tramite</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblFechaInicioTramite" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
                                                 12 de septiembre
                                             </Label>
@@ -334,7 +326,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Fecha de finalizacion de tramite</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblFechaFinalizacionTramite" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
                                                 22 de diciembre
                                             </Label>
@@ -342,7 +334,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de tramite</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label x:Name="lblTipoTramite" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Left">
                                                 23 de diciembre
                                             </Label>
@@ -350,7 +342,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado del tramite</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="Red"
+                                            <Label x:Name="lblEstadoTramite" Margin="25 0 0 0 " FontSize="10" Foreground="Red"
                                                    HorizontalAlignment="Left">
                                                 Rechazado
                                             </Label>
@@ -358,7 +350,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Ente Observador</Label>
-                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="Red"
+                                            <Label x:Name="lblEnteObservador"  Margin="25 0 0 0 " FontSize="10" Foreground="Red"
                                                    HorizontalAlignment="Left">
                                                 Rechazado
                                             </Label>
@@ -366,7 +358,7 @@ Margin="0 10 0 0 ">
                                         <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Descripcion del tramite</Label>
-                                            <TextBlock Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
+                                            <TextBlock x:Name="lblDescripcionDelTramite" Margin="30 5 0 0 " FontSize="10" Foreground="DimGray"
                                                        HorizontalAlignment="Left" TextWrapping="Wrap" Width="250">
                                                 Realizar un Informe Detallado del rendimiento académico de los estudiantes de 3er semestre de la Carrera de Ingeniería Financiera hasta el primer momento evaluative
                                             </TextBlock>

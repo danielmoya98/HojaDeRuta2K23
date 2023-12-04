@@ -11,19 +11,79 @@ using MaterialDesignThemes.Wpf;
 using Microsoft.Win32;
 using Microsoft.Data.SqlClient;
 using HojadeRuta2K23.Singleton;
+using System.Linq;
+using static HojadeRuta2K23.Paginas.Tareas;
+using static HojadeRuta2K23.Paginas.Tramites;
+using static HojadeRuta2K23.Paginas.Buscador;
+using System.Runtime.InteropServices;
 
 namespace HojadeRuta2K23.Paginas;
 
 public partial class Tramites : Page
 {
     List<Tramite> listaTramites = new List<Tramite>();
-    byte[] fileBytes;
-    string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, tipoTramite, descripcion;
+    List<Persona> listaPersonas = new List<Persona>();
+    List<Cliente> listaCliente = new List<Cliente>();
+    byte[] fileBytes = new byte[] { 0x00 };
+    private bool isDetailsVisible = false;
+    string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion;
+    int tipoTramite;
     public Tramites()
     {
         InitializeComponent();
         CargarTramitesEnDataGrid();
+        ObtenerPersonasDesdeLaBaseDeDatos
+            ();
+        ObtenerClientesDesdeLaBaseDeDatos();
+
+        CargarDatosComboBoxTipoTramite();
     }
+    public class TipoTramite
+    {
+        public int IdTipoTramite { get; set; }
+        public string NombreTramite { get; set; }
+    }
+
+    private void CargarDatosComboBoxTipoTramite()
+    {
+        List<TipoTramite> tiposTramite = new List<TipoTramite>();
+
+        var baseDeDatos = Coneccion.Instance;
+
+        string query = "SELECT IdTipoTramite, NombreTramite FROM TIPO_TRAMITE";
+
+        using (SqlConnection connection = baseDeDatos.GetConnection())
+        {
+            connection.Open();
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        int idTipoTramite = reader.GetInt32(0);
+                        string nombreTramite = reader.GetString(1);
+
+                        // Crear un objeto TipoTramite y agregarlo a la lista
+                        TipoTramite tipoTramite = new TipoTramite
+                        {
+                            IdTipoTramite = idTipoTramite,
+                            NombreTramite = nombreTramite
+                        };
+
+                        tiposTramite.Add(tipoTramite);
+                    }
+                }
+            }
+        }
+
+        // Asignar los datos al ComboBox
+        txtTipoTramite.ItemsSource = tiposTramite;
+        txtTipoTramite.DisplayMemberPath = "NombreTramite";
+        txtTipoTramite.SelectedValuePath = "IdTipoTramite";
+    }
+
     private void CargarTramitesEnDataGrid()
     {
         listaTramites = ObtenerTramitesDesdeLaBaseDeDatos();
@@ -44,6 +104,7 @@ public partial class Tramites : Page
         public string ApellidoMaterno { get; set; }
         public int CI { get; set; }
         public int Celular { get; set; }
+        public int EstadoRegistro { get; set; }
     }
     public class Tramite
     {
@@ -117,13 +178,308 @@ public partial class Tramites : Page
         celular = txtCelular.Text;
         celularRef = txtCelularRef.Text;
         correo = txtCorreoElectronico.Text;
+        tipoTramite = (int)txtTipoTramite.SelectedValue;
         diccion = txtDireccion.Text;
-        tipoTramite = txtTipoTramite.Text;
         descripcion = txtDescripcionTramite.Text;
+        
 
-        Cod_tramite cod = new Cod_tramite();
-        cod.ShowDialog();
+        int funcionario = ObtenerFuncionarioIdPorCargo(App.MiVariableGlobal);
+
+        bool usuarioExiste = VerificarExistenciaUsuario(ci);
+
+        if (usuarioExiste)
+        {
+            int clienteId = ObtenerClienteIdPorCI(ci);
+
+            if (clienteId != -1)
+            {
+                int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, clienteId, descripcion);
+
+                if (nuevoTramiteId != -1)
+                {
+                    InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                }
+                else
+                {
+                    MessageBox.Show("Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error al obtener el ID del cliente existente.");
+            }
+        }
+        else
+        {
+            int personaId = InsertarNuevoUsuario(nombre, appPaterno, appMaterno, int.Parse(ci), int.Parse(celular));
+
+            if (personaId != -1)
+            {
+                int nuevoClienteId = InsertarNuevoCliente(personaId, correo, diccion, int.Parse(celularRef));
+
+                if (nuevoClienteId != -1)
+                {
+                    int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, nuevoClienteId, descripcion);
+
+                    if(nuevoTramiteId != -1)
+                    {
+                        InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                        fileBytes = new byte[] { 0x00 };
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Error al insertar el nuevo cliente en la base de datos.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Error al insertar el nuevo usuario en la base de datos.");
+            }
+        }
     }
+    private int ObtenerFuncionarioIdPorCargo(int cargoId)
+    {
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            connection.Open();
+
+            string query = "SELECT FuncionarioId FROM FUNCIONARIO_CARGO WHERE CargoId = @CargoId";
+
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@CargoId", cargoId);
+
+                int funcionarioId = Convert.ToInt32(command.ExecuteScalar());
+                return funcionarioId;
+            }
+        }
+    }
+    static string GenerarCodigoUnico()
+    {
+        const string prefijo = "TRM-";
+        const int longitudCodigo = 10;
+        const string caracteresPermitidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        Random random = new Random();
+        char[] codigoArray = new char[longitudCodigo];
+
+        // Asegura que el código comience con el prefijo
+        for (int i = 0; i < prefijo.Length; i++)
+        {
+            codigoArray[i] = prefijo[i];
+        }
+
+        // Genera caracteres aleatorios para el resto del código
+        for (int i = prefijo.Length; i < longitudCodigo; i++)
+        {
+            codigoArray[i] = caracteresPermitidos[random.Next(caracteresPermitidos.Length)];
+        }
+
+        return new string(codigoArray);
+    }
+
+    private void InsertarNuevoAnexoTramite(int funcionario, int nuevoTramiteId, byte[] fileBytes)
+    {
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                // Comando SQL para insertar el anexo en la tabla ANEXO_TRAMITES
+                string sqlQuery = "INSERT INTO ANEXO_TRAMITES (RemitenteId, TramiteId, Archivo, FechaRegistro, EstadoRegistro) " +
+                                  "VALUES (@RemitenteId, @TramiteId, @Archivo, GETDATE(), 1);";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@RemitenteId", funcionario);
+                    command.Parameters.AddWithValue("@TramiteId", nuevoTramiteId);
+                    command.Parameters.AddWithValue("@Archivo", fileBytes);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+
+        }
+    }
+    private int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion)
+    {
+        string codigo = GenerarCodigoUnico();
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "INSERT INTO TRAMITES (TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, Descripcion, FechaInicio, FechaFinalizacion, EstadoRegistro)" +
+                               "VALUES (@TipoTramiteId, @ClienteId, @CodigoTramite, 'En Proceso', @Descripcion, GETDATE(),NULL ,1);" +
+                "SELECT SCOPE_IDENTITY();";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+                    command.Parameters.AddWithValue("@ClienteId", clienteId);
+                    command.Parameters.AddWithValue("@Descripcion", descripcion);
+                    command.Parameters.AddWithValue("@CodigoTramite", codigo);
+
+                    int tramiteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
+
+                    return tramiteId;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción
+            Console.WriteLine("Error al insertar nuevo trámite: " + ex.Message);
+            return -1;
+        }
+    }
+
+
+    private int ObtenerClienteIdPorCI(string ci)
+    {
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT IdCliente FROM CLIENTES " +
+                               "WHERE PersonaId = (SELECT IdPersona FROM PERSONAS WHERE CI = @CI)";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CI", ci);
+
+                    object result = command.ExecuteScalar();
+                    if (result != null)
+                    {
+                        return Convert.ToInt32(result);
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción
+            Console.WriteLine("Error al obtener el ID del cliente por CI: " + ex.Message);
+        }
+
+        return -1; // Valor predeterminado si no se encontró el ID del cliente o ocurrió un error
+    }
+
+    private int InsertarNuevoUsuario(string nombres, string apellidoPaterno, string apellidoMaterno, int ci, int celular)
+    {
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                // Insertar datos en la tabla PERSONAS
+                string query = "INSERT INTO PERSONAS (Nombres, ApellidoPaterno, ApellidoMaterno, CI, Celular, EstadoRegistro) " +
+                               "VALUES (@Nombres, @ApellidoPaterno, @ApellidoMaterno, @CI, @Celular, 1);" +
+                               "SELECT SCOPE_IDENTITY();"; // Obtener el ID generado
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Nombres", nombres);
+                    command.Parameters.AddWithValue("@ApellidoPaterno", apellidoPaterno);
+                    command.Parameters.AddWithValue("@ApellidoMaterno", apellidoMaterno);
+                    command.Parameters.AddWithValue("@CI", ci);
+                    command.Parameters.AddWithValue("@Celular", celular);
+
+                    int personaId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
+
+                    return personaId;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción
+            Console.WriteLine("Error al insertar nuevo usuario: " + ex.Message);
+            return -1;
+        }
+    }
+
+    private int InsertarNuevoCliente(int personaId, string correo, string direccion, int celularReferencia)
+    {
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                // Insertar datos en la tabla CLIENTES
+                string query = "INSERT INTO CLIENTES (PersonaId, Correo, Direccion, CelularReferencia, EstadoRegistro) " +
+                               "VALUES (@PersonaId, @Correo, @Direccion, @CelularReferencia, 1);" +
+                               "SELECT SCOPE_IDENTITY();"; // Obtener el ID generado
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@PersonaId", personaId);
+                    command.Parameters.AddWithValue("@Correo", correo);
+                    command.Parameters.AddWithValue("@Direccion", direccion);
+                    command.Parameters.AddWithValue("@CelularReferencia", celularReferencia);
+
+                    int clienteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
+
+                    return clienteId;
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción
+            Console.WriteLine("Error al insertar nuevo cliente: " + ex.Message);
+            return -1;
+        }
+    }
+
+    private bool VerificarExistenciaUsuario(string ci)
+    {
+        bool existeUsuario = false;
+
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT COUNT(*) FROM PERSONAS WHERE CI = @CI";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@CI", ci);
+
+                    int count = (int)command.ExecuteScalar();
+
+                    if (count > 0)
+                    {
+                        existeUsuario = true;
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
+            Console.WriteLine("Error al verificar la existencia del usuario: " + ex.Message);
+        }
+
+        return existeUsuario;
+    }
+
 
     private void MiBotonV_OnClick(object sender, RoutedEventArgs e)
     {
@@ -149,26 +505,7 @@ public partial class Tramites : Page
         miBotonV1.Visibility = Visibility.Collapsed;
     }
 
-    private void ver_OnClick(object sender, RoutedEventArgs e)
-    {
-        DoubleAnimation animation = new DoubleAnimation();
-        animation.From = 0;
-        animation.To = 500;
-        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
 
-        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
-    }
-
-    private void ocultar_OnClick(object sender, RoutedEventArgs e)
-    {
-        DoubleAnimation animation = new DoubleAnimation();
-        animation.From = 500;
-        animation.To = 0;
-        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
-
-        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
-
-    }
 
     private void AddDocumento_Click(object sender, RoutedEventArgs e)
     {
@@ -195,9 +532,8 @@ public partial class Tramites : Page
     private void TxtCI_TextChanged(object sender, TextChangedEventArgs e)
     {
         string ciText = txtCI.Text;
-
         // Verificar si el CI tiene 7 u 8 caracteres
-        if (ciText.Length == 6 || ciText.Length == 8)
+        if (ciText.Length == 6 || ciText.Length == 7 || ciText.Length == 8)
         {
             // Realizar la búsqueda en la tabla PERSONAS
             if (BuscarPersonaPorCI(ciText, out Persona persona))
@@ -205,8 +541,13 @@ public partial class Tramites : Page
                 // Si se encontró la persona, llenar los demás campos
                 LlenarCamposConPersona(persona);
             }
+            else
+            {
+                LimpiarCamposAdicionales();
+                LimpiarTodosLosCampos();
+            }
         }
-        if (ciText == "")
+        else
         {
             LimpiarCamposAdicionales();
             LimpiarTodosLosCampos();
@@ -216,6 +557,9 @@ public partial class Tramites : Page
 
     private void LlenarCamposConPersona(Persona persona)
     {
+        // Habilitar todos los TextBox para que sean editables
+
+
         if (persona != null)
         {
             // Llenar los campos con la información de la persona
@@ -235,7 +579,6 @@ public partial class Tramites : Page
                 txtCelularRef.Text = cliente.CelularReferencia.ToString();
 
 
-               
             }
             else
             {
@@ -394,4 +737,158 @@ public partial class Tramites : Page
 
         return listaTramites;
     }
+
+
+    private List<Cliente> ObtenerClientesDesdeLaBaseDeDatos()
+    {
+
+
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT IdCliente, PersonaId, Correo, Direccion, CelularReferencia, EstadoRegistro " +
+                               "FROM CLIENTES";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Cliente cliente = new Cliente
+                            {
+                                IdCliente = reader.GetInt32(0),
+                                PersonaId = reader.GetInt32(1),
+                                Correo = reader.GetString(2),
+                                Direccion = reader.GetString(3),
+                                CelularReferencia = reader.GetInt32(4),
+                                EstadoRegistro = reader.GetInt32(5)
+                            };
+
+                            listaCliente.Add(cliente);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
+            Console.WriteLine("Error al obtener clientes desde la base de datos: " + ex.Message);
+        }
+
+        return listaCliente;
+    }
+
+
+    private List<Persona> ObtenerPersonasDesdeLaBaseDeDatos()
+    {
+
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT IdPersona, Nombres, ApellidoPaterno, ApellidoMaterno, CI, Celular, EstadoRegistro " +
+                               "FROM PERSONAS";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Persona persona = new Persona
+                            {
+                                IdPersona = reader.GetInt32(0),
+                                Nombres = reader.GetString(1),
+                                ApellidoPaterno = reader.GetString(2),
+                                ApellidoMaterno = reader.GetString(3),
+                                CI = reader.GetInt32(4),
+                                Celular = reader.GetInt32(5),
+                                EstadoRegistro = reader.GetInt32(6)
+                            };
+
+                            listaPersonas.Add(persona);
+                        }
+                    }
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
+            Console.WriteLine("Error al obtener personas desde la base de datos: " + ex.Message);
+        }
+
+        return listaPersonas;
+    }
+
+
+    private void ver_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 0;
+        animation.To = 500;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
+    }
+
+    private void ocultar_OnClick(object sender, RoutedEventArgs e)
+    {
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 500;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+
+        VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
+
+    }
+
+    private void propiedades_Click(object sender, RoutedEventArgs e)
+    {
+        Button btn = sender as Button;
+        if (btn != null)
+        {
+            int taskId = (int)btn.Tag;
+
+            MessageBox.Show("" + taskId);
+
+
+            if (isDetailsVisible)
+            {
+                DoubleAnimation hideAnimation = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.5)));
+                VistaDetallesTramite.BeginAnimation(WidthProperty, hideAnimation);
+            }
+            else
+            {
+                Tramite tramite = listaTramites.FirstOrDefault(t => t.IdTramite == taskId);
+                int idCliente = tramite.ClienteId;
+
+                Cliente cliente = listaCliente.FirstOrDefault(t => t.IdCliente == idCliente);
+
+                int idPersona = cliente.PersonaId;
+                Persona persona = listaPersonas.FirstOrDefault(t => t.IdPersona == idPersona);
+
+                if (tramite != null && persona != null)
+                {
+                    lblCodigoHR.Content = tramite.IdTramite;
+                    lblInteresado.Content = persona.Nombres + " " + persona.ApellidoPaterno + " " + persona.ApellidoMaterno;
+                    lblCelularInteresado.Content = persona.Celular;
+
+                    DoubleAnimation showAnimation = new DoubleAnimation(500, new Duration(TimeSpan.FromSeconds(0.5)));
+                    VistaDetallesTramite.BeginAnimation(WidthProperty, showAnimation);
+                }
+            }
+
+            isDetailsVisible = !isDetailsVisible;
+        }
+    }
 }
+
+

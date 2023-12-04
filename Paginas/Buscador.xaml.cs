@@ -12,14 +12,17 @@ namespace HojadeRuta2K23.Paginas
 {
     public partial class Buscador : Page
     {
+        List<Tramite> listaTramites = new List<Tramite>();
         public Buscador()
         {
             InitializeComponent();
             buscador.Items.Add("Tareas");
             buscador.Items.Add("Tramites");
             List<Tarea> listaTareas = ObtenerTareasDesdeLaBaseDeDatos();
+
             membersDataGrid.ItemsSource = listaTareas;
             CargarCombobox();
+            CargarTramitesEnDataGrid();
             PrioridadTareaBuscar.Items.Add("Todos");
             PrioridadTareaBuscar.Items.Add("Alta");
             PrioridadTareaBuscar.Items.Add("Media");
@@ -30,9 +33,84 @@ namespace HojadeRuta2K23.Paginas
             EstadoTareaBuscar.Items.Add("Observada");
             EstadoTareaBuscar.Items.Add("Finalizado");
 
+            TipoTramiteBuscar.Items.Add("Solicitud de cambio de carrera");
+            TipoTramiteBuscar.Items.Add("Solicitud programacion tardia");
+            TipoTramiteBuscar.Items.Add("Solicitud de certificado de notas");
+            TipoTramiteBuscar.Items.Add("Solicitud de inicio de grado");
+            TipoTramiteBuscar.Items.Add("Certificado de trabajo");
+            TipoTramiteBuscar.Items.Add("Solicitud de Licencia");
+            TipoTramiteBuscar.Items.Add("Otros");
+            TipoTramiteBuscar.Items.Add("Todos");
+            TipoTramiteBuscar.Items.Add("Tipo de Trámite Ejemplo");
+
+
+
+            EstadoTramiteBuscar.Items.Add("En Proceso");
+            EstadoTramiteBuscar.Items.Add("Finalizado");
+            EstadoTramiteBuscar.Items.Add("Observado");
+            EstadoTramiteBuscar.Items.Add("Rechazado");
+            EstadoTramiteBuscar.Items.Add("Todos");
 
         }
 
+        public class Tramite
+        {
+            public int IdTramite { get; set; }
+            public int TipoTramiteId { get; set; }
+            public int ClienteId { get; set; }
+            public string CodigoTramite { get; set; }
+            public string EstadoTramite { get; set; }
+            public DateTime FechaInicio { get; set; }
+            public DateTime? FechaFinalizacion { get; set; }
+            public int EstadoRegistro { get; set; }
+        }
+
+
+
+
+        private void CargarTramitesEnDataGrid()
+        {
+            listaTramites = ObtenerTramitesDesdeLaBaseDeDatos();
+            membersDataGridd.ItemsSource = listaTramites;
+        }
+
+        private List<Tramite> ObtenerTramitesDesdeLaBaseDeDatos()
+        {
+
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT IdTramite, TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, " +
+                               "FechaInicio, FechaFinalizacion, EstadoRegistro " +
+                               "FROM TRAMITES";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Tramite tramite = new Tramite
+                            {
+                                IdTramite = reader.GetInt32(0),
+                                TipoTramiteId = reader.GetInt32(1),
+                                ClienteId = reader.GetInt32(2),
+                                CodigoTramite = reader.GetString(3),
+                                EstadoTramite = reader.GetString(4),
+                                FechaInicio = reader.GetDateTime(5),
+                                FechaFinalizacion = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
+                                EstadoRegistro = reader.GetInt32(7),
+                            };
+
+                            listaTramites.Add(tramite);
+                        }
+                    }
+                }
+            }
+
+            return listaTramites;
+        }
         public class Tarea
         {
             public int IdTarea { get; set; }
@@ -122,12 +200,16 @@ namespace HojadeRuta2K23.Paginas
             if (buscador.SelectedIndex == 0)
             {
                 tareas.Visibility = Visibility.Visible;
+                membersDataGrid.Visibility = Visibility.Visible;
+                membersDataGridd.Visibility = Visibility.Collapsed;
                 tramites.Visibility = Visibility.Hidden;
             }
 
             if (buscador.SelectedIndex == 1)
             {
                 tramites.Visibility = Visibility.Visible;
+                membersDataGrid.Visibility = Visibility.Collapsed;
+                membersDataGridd.Visibility = Visibility.Visible;
                 tareas.Visibility = Visibility.Hidden;
             }
         }
@@ -259,6 +341,128 @@ namespace HojadeRuta2K23.Paginas
                            tarea.EstadoTarea == estado &&
                            (PrioridadTareaBuscar.SelectedItem == null || tarea.Prioridad == PrioridadTareaBuscar.SelectedItem.ToString());
                 };
+            }
+        }
+
+        private void CodigoHRBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void ApellidoPaternoTramiteBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void ApellidoMaternoTramiteBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void FechaInicioTramiteBuscar_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void TipoTramiteBuscar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void EstadoTramiteBuscar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            FiltrarTramites();
+        }
+
+        private void FiltrarTramites()
+        {
+            ICollectionView view = CollectionViewSource.GetDefaultView(membersDataGridd.ItemsSource);
+
+            if (view != null)
+            {
+                view.Filter = item =>
+                {
+                    Tramite tramite = (Tramite)item;
+
+                    string filtroCodigo = CodigoHRBuscar.Text.ToUpper();
+                    string filtroApellidoPaterno = ApellidoPaternoTramiteBuscar.Text.ToLower();
+                    string filtroApellidoMaterno = ApellidoMaternoTramiteBuscar.Text.ToLower();
+                    DateTime? filtroFechaInicio = FechaInicioTramiteBuscar.SelectedDate;
+                    string filtroTipoTramite = TipoTramiteBuscar.SelectedItem?.ToString();
+                    string filtroEstadoTramite = EstadoTramiteBuscar.SelectedItem?.ToString();
+
+                    bool codigoMatch = string.IsNullOrEmpty(filtroCodigo) || tramite.CodigoTramite.Contains(filtroCodigo);
+                    bool apellidoPaternoMatch = string.IsNullOrEmpty(filtroApellidoPaterno) || ObtenerApellidoPaterno(tramite.ClienteId).ToLower().StartsWith(filtroApellidoPaterno);
+                    bool apellidoMaternoMatch = string.IsNullOrEmpty(filtroApellidoMaterno) || ObtenerApellidoMaterno(tramite.ClienteId).ToLower().StartsWith(filtroApellidoMaterno);
+                    bool fechaInicioMatch = !filtroFechaInicio.HasValue || tramite.FechaInicio.Date == filtroFechaInicio.Value.Date;
+                    bool tipoTramiteMatch = string.IsNullOrEmpty(filtroTipoTramite) || filtroTipoTramite == "Todos" || ObtenerNombreTipoTramite(tramite.TipoTramiteId) == filtroTipoTramite;
+                    bool estadoTramiteMatch = string.IsNullOrEmpty(filtroEstadoTramite) || filtroEstadoTramite == "Todos" || tramite.EstadoTramite == filtroEstadoTramite;
+
+                    return codigoMatch && apellidoPaternoMatch && apellidoMaternoMatch && fechaInicioMatch && tipoTramiteMatch && estadoTramiteMatch;
+                };
+            }
+        }
+
+
+        private string ObtenerApellidoPaterno(int clienteId)
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT ApellidoPaterno " +
+                               "FROM PERSONAS " +
+                               "INNER JOIN CLIENTES ON PERSONAS.IdPersona = CLIENTES.PersonaId " +
+                               "WHERE CLIENTES.IdCliente = @ClienteId";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ClienteId", clienteId);
+
+                    var result = command.ExecuteScalar();
+                    return result != null ? result.ToString() : null;
+                }
+            }
+        }
+
+        private string ObtenerApellidoMaterno(int clienteId)
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT P.ApellidoMaterno " +
+                               "FROM CLIENTES C " +
+                               "INNER JOIN PERSONAS P ON C.PersonaId = P.IdPersona " +
+                               "WHERE C.IdCliente = @ClienteId";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@ClienteId", clienteId);
+
+                    var result = command.ExecuteScalar();
+                    return result != null ? result.ToString() : null;
+                }
+            }
+        }
+
+        private string ObtenerNombreTipoTramite(int tipoTramiteId)
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                string query = "SELECT NombreTramite " +
+                               "FROM TIPO_TRAMITE " +
+                               "WHERE IdTipoTramite = @IdTipoTramite";  // Corregir aquí
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@IdTipoTramite", tipoTramiteId);  // Corregir aquí
+
+                    var result = command.ExecuteScalar();
+                    return result != null ? result.ToString() : null;
+                }
             }
         }
     }

@@ -252,8 +252,7 @@ Margin="0 0 10 0 ">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button Name="propiedades" Margin="5 0 0 0" Style="{StaticResource gridEditButton}" Click="propiedades_Click"
-              Tag="{Binding Id}">
+                                                    <Button Name="propiedades" Margin="5 0 0 0" Style="{StaticResource gridEditButton}" Click="propiedades_Click" Tag="{Binding Id}">
                                                         <iconPacks:PackIconMaterial Kind="ViewDashboard" />
                                                     </Button>
                                                 </StackPanel>

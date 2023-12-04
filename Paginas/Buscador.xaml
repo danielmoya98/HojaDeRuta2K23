@@ -143,10 +143,36 @@
                     </DataGrid.Columns>
                 </DataGrid>
 
-
+                <DataGrid Visibility="Collapsed" RowStyle="{DynamicResource DataGridRowStyle1}"
+          VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
+          ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
+          CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGridd"
+          Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto" Width="Auto"
+          Margin="0 0 10 0">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True"
+                            CanUserResize="False" Width="auto"
+                            Binding="{Binding IdTramite}" />
+                        <DataGridTextColumn Header="Tipo de Trámite" Binding="{Binding TipoTramiteId}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Cliente ID" Binding="{Binding ClienteId}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Código de Trámite" Binding="{Binding CodigoTramite}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Estado de Trámite" Binding="{Binding EstadoTramite}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Fecha de Inicio" Binding="{Binding FechaInicio}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Fecha de Finalización" Binding="{Binding FechaFinalizacion}"
+                            IsReadOnly="True" Width="*" />
+                        <DataGridTextColumn Header="Estado de Registro" Binding="{Binding EstadoRegistro}"
+                            IsReadOnly="True" Width="*" />
+                    
+                    </DataGrid.Columns>
+                </DataGrid>
 
                 <!--vista lateral TAREAS - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible" Name="tareas" >
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Hidden" Name="tareas" >
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -219,7 +245,7 @@
                 </StackPanel>
 
                 <!--vista lateral Tramites - animada-->
-                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Hidden" Name="tramites">
+                <StackPanel Grid.Column="1" Orientation="Vertical" Width="280" Visibility="Visible" Name="tramites">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"></RowDefinition>
@@ -246,62 +272,46 @@
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 0 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Codigo de Hoja de ruta</Label>
-                                    <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                             HorizontalAlignment="Left">
+                                    <TextBox x:Name="CodigoHRBuscar" Margin="30 0 0 0 " Foreground="DimGray" Width="200"
+                                             HorizontalAlignment="Left" TextChanged="CodigoHRBuscar_TextChanged">
                                     </TextBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
-                                            Margin="0 10 0 0 ">
-                                    <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Nombre</Label>
-                                    <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                             HorizontalAlignment="Left">
-                                    </TextBox>
-                                </StackPanel>
+                                            Margin="0 10 0 0 "/>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Apellido Paterno</Label>
-                                    <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                             HorizontalAlignment="Left">
+                                    <TextBox x:Name="ApellidoPaternoTramiteBuscar" Margin="30 0 0 0 " Foreground="DimGray" Width="200"
+                                             HorizontalAlignment="Left" TextChanged="ApellidoPaternoTramiteBuscar_TextChanged">
                                     </TextBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Apellido Materno</Label>
-                                    <TextBox Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                             HorizontalAlignment="Left">
+                                    <TextBox x:Name="ApellidoMaternoTramiteBuscar" Margin="30 0 0 0 " Foreground="DimGray" Width="200"
+                                             HorizontalAlignment="Left" TextChanged="ApellidoMaternoTramiteBuscar_TextChanged">
                                     </TextBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Fecha de Inicio</Label>
-                                    <DatePicker Margin="30 0 0 0 " Foreground="DimGray" Width="200"
-                                                HorizontalAlignment="Left">
+                                    <DatePicker x:Name="FechaInicioTramiteBuscar" Margin="30 0 0 0 " Foreground="DimGray" Width="200"
+                                                HorizontalAlignment="Left" SelectedDateChanged="FechaInicioTramiteBuscar_SelectedDateChanged">
                                     </DatePicker>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Tipo de Tramite</Label>
-                                    <ComboBox Margin="30 0 0 0 " Width="200"
-                                              HorizontalAlignment="Left">
-                                        <ComboBoxItem>Todos</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud de cambio de carrera</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud programacion tardia</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud Certificado de Notas</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud Inicio de Grado</ComboBoxItem>
-                                        <ComboBoxItem>Certificado de Trabajo</ComboBoxItem>
-                                        <ComboBoxItem>Solicitud de Licencia</ComboBoxItem>
+                                    <ComboBox x:Name="TipoTramiteBuscar" Margin="30 0 0 0 " Width="200"
+                                              HorizontalAlignment="Left" SelectionChanged="TipoTramiteBuscar_SelectionChanged">
                                     </ComboBox>
                                 </StackPanel>
                                 <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                             Margin="0 10 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Estado de Tramite</Label>
-                                    <ComboBox Margin="30 0 0 0 " Width="200"
-                                              HorizontalAlignment="Left">
-                                        <ComboBoxItem>Todos</ComboBoxItem>
-                                        <ComboBoxItem>Observados</ComboBoxItem>
-                                        <ComboBoxItem>Recahzados</ComboBoxItem>
-                                        <ComboBoxItem>Finalizados</ComboBoxItem>
-                                        <ComboBoxItem>En Curso</ComboBoxItem>
+                                    <ComboBox x:Name="EstadoTramiteBuscar" Margin="30 0 0 0 " Width="200"
+                                              HorizontalAlignment="Left" SelectionChanged="EstadoTramiteBuscar_SelectionChanged">
+ 
                                     </ComboBox>
                                 </StackPanel>
                             </StackPanel>

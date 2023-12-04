@@ -106,7 +106,9 @@
                             <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar </TextBlock>
                         </StackPanel>
                     </Button>
-                    
+
+
+
                 </StackPanel>
             </Grid>
         </StackPanel>

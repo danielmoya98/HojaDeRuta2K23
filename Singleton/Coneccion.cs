@@ -9,10 +9,7 @@ public class Coneccion
 
     private Coneccion()
     {
-        cadenaDeConeccion =
-            
-            "Server=Italo-Navia;Database=nashe1;Integrated Security=true; TrustServerCertificate=True"; // Reemplaza con tu cadena de conexión
-   
+        cadenaDeConeccion = "Server=(LocalDB)\\MSSQLLocalDB;Database=SIVALLE_DB;Integrated Security=true; TrustServerCertificate=True";
     }
 
     public static Coneccion Instance

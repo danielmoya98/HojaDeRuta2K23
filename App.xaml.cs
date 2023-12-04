@@ -13,5 +13,6 @@ namespace HojadeRuta2K23
     /// </summary>
     public partial class App : Application
     {
+        public static int MiVariableGlobal { get; set; } = 1;
     }
 }

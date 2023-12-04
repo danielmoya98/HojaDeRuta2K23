@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Page Update="Paginas\AdministracionUsuarios.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Buscador.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Dashboard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\EditarPerfil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Notificaciones.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\NuevaTarea.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Perfil.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Tareas.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Paginas\Tramites.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

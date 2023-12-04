@@ -69,7 +69,7 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </EventTrigger>
-                            ~1~<EventTrigger RoutedEvent="Button.Click>
+                            1<EventTrigger RoutedEvent="Button.Click>
                                 <BeginStoryboard>
                                     <Storyboard x:Name="HideStackPanelss">
                                         <DoubleAnimation Storyboard.TargetName="hola3"
@@ -648,6 +648,5 @@ Margin="0 0 10 0 ">
             </ScrollViewer>
         </StackPanel>
         -->
-
-    </Grid>
+</Grid>
 </Page>

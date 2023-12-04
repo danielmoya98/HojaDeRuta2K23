@@ -28,10 +28,10 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" VerticalAlignment="Top" Height="130" CornerRadius="25 25 0 0" Width="300" >
                <Border.Background>
-                 Black
-                   <!--<ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png"  >
+                 
+                   <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png"  >
                        
-                   </ImageBrush>-->
+                   </ImageBrush>
               
                </Border.Background>
                 
@@ -53,8 +53,9 @@
             <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 20 0 0 ">
                 <TextBlock  Visibility="Collapsed" Name="Info" TextWrapping="Wrap" Foreground="White" Margin="35 0 0 20" FontSize="10" Width="220"  FontWeight="SemiBold"  >Se le enviara un contraseña temporal a su correo electronico.</TextBlock>
                 <TextBox Visibility="Collapsed" Name="RecuperarContraseña" materialDesign:HintAssist.Hint="Ingrese su Email" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"></TextBox>
-                <TextBox  Name="Email" materialDesign:HintAssist.Hint="Email" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"></TextBox>
-                <TextBox  Name="Contraseña" materialDesign:HintAssist.Hint="Contraseña" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 30 0 0 " Width="225" Height="25"></TextBox>
+                <TextBox  Name="Email" materialDesign:HintAssist.Hint="Email"  BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 0 0 0 " Width="225" Height="25"></TextBox>
+                <TextBox  Name="Contraseña" materialDesign:HintAssist.Hint="Contraseña" BorderBrush="#696E8E" Foreground="#696E8E" FontWeight="Thin" Margin="35 30 0 0 " Width="225" Height="25">
+                </TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 25 0 0">

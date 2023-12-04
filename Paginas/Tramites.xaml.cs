@@ -18,6 +18,8 @@ using static HojadeRuta2K23.Paginas.Buscador;
 using System.Runtime.InteropServices;
 using FireSharp;
 using FireSharp.Config;
+using System.Threading.Tasks;
+
 namespace HojadeRuta2K23.Paginas;
 
 public partial class Tramites : Page
@@ -179,7 +181,7 @@ public partial class Tramites : Page
     }
 
     //BOTÓN PARA CREAR EL TRÁMITE
-    private void cod_OnClick(object sender, RoutedEventArgs e)
+    private async void cod_OnClick(object sender, RoutedEventArgs e)
     {
         ci = txtCI.Text;
         nombre = txtNombre.Text;
@@ -199,8 +201,6 @@ public partial class Tramites : Page
 
         if (usuarioExiste)
         {
-
-
             if (clienteId != -1)
             {
                 int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, clienteId, descripcion);
@@ -242,7 +242,6 @@ public partial class Tramites : Page
                             InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
                             fileBytes = null;
                         }
-
                     }
                     else
                     {
@@ -331,6 +330,7 @@ public partial class Tramites : Page
     private int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion)
     {
         string codigo = GenerarCodigoUnico();
+        DateTime fechaIni = DateTime.Now;
         try
         {
             using (var connection = Coneccion.Instance.GetConnection())
@@ -350,6 +350,7 @@ public partial class Tramites : Page
 
                     int tramiteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
 
+                    InsertarFireSharp(clienteId, codigo, tipoTramiteId, "En Proceso", descripcion, 1, fechaIni,null, tramiteId);
                     return tramiteId;
                 }
             }
@@ -361,7 +362,22 @@ public partial class Tramites : Page
             return -1;
         }
     }
+    private async Task InsertarFireSharp(int clienteId,string codigo, int tipoTramiteId, string estadoTramite, string descripcion, int estadoRegistro, DateTime fechaIni, DateTime? fechaFin, int tramiteId)
+    {
+        var tramiteData = new
+        {
+            ClienteId = Convert.ToString(clienteId),
+            CodigoTramite = codigo,
+            TipoTramite = tipoTramiteId,
+            Descripcion = descripcion,
+            EstadoRegistro = estadoRegistro,
+            EstadoTramite = estadoTramite,
+            FechaInicio = fechaIni,
+            FechaFinalizacion = fechaFin
+        };
 
+        await client.SetAsync("tramites/" + tramiteId, tramiteData);
+    }
 
     private int ObtenerClienteIdPorCI(string ci)
     {

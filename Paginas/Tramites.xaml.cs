@@ -16,7 +16,8 @@ using static HojadeRuta2K23.Paginas.Tareas;
 using static HojadeRuta2K23.Paginas.Tramites;
 using static HojadeRuta2K23.Paginas.Buscador;
 using System.Runtime.InteropServices;
-
+using FireSharp;
+using FireSharp.Config;
 namespace HojadeRuta2K23.Paginas;
 
 public partial class Tramites : Page
@@ -28,6 +29,13 @@ public partial class Tramites : Page
     private bool isDetailsVisible = false;
     string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion;
     int tipoTramite;
+
+    FirebaseConfig config = new FirebaseConfig
+    {
+        AuthSecret = "J9UqvtxZbtcl8hEDkZvVkPnfQOsTbyS5iwNbXtuF",
+        BasePath = "https://tramites-y-tareas-default-rtdb.firebaseio.com/"
+    };
+    FirebaseClient client;
     public Tramites()
     {
         InitializeComponent();
@@ -37,6 +45,8 @@ public partial class Tramites : Page
         ObtenerClientesDesdeLaBaseDeDatos();
 
         CargarDatosComboBoxTipoTramite();
+
+        client = new FirebaseClient(config);
     }
     public class TipoTramite
     {

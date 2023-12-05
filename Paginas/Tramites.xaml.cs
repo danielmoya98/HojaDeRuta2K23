@@ -29,7 +29,7 @@ public partial class Tramites : Page
     List<Cliente> listaCliente = new List<Cliente>();
     byte[] fileBytes = new byte[] { 0x00 };
     private bool isDetailsVisible = false;
-    string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion;
+    string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion,prioridad, tipoTramiteString;
     int tipoTramite;
 
     FirebaseConfig config = new FirebaseConfig
@@ -49,6 +49,8 @@ public partial class Tramites : Page
         CargarDatosComboBoxTipoTramite();
 
         client = new FirebaseClient(config);
+        txtPriodidad.SelectedIndex = 0;
+        txtTipoTramite.SelectedIndex = 0;
     }
     public class TipoTramite
     {
@@ -77,7 +79,6 @@ public partial class Tramites : Page
                         int idTipoTramite = reader.GetInt32(0);
                         string nombreTramite = reader.GetString(1);
 
-                        // Crear un objeto TipoTramite y agregarlo a la lista
                         TipoTramite tipoTramite = new TipoTramite
                         {
                             IdTipoTramite = idTipoTramite,
@@ -90,7 +91,7 @@ public partial class Tramites : Page
             }
         }
 
-        // Asignar los datos al ComboBox
+
         txtTipoTramite.ItemsSource = tiposTramite;
         txtTipoTramite.DisplayMemberPath = "NombreTramite";
         txtTipoTramite.SelectedValuePath = "IdTipoTramite";
@@ -125,6 +126,7 @@ public partial class Tramites : Page
         public int ClienteId { get; set; }
         public string CodigoTramite { get; set; }
         public string EstadoTramite { get; set; }
+        public string Descripcion { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime? FechaFinalizacion { get; set; }
         public int EstadoRegistro { get; set; }
@@ -180,9 +182,9 @@ public partial class Tramites : Page
         tra.ShowDialog();
     }
 
-    //BOTÓN PARA CREAR EL TRÁMITE
+
     private async void cod_OnClick(object sender, RoutedEventArgs e)
-    {
+    { 
         ci = txtCI.Text;
         nombre = txtNombre.Text;
         appPaterno = txtApellidoP.Text;
@@ -191,8 +193,11 @@ public partial class Tramites : Page
         celularRef = txtCelularRef.Text;
         correo = txtCorreoElectronico.Text;
         tipoTramite = (int)txtTipoTramite.SelectedValue;
+        tipoTramiteString = txtTipoTramite.Text;
         diccion = txtDireccion.Text;
         descripcion = txtDescripcionTramite.Text;
+        prioridad = txtPriodidad.Text;
+
         int clienteId = ObtenerClienteIdPorCI(ci);
 
         int funcionario = ObtenerFuncionarioIdPorCargo(App.MiVariableGlobal);
@@ -210,7 +215,12 @@ public partial class Tramites : Page
                     if (fileBytes != null)
                     {
                         InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                        InsertarFlujoHojaDeRuta(App.MiVariableGlobal, 2, nuevoTramiteId, "En proceso", 1, prioridad, null, null, tipoTramiteString, 1);
                         fileBytes = null;
+                    }
+                    else
+                    {
+                        InsertarFlujoHojaDeRuta(App.MiVariableGlobal, 2, nuevoTramiteId, "En proceso", 1, prioridad, null, null, tipoTramiteString, 1);
                     }
                 }
                 else
@@ -240,7 +250,12 @@ public partial class Tramites : Page
                         if (fileBytes != null)
                         {
                             InsertarNuevoAnexoTramite(funcionario, nuevoTramiteId, fileBytes);
+                            InsertarFlujoHojaDeRuta(App.MiVariableGlobal, 2, nuevoTramiteId, "En proceso", 1, prioridad, null, null, tipoTramiteString, 1);
                             fileBytes = null;
+                        }
+                        else
+                        {
+                            InsertarFlujoHojaDeRuta(App.MiVariableGlobal, 2, nuevoTramiteId, "En proceso", 1, prioridad, null, null, tipoTramiteString, 1);
                         }
                     }
                     else
@@ -258,6 +273,11 @@ public partial class Tramites : Page
                 MessageBox.Show("Error al insertar el nuevo usuario en la base de datos.");
             }
         }
+        LimpiarCamposAdicionales();
+        LimpiarTodosLosCampos();
+
+        txtCI.Text = string.Empty;
+
     }
     private int ObtenerFuncionarioIdPorCargo(int cargoId)
     {
@@ -300,6 +320,37 @@ public partial class Tramites : Page
         return new string(codigoArray);
     }
 
+    private void InsertarFlujoHojaDeRuta(int remitenteId, int destinatarioId, int tramiteId, string estadoTramite, int numeroInstancia, string prioridad, string? detallesYobservaciones,DateTime? fechaFin, string tipoFlujo, int estadoRegistro)
+    {
+        try
+        {
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+                string sqlQuery = "INSERT INTO FLUJO_HOJA_DE_RUTA (RemitenteId, DestinatarioId, TramiteId, EstadoTramite, NumeroInstancia, Prioridad, DetallesYObservaciones, FechaFinalizacion, TipoFlujo, EstadoRegistro)" +
+                                  "VALUES (@RemitenteId, @DestinatarioId, @TramiteId, @EstadoTramite, @NumeroInstancia, @Prioridad, NULL, NULL, @TipoFlujo, @EstadoRegistro);";
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connection))
+                {
+                    command.Parameters.AddWithValue("@RemitenteId", remitenteId); 
+                    command.Parameters.AddWithValue("@DestinatarioId", destinatarioId); 
+                    command.Parameters.AddWithValue("@TramiteId", tramiteId); 
+                    command.Parameters.AddWithValue("@EstadoTramite", estadoTramite); 
+                    command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia); 
+                    command.Parameters.AddWithValue("@Prioridad", prioridad); 
+                    command.Parameters.AddWithValue("@TipoFlujo", tipoFlujo); 
+                    command.Parameters.AddWithValue("@EstadoRegistro", estadoRegistro); 
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error al insertar en FLUJO_HOJA_DE_RUTA: " + ex.Message);
+        }
+    }
+
     private void InsertarNuevoAnexoTramite(int funcionario, int nuevoTramiteId, byte[] fileBytes)
     {
         try
@@ -307,8 +358,6 @@ public partial class Tramites : Page
             using (var connection = Coneccion.Instance.GetConnection())
             {
                 connection.Open();
-
-                // Comando SQL para insertar el anexo en la tabla ANEXO_TRAMITES
                 string sqlQuery = "INSERT INTO ANEXO_TRAMITES (RemitenteId, TramiteId, Archivo, FechaRegistro, EstadoRegistro) " +
                                   "VALUES (@RemitenteId, @TramiteId, @Archivo, GETDATE(), 1);";
 
@@ -440,7 +489,6 @@ public partial class Tramites : Page
         }
         catch (Exception ex)
         {
-            // Manejar la excepción
             Console.WriteLine("Error al insertar nuevo usuario: " + ex.Message);
             return -1;
         }
@@ -454,10 +502,9 @@ public partial class Tramites : Page
             {
                 connection.Open();
 
-                // Insertar datos en la tabla CLIENTES
                 string query = "INSERT INTO CLIENTES (PersonaId, Correo, Direccion, CelularReferencia, EstadoRegistro) " +
                                "VALUES (@PersonaId, @Correo, @Direccion, @CelularReferencia, 1);" +
-                               "SELECT SCOPE_IDENTITY();"; // Obtener el ID generado
+                               "SELECT SCOPE_IDENTITY();";
 
                 using (var command = new SqlCommand(query, connection))
                 {
@@ -466,7 +513,7 @@ public partial class Tramites : Page
                     command.Parameters.AddWithValue("@Direccion", direccion);
                     command.Parameters.AddWithValue("@CelularReferencia", celularReferencia);
 
-                    int clienteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
+                    int clienteId = Convert.ToInt32(command.ExecuteScalar());
 
                     return clienteId;
                 }
@@ -474,7 +521,6 @@ public partial class Tramites : Page
         }
         catch (Exception ex)
         {
-            // Manejar la excepción
             Console.WriteLine("Error al insertar nuevo cliente: " + ex.Message);
             return -1;
         }
@@ -507,7 +553,6 @@ public partial class Tramites : Page
         }
         catch (Exception ex)
         {
-            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
             Console.WriteLine("Error al verificar la existencia del usuario: " + ex.Message);
         }
 
@@ -566,13 +611,10 @@ public partial class Tramites : Page
     private void TxtCI_TextChanged(object sender, TextChangedEventArgs e)
     {
         string ciText = txtCI.Text;
-        // Verificar si el CI tiene 7 u 8 caracteres
         if (ciText.Length == 6 || ciText.Length == 7 || ciText.Length == 8)
         {
-            // Realizar la búsqueda en la tabla PERSONAS
             if (BuscarPersonaPorCI(ciText, out Persona persona))
             {
-                // Si se encontró la persona, llenar los demás campos
                 LlenarCamposConPersona(persona);
             }
             else
@@ -591,12 +633,8 @@ public partial class Tramites : Page
 
     private void LlenarCamposConPersona(Persona persona)
     {
-        // Habilitar todos los TextBox para que sean editables
-
-
         if (persona != null)
         {
-            // Llenar los campos con la información de la persona
             txtNombre.Text = persona.Nombres;
             txtApellidoP.Text = persona.ApellidoPaterno;
             txtApellidoM.Text = persona.ApellidoMaterno;
@@ -669,6 +707,9 @@ public partial class Tramites : Page
         txtCorreoElectronico.Text = string.Empty;
         txtDireccion.Text = string.Empty;
         txtCelularRef.Text = string.Empty;
+        txtDescripcionTramite.Text = string.Empty;
+        txtPriodidad.SelectedIndex = 0;
+        txtTipoTramite.SelectedIndex = 0;
         // Otros campos según tu interfaz
     }
 
@@ -736,12 +777,11 @@ public partial class Tramites : Page
 
     private List<Tramite> ObtenerTramitesDesdeLaBaseDeDatos()
     {
-
         using (var connection = Coneccion.Instance.GetConnection())
         {
             connection.Open();
 
-            string query = "SELECT IdTramite, TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, " +
+            string query = "SELECT IdTramite, TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, Descripcion, " +
                            "FechaInicio, FechaFinalizacion, EstadoRegistro " +
                            "FROM TRAMITES";
 
@@ -758,9 +798,10 @@ public partial class Tramites : Page
                             ClienteId = reader.GetInt32(2),
                             CodigoTramite = reader.GetString(3),
                             EstadoTramite = reader.GetString(4),
-                            FechaInicio = reader.GetDateTime(5),
-                            FechaFinalizacion = reader.IsDBNull(6) ? (DateTime?)null : reader.GetDateTime(6),
-                            EstadoRegistro = reader.GetInt32(7),
+                            Descripcion = reader.IsDBNull(5) ? null : reader.GetString(5),
+                            FechaInicio = reader.GetDateTime(6),
+                            FechaFinalizacion = reader.IsDBNull(7) ? (DateTime?)null : reader.GetDateTime(7),
+                            EstadoRegistro = reader.GetInt32(8),
                         };
 
                         listaTramites.Add(tramite);
@@ -772,6 +813,62 @@ public partial class Tramites : Page
         return listaTramites;
     }
 
+    //private void ProcesarTodosLosTramitesFirebase()
+    //{
+    //    foreach (var tramite in listaTramites)
+    //    {
+    //        ProcesarTramiteFirebase(tramite);
+    //    }
+    //}
+
+    //private async void ProcesarTramiteFirebase(Tramite tramite)
+    //{
+    //    string idTramiteStr = tramite.IdTramite.ToString();
+    //    string tipoTramiteIdStr = tramite.TipoTramiteId.ToString();
+    //    string clienteIdStr = tramite.ClienteId.ToString();
+    //    string codigoTramite = tramite.CodigoTramite;
+    //    string estadoTramite = tramite.EstadoTramite;
+    //    string fechaInicioStr = tramite.FechaInicio.ToString();
+    //    string fechaFinalizacionStr = tramite.FechaFinalizacion.HasValue ? tramite.FechaFinalizacion.Value.ToString() : "null";
+    //    string estadoRegistroStr = tramite.EstadoRegistro.ToString();
+
+    //    // Obtener el nombre del tipo de trámite
+    //    string nombreTramite = ObtenerNombreTipoTramite(tramite.TipoTramiteId);
+
+    //    var tramiteData = new
+    //    {
+    //        TipoTramite = nombreTramite, // Cambiado a nombreTramite en lugar de tipoTramiteIdStr
+    //        ClienteId = clienteIdStr,
+    //        CodigoTramite = codigoTramite,
+    //        EstadoTramite = estadoTramite,
+    //        FechaInicio = fechaInicioStr,
+    //        FechaFinalizacion = fechaFinalizacionStr,
+    //        EstadoRegistro = estadoRegistroStr
+    //    };
+
+    //    await client.SetAsync("tramites/" + idTramiteStr, tramiteData);
+    //    // Opcionalmente, puedes agregar a la lista aquí si es necesario
+    //    // listaTramites.Add(new Tramite { IdTramite = tramite.IdTramite, ... });
+    //}
+
+    private string ObtenerNombreTipoTramite(int tipoTramiteId)
+    {
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            connection.Open();
+
+            string query = "SELECT NombreTramite FROM TIPO_TRAMITE WHERE IdTipoTramite = @TipoTramiteId";
+
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+
+                var result = command.ExecuteScalar();
+
+                return result != null ? result.ToString() : null;
+            }
+        }
+    }
 
     private List<Cliente> ObtenerClientesDesdeLaBaseDeDatos()
     {
@@ -810,7 +907,6 @@ public partial class Tramites : Page
         }
         catch (Exception ex)
         {
-            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
             Console.WriteLine("Error al obtener clientes desde la base de datos: " + ex.Message);
         }
 
@@ -855,7 +951,6 @@ public partial class Tramites : Page
         }
         catch (Exception ex)
         {
-            // Manejar la excepción (puedes registrarla, mostrar un mensaje, etc.)
             Console.WriteLine("Error al obtener personas desde la base de datos: " + ex.Message);
         }
 
@@ -911,10 +1006,22 @@ public partial class Tramites : Page
 
                 if (tramite != null && persona != null)
                 {
-                    lblCodigoHR.Content = tramite.IdTramite;
+                    string tipo = ObtenerNombreTipoTramite(tramite.TipoTramiteId);
+                    lblCodigoHR.Content = tramite.CodigoTramite;
                     lblInteresado.Content = persona.Nombres + " " + persona.ApellidoPaterno + " " + persona.ApellidoMaterno;
                     lblCelularInteresado.Content = persona.Celular;
-
+                    lblFechaInicioTramite.Content = tramite.FechaInicio;
+                    if (tramite.FechaFinalizacion == null)
+                    {
+                        lblFechaFinalizacionTramite.Content = "No Finalizado";
+                    }
+                    else
+                    {
+                        lblFechaFinalizacionTramite.Content = tramite.FechaFinalizacion;
+                    }
+                    lblTipoTramite.Content = tipo;
+                    lblEstadoTramite.Content = tramite.EstadoTramite;
+                    lblDescripcionDelTramite.Text = tramite.Descripcion;
                     DoubleAnimation showAnimation = new DoubleAnimation(500, new Duration(TimeSpan.FromSeconds(0.5)));
                     VistaDetallesTramite.BeginAnimation(WidthProperty, showAnimation);
                 }
@@ -924,5 +1031,3 @@ public partial class Tramites : Page
         }
     }
 }
-
-

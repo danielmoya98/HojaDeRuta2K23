@@ -322,6 +322,7 @@ public partial class Tareas : Page
 
     private void propiedades_Click(object sender, RoutedEventArgs e)
     {
+
         Button btn = sender as Button;
         if (btn != null)
         {
@@ -353,6 +354,14 @@ public partial class Tareas : Page
 
                     FechaAsignacion.Content = tareaSeleccionada.FechaAsignacion.ToString();
                     FechaLimite.Content = tareaSeleccionada.FechaLimite.ToString();
+                    if (tareaSeleccionada.FechaFinalizacion != null)
+                    {
+                        FechaFinalizacion.Content = tareaSeleccionada.FechaFinalizacion.ToString();
+                    }
+                    else
+                    {
+                        FechaFinalizacion.Content = "No Finalizada";
+                    }
                     Descripcio.Text = tareaSeleccionada.Descripcion.ToString();
                     Estado.Content = tareaSeleccionada.EstadoTarea.ToString();
                     //Observaciones.Text = tareaSeleccionada.Observaciones.ToString();

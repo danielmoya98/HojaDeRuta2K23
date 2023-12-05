@@ -12,6 +12,9 @@ using Microsoft.Win32;
 using Microsoft.Data.SqlClient;
 using HojadeRuta2K23.Singleton;
 using System.Linq;
+using static HojadeRuta2K23.Paginas.Tareas;
+using static HojadeRuta2K23.Paginas.Tramites;
+using static HojadeRuta2K23.Paginas.Buscador;
 using System.Runtime.InteropServices;
 using FireSharp;
 using FireSharp.Config;
@@ -39,15 +42,16 @@ public partial class Tramites : Page
     {
         InitializeComponent();
         CargarTramitesEnDataGrid();
-        ObtenerPersonasDesdeLaBaseDeDatos();
+        ObtenerPersonasDesdeLaBaseDeDatos
+            ();
         ObtenerClientesDesdeLaBaseDeDatos();
+
         CargarDatosComboBoxTipoTramite();
 
         client = new FirebaseClient(config);
         txtPriodidad.SelectedIndex = 0;
         txtTipoTramite.SelectedIndex = 0;
     }
-
     public class TipoTramite
     {
         public int IdTipoTramite { get; set; }
@@ -86,6 +90,8 @@ public partial class Tramites : Page
                 }
             }
         }
+
+
         txtTipoTramite.ItemsSource = tiposTramite;
         txtTipoTramite.DisplayMemberPath = "NombreTramite";
         txtTipoTramite.SelectedValuePath = "IdTipoTramite";
@@ -96,7 +102,6 @@ public partial class Tramites : Page
         listaTramites = ObtenerTramitesDesdeLaBaseDeDatos();
         membersDataGrid.ItemsSource = listaTramites;
     }
-
     private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
         if (NavigationService != null)
@@ -114,7 +119,6 @@ public partial class Tramites : Page
         public int Celular { get; set; }
         public int EstadoRegistro { get; set; }
     }
-
     public class Tramite
     {
         public int IdTramite { get; set; }
@@ -137,7 +141,6 @@ public partial class Tramites : Page
         public int CelularReferencia { get; set; }
         public int EstadoRegistro { get; set; }
     }
-
     private void CheckBox1_OnChecked(object sender, RoutedEventArgs e)
     {
         if (CheckBox1.IsChecked == true)
@@ -178,6 +181,7 @@ public partial class Tramites : Page
         ObservarRechazarTramite tra = new ObservarRechazarTramite();
         tra.ShowDialog();
     }
+
 
     private async void cod_OnClick(object sender, RoutedEventArgs e)
     { 

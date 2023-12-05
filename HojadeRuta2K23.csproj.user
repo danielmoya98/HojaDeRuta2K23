@@ -29,8 +29,5 @@
     <Page Update="Paginas\Tramites.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="Windows\Login2.xaml">
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
 </Project>

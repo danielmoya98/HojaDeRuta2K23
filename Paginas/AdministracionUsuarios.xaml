@@ -19,10 +19,11 @@
         </ResourceDictionary>
     </Page.Resources>
 
-    <Grid >
+    <Grid>
+
         <Grid.RowDefinitions>
-            <RowDefinition Height="100"></RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="100"> </RowDefinition>
+            <RowDefinition Height="Auto"> </RowDefinition>
         </Grid.RowDefinitions>
         <StackPanel Margin="0 10 0 0">
             <Grid >
@@ -53,25 +54,25 @@
                         <ComboBoxItem Content="Mas Recientes" />
                         <ComboBoxItem Content="Mas Antiguos" />
                     </ComboBox>
-                    <Button Name="CrearPerson" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
-                            Click="CrearPerson_OnClick" Background="#9d0043" BorderBrush="Transparent">
+                    <Button Name="miBoton" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                            Click="AgregarUsuario_OnClick" Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
                                                         Foreground="White" Style="{StaticResource gridButtonIcon}" />
-                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Usuario</TextBlock>
+                            <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Crear Usuario </TextBlock>
                         </StackPanel>
                     </Button>
-
-                    <Button Name="OcultarCrearPerson" Click="OcultarCrearPerson_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
+                    
+                    <Button Name="miBoton1" Click="ButtonBase_OnClick" Visibility="Collapsed" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent" Foreground="White">
                         <StackPanel Orientation="Horizontal">
                             <iconPacks:PackIconMaterial Kind="EyeOff" Height="20" Width="20"
                                                         Style="{StaticResource gridButtonIcon}"/>
-
+                                 
                             <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar</TextBlock>
                         </StackPanel>
                     </Button>
-
+                    
                     <!--<Button Name="miBotonV" Click="MiBotonV_OnClick" Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
@@ -80,7 +81,7 @@
                             <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ver Detalles </TextBlock>
                         </StackPanel>
                     </Button>-->
-
+                    
                     <!--<Button Visibility="Collapsed" Click="MiBotonV1_OnClick" Name="miBotonV1"  Margin="0 0 45 0" HorizontalAlignment="Right" Height="30" Width="150"
                             Background="#9d0043" BorderBrush="Transparent">
                         <StackPanel Orientation="Horizontal">
@@ -89,7 +90,7 @@
                             <TextBlock Padding="7 0 0 0 " Foreground="White" FontWeight="SemiBold"> Ocultar Detalles</TextBlock>
                         </StackPanel>
                     </Button>-->
-
+                
                 </StackPanel>
             </Grid>
         </StackPanel>
@@ -105,74 +106,80 @@
 
                 <!--vista nueva persona-->
                 <StackPanel Orientation="Vertical">
-                    <StackPanel  Grid.Row="1" Orientation="Vertical" Height="0" Name="hola3">
+                    <StackPanel Orientation="Vertical" Height="0" Name="hola3">
                         <StackPanel Grid.Row="0" Orientation="Horizontal">
                             <StackPanel Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Orientation="Vertical"
                                         Margin="0 0 0 -7">
                                 <Border CornerRadius="15" Height="150" Width="140" VerticalAlignment="Center"
                                         HorizontalAlignment="Center">
                                     <Border.Background>
-                                        <ImageBrush x:Name="imgBrush" Stretch="UniformToFill" />
+                                        <!--
+                            <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif"></ImageBrush>
+                        -->
+                                        Black
                                     </Border.Background>
                                 </Border>
-                                <Button x:Name="btnFOTOfuncionario" Margin="0 20 0 0 " Height="30" Width="150"
-                                        Style="{StaticResource gridEditButton}" Click="btnFOTOfuncionario_Click_1">
+                                <Button Margin="0 20 0 0 " Height="30" Width="150"
+                                        Style="{StaticResource gridEditButton}">
                                     <StackPanel Orientation="Horizontal">
                                         <iconPacks:PackIconMaterial Kind="CameraAccount" Height="20" Width="20"
                                                                     Style="{StaticResource gridButtonIcon}" />
-                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Agregar imagen</TextBlock>
+                                        <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Agregar imagen </TextBlock>
                                     </StackPanel>
                                 </Button>
+
                             </StackPanel>
 
                             <StackPanel Orientation="Vertical" Grid.Column="1">
                                 <StackPanel Grid.Row="0" Orientation="Horizontal">
-                                    <StackPanel x:Name="PERSON" Visibility="Visible" Orientation="Vertical" Margin="0 10 0 0 " Width="27">
-                                        <Label Margin="2 0 0 0 " FontWeight="SemiBold" FontSize="11">id:</Label>
-                                        <Label x:Name="txtid" Margin="0 0 0 0 " FontSize="10" Foreground="DimGray" Width="26" HorizontalAlignment="Left" Height="21"/>
-                                    </StackPanel>
-                                    <StackPanel x:Name="PERSON1" HorizontalAlignment="Left" Orientation="Vertical" Margin="0 10 0 0 ">
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                                Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Carnet Identidad:</Label>
-                                        <TextBox x:Name="txtCi" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left"/>
+                                        <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                 HorizontalAlignment="Left">
+                                        </TextBox>
                                     </StackPanel>
-                                    <StackPanel x:Name="PERSON2" HorizontalAlignment="Left" Orientation="Vertical"
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                 Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Nombres</Label>
-                                        <TextBox x:Name="txtname" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+                                                 HorizontalAlignment="Left" Width="150">
+
                                         </TextBox>
                                     </StackPanel>
-                                    <StackPanel x:Name="PERSON3" HorizontalAlignment="Left" Orientation="Vertical"
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                 Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Paterno:</Label>
-                                        <TextBox x:Name="txtAPaterno"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
+                                                 HorizontalAlignment="Left" Width="150">
+
                                         </TextBox>
                                     </StackPanel>
-                                    <StackPanel x:Name="PERSON4" HorizontalAlignment="Left" Orientation="Vertical"
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                 Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Apellido Materno:</Label>
-                                        <TextBox x:Name="txtAMaterno" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10"
+                                                 Foreground="DimGray"
+                                                 HorizontalAlignment="Left" Width="150">
                                         </TextBox>
                                     </StackPanel>
-                                    <StackPanel x:Name="PERSON5" HorizontalAlignment="Left" Orientation="Vertical"
+
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                 Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Celular:</Label>
-                                        <TextBox x:Name="txtNumCelular" Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10" Foreground="DimGray" HorizontalAlignment="Left" Width="150">
+                                        <TextBox Margin="30 0 0 0 " TextWrapping="Wrap" FontSize="10"
+                                                 Foreground="DimGray"
+                                                 HorizontalAlignment="Left" Width="150">
                                         </TextBox>
                                     </StackPanel>
-                                    <StackPanel x:Name="PERSON6" HorizontalAlignment="Left" Orientation="Vertical"
+
+                                    <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                 Margin="0 10 0 0 ">
                                         <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Tipo de Persona:</Label>
                                         <ComboBox SelectedIndex="0" SelectionChanged="Combo_OnSelectionChanged" Name="Combo"
                                                   Margin="30 0 0 0 " FontSize="10" Foreground="DimGray"
                                                   HorizontalAlignment="Left" Width="110">
-                                        </ComboBox>
-                                    </StackPanel>
-                                    <StackPanel x:Name="PERSON7" Visibility="Collapsed" HorizontalAlignment="Left" Orientation="Vertical" Margin="0 10 0 0 ">
-                                        <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado Registro</Label>
-                                        <ComboBox SelectedIndex="0" SelectionChanged="EstadoRegistroPersona_OnSelectionChanged" Name="EstadoRegistroPersona" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" HorizontalAlignment="Left" Width="110">
-                                            <ComboBoxItem Content="Activo"/>
-                                            <ComboBoxItem Content="Inactivo"/>
-                                            <ComboBoxItem Content="Ausente"/>
+
                                         </ComboBox>
                                     </StackPanel>
                                 </StackPanel>
@@ -182,84 +189,69 @@
                                             Orientation="Vertical"
                                             Margin="0 0 0 0 ">
                                     <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
-                                        <StackPanel x:Name="FUN1" HorizontalAlignment="Left" Orientation="Vertical"
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Correo Institucional:</Label>
-                                            <TextBox x:Name="txtCorreoInstitucional" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="FUN2" Visibility="Collapsed" HorizontalAlignment="Left" Orientation="Vertical" Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado Registro</Label>
-                                            <ComboBox SelectedIndex="0" SelectionChanged="EstadoFuncionario_OnSelectionChanged" Name="EstadoFuncioanrio" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" HorizontalAlignment="Left" Width="110">
-                                                <ComboBoxItem Content="Activo"/>
-                                                <ComboBoxItem Content="Inactivo"/>
-                                                <ComboBoxItem Content="Ausente"/>
-                                            </ComboBox>
-                                        </StackPanel>
-                                        <StackPanel x:Name="FUN3" Visibility="Collapsed" HorizontalAlignment="Left" Orientation="Vertical" Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado Registro</Label>
-                                            <ComboBox SelectedIndex="0" SelectionChanged="EstadoRegistroFuncionario_OnSelectionChanged" Name="EstadoRegistroFuncioanrio" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" HorizontalAlignment="Left" Width="110">
-                                                <ComboBoxItem Content="Activo"/>
-                                                <ComboBoxItem Content="Inactivo"/>
-                                                <ComboBoxItem Content="Ausente"/>
-                                            </ComboBox>
-                                        </StackPanel>
-                                        <StackPanel x:Name="FUN4" HorizontalAlignment="Left" Orientation="Vertical"
-                                           Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Usuario Funcionario:</Label>
-                                            <TextBox x:Name="txtusuario"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                                    Margin="0 10 0 0 ">
+                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Usuario:</Label>
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="FUN5" HorizontalAlignment="Left" Orientation="Vertical"
-                                           Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Contraseña Funcionario:</Label>
-                                            <TextBox x:Name="txtcontraseña"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                                    Margin="0 10 0 0 ">
+                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Contraseña:</Label>
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
                                     </StackPanel>
                                 </StackPanel>
+
                                 <!--vista cliente-->
 
                                 <StackPanel Visibility="Collapsed" Name="cliente" HorizontalAlignment="Left"
                                             Orientation="Vertical"
                                             Margin="0 0 0 0 ">
                                     <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
-                                        <StackPanel x:Name="CLIENT1" HorizontalAlignment="Left" Orientation="Vertical"
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Correo:</Label>
-                                            <TextBox x:Name="txtCorreo" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="CLIENT2" HorizontalAlignment="Left" Orientation="Vertical"
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Celular de Referencia:</Label>
-                                            <TextBox x:Name="txtCelReferencia" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="CLIENT3" HorizontalAlignment="Left" Orientation="Vertical"
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Direccion:</Label>
-                                            <TextBox x:Name="txtDireccion"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="CLIENT4" Visibility="Collapsed" HorizontalAlignment="Left" Orientation="Vertical" Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Estado Registro</Label>
-                                            <ComboBox SelectedIndex="0" SelectionChanged="EstadoRegistroCliente_OnSelectionChanged" Name="EstadoRegistroCliente" Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" HorizontalAlignment="Left" Width="110">
-                                                <ComboBoxItem Content="Activo"/>
-                                                <ComboBoxItem Content="Inactivo"/>
-                                                <ComboBoxItem Content="Ausente"/>
-                                            </ComboBox>
-                                        </StackPanel>
-                                        <StackPanel x:Name="CLIENT5" HorizontalAlignment="Left" Orientation="Vertical"
-                                           Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Usuario Cliente:</Label>
-                                            <TextBox x:Name="txtusuario1"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                                    Margin="0 10 0 0 ">
+                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Usuario:</Label>
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
-                                        <StackPanel x:Name="CLIENT6" HorizontalAlignment="Left" Orientation="Vertical"
-                                           Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Contraseña Cliente:</Label>
-                                            <TextBox x:Name="txtcontraseña1"  Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150" HorizontalAlignment="Left">
+                                        <StackPanel HorizontalAlignment="Left" Orientation="Vertical"
+                                                    Margin="0 10 0 0 ">
+                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Contraseña:</Label>
+                                            <TextBox Margin="30 0 0 0 " FontSize="10" Foreground="DimGray" Width="150"
+                                                     HorizontalAlignment="Left">
                                             </TextBox>
                                         </StackPanel>
                                     </StackPanel>
@@ -270,96 +262,106 @@
                                             Margin="0 16 0 0 ">
                                     <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="11">Acciones</Label>
                                     <StackPanel Orientation="Horizontal" Margin="0 15 0 0">
-                                        <Button Visibility="Collapsed" x:Name="btnGuardarFuncionario" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150" Style="{StaticResource gridEditButton}" Click="btnGuardarFuncionario_Click_1" >
-                                            <StackPanel Orientation="Horizontal">
-                                                <!--
-            <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-             Style="{StaticResource gridButtonIcon}" />
-                -->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Crear Funcionario</TextBlock>
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Visibility="Collapsed" x:Name="btnGuardarCliente" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150" Style="{StaticResource gridEditButton}" Click="btnGuardarCliente_Click">
-                                            <StackPanel Orientation="Horizontal">
-                                                <!--
-        <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                       Style="{StaticResource gridButtonIcon}" />
-            -->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Crear Cliente</TextBlock>
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Visibility="Collapsed" Name="EditarFuncionario" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                                Style="{StaticResource gridEditButton}" Click="EditarFuncionario_Click">
-                                            <StackPanel Orientation="Horizontal">
-                                                <!--
-                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                                                               Style="{StaticResource gridButtonIcon}" />
-                                   -->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Guardar Cambios f</TextBlock>
-                                            </StackPanel>
-                                        </Button>
-                                        <Button Visibility="Collapsed" Name="EditarCliente"  Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
-                                                Style="{StaticResource gridEditButton}" Click="EditarCliente_Click">
-                                            <StackPanel Orientation="Horizontal">
-                                                <!--
-<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                            Style="{StaticResource gridButtonIcon}" /> 
--->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Guardar Cambios c</TextBlock>
-                                            </StackPanel>
-                                        </Button>
-
-                                        <Button Visibility="Collapsed" Name="OcultarCrear" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150" Click="OcultarCrear_OnClick"
+                                       
+                                        <Button Margin="30 0 0 0" Name="crear" HorizontalAlignment="Right" Height="30" Width="150"
                                                 Style="{StaticResource gridEditButton}">
                                             <StackPanel Orientation="Horizontal">
                                                 <!--
                                    <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
                                                                Style="{StaticResource gridButtonIcon}" />
                                    -->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar</TextBlock>
+                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Crear Cliente</TextBlock>
                                             </StackPanel>
                                         </Button>
+                                        
+                                        <Button Visibility="Collapsed" Name="editar" Click="Editar_OnClick" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150"
+                                                Style="{StaticResource gridEditButton}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <!--
+                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                                                               Style="{StaticResource gridButtonIcon}" />
+                                   -->
+                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Guardar Cambios</TextBlock>
+                                            </StackPanel>
+                                        </Button>
+                                        
+                                        <Button Visibility="Collapsed" Name="editar1" Margin="30 0 0 0" HorizontalAlignment="Right" Height="30" Width="150" Click="Editar_OnClick"
+                                                Style="{StaticResource gridEditButton}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <!--
+                                   <iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
+                                                               Style="{StaticResource gridButtonIcon}" />
+                                   -->
+                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar </TextBlock>
+                                            </StackPanel>
+                                        </Button>
+                                    
                                     </StackPanel>
                                 </StackPanel>
                             </StackPanel>
                         </StackPanel>
+                        
                     </StackPanel>
 
 
                     <StackPanel Grid.Row="1">
-                        <Grid>
+                        <Grid >
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"></ColumnDefinition>
                                 <ColumnDefinition Width="Auto"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-
+                            
                             <DataGrid Margin="0 0 15 0" RowStyle="{DynamicResource DataGridRowStyle1}"
-                                      VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Hidden"
                                       ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}"
                                       CellStyle="{DynamicResource DataGridCellStyle1}" x:Name="membersDataGrid"
-                                      Style="{DynamicResource DataGridStyle1}" Grid.Column="0" Height="Auto"
-                                      Width="Auto">
+                                      Style="{DynamicResource DataGridStyle1}" Grid.Column="0" 
+                                      ScrollViewer.CanContentScroll="True" 
+                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                                      >
                                 <DataGrid.Columns>
-                                    <DataGridTextColumn Header="IdPersona" Binding="{Binding IdPersona}" IsReadOnly="True" Width="auto" Visibility="Visible"/>
-                                    <DataGridTextColumn Visibility="Collapsed" Foreground="Black" Header="#" IsReadOnly="True" CanUserResize="False" Width="auto" Binding="{Binding Number}" />
+                                    <DataGridTextColumn Foreground="Black" Header="#" IsReadOnly="True"
+                                                        CanUserResize="False"
+                                                        Width="auto"
+                                                        Binding="{Binding Id}" />
+                                    <DataGridTemplateColumn Header="Nombre Completo" IsReadOnly="True" Width="auto">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Border Height="50" Width="50" CornerRadius="15">
+                                                        <Border.Background>
+                                                            <ImageBrush ImageSource="{Binding Foto}"></ImageBrush>
+                                                        </Border.Background>
+                                                    </Border>
+                                                    <TextBlock VerticalAlignment="Center" Margin="7 0 0 0"
+                                                               Text="{Binding NombreCompleto}">
+                                                    </TextBlock>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
 
-                                    <DataGridTextColumn Visibility="Visible" Header="Nombres" Binding="{Binding Nombres}" IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="ApellidoPaterno" Binding="{Binding ApellidoPaterno}" IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="ApellidoMaterno" Binding="{Binding ApellidoMaterno}" IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="Celular" Binding="{Binding Celular}" IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="EstadoRegistro" Binding="{Binding EstadoRegistro}" IsReadOnly="True" Width="*" />
-                                    <DataGridTextColumn Header="Email" Binding="{Binding Correo}" IsReadOnly="True" Width="*" />
+                                    <DataGridTextColumn Header="Profesion" Binding="{Binding Profesion}"
+                                                        IsReadOnly="True"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Email" Binding="{Binding Email}" IsReadOnly="True"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Celular" Binding="{Binding Celular}" IsReadOnly="True"
+                                                        Width="*" />
+                                    <DataGridTextColumn Header="Ubicacion" Binding="{Binding Ubicacion}"
+                                                        IsReadOnly="True"
+                                                        Width="*" />
                                     <DataGridTemplateColumn Header="Opciones" IsReadOnly="True" Width="auto">
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
-                                                    <Button Margin="0 0 0 0" Style="{StaticResource gridEditButton}" Click="EditarPersonaFuncionarioCliente_OnClick">
+                                                    <Button Margin="0 0 0 0" Style="{StaticResource gridEditButton}" Click="editarUsuario_OnClick">
                                                         <iconPacks:PackIconMaterial Kind="AccountEdit"   />
                                                     </Button>
-                                                    <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}" Click="BorrarPersonaFuncionarioCliente_OnClick">
+                                                    <Button Margin="5 0 0 0" Style="{StaticResource gridEditButton}">
                                                         <iconPacks:PackIconMaterial Kind="Cancel" />
                                                     </Button>
-                                                    <Button Margin="5 0 10 0" Style="{StaticResource gridEditButton}" Click="VerPersoanFuncionarioCliente_OnClick">
+                                                    <Button Click="MiBotonV_OnClick"  Margin="5 0 10 0" Style="{StaticResource gridEditButton}">
                                                         <iconPacks:PackIconMaterial Kind="AccountDetails" />
                                                     </Button>
                                                 </StackPanel>
@@ -367,8 +369,9 @@
                                         </DataGridTemplateColumn.CellTemplate>
                                     </DataGridTemplateColumn>
                                 </DataGrid.Columns>
+                                
                             </DataGrid>
-
+                            
                             <!--Ver Datos del Usuario - vista lateral-->
                             <StackPanel Grid.Column="1" Orientation="Vertical" Visibility="Visible" Width="0"
                                         Name="hola">
@@ -382,37 +385,40 @@
                                         <Border CornerRadius="15" Height="150" Width="150" VerticalAlignment="Center"
                                                 HorizontalAlignment="Center">
                                             <Border.Background>
-                                                <ImageBrush x:Name="imgBrush1" Stretch="UniformToFill" />
+                                                Black
+                                                <!--<ImageBrush
+                                        ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\44110f877fb9796236f3d9c9cc3677da.gif">
+                                    </ImageBrush>-->
                                             </Border.Background>
                                         </Border>
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Vertical">
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical"
                                                     Margin=" 0 10 0 0 ">
-                                            <Label Name="namePerson" FontWeight="SemiBold" FontSize="20">Pablo Chambi</Label>
-                                            <Label Name="profecionPerson" FontSize="12" Foreground="DimGray" HorizontalAlignment="Center">Secretario</Label>
+                                            <Label FontWeight="SemiBold" FontSize="20">Pablo Chambi</Label>
+                                            <Label FontSize="12" Foreground="DimGray" HorizontalAlignment="Center">Secretario</Label>
                                         </StackPanel>
 
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
-                                                    Margin="0 5 0 0 ">
+                                                    Margin="0 25 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Nombre Completo</Label>
-                                            <Label Name="nameComplet" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Center">
                                                 Pablo Pedro Chambi Choque
                                             </Label>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
-                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">CI PERSONA</Label>
-                                            <Label Name="ciPerson" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Profesion</Label>
+                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Center">
-                                                123456789
+                                                Lic. en Secretariado
                                             </Label>
                                         </StackPanel>
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Celular</Label>
-                                            <Label Name="celPerson" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Center">
                                                 63063849
                                             </Label>
@@ -420,28 +426,19 @@
                                         <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Email</Label>
-                                            <Label Name="emailPerson" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Center">
                                                 PabloPedroChambiChoque@gmail.com
                                             </Label>
                                         </StackPanel>
-                                        <StackPanel x:Name="UBIPEROSN1" Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
+                                        <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical"
                                                     Margin="0 10 0 0 ">
                                             <Label Margin="25 0 0 0 " FontWeight="SemiBold" FontSize="10">Ubicacion</Label>
-                                            <Label Name="ubiPerson" Margin="25 0 0 0 " FontSize="10" Foreground="DimGray"
+                                            <Label Margin="13 0 0 0 " FontSize="10" Foreground="DimGray"
                                                    HorizontalAlignment="Center">
                                                 Bolivia
                                             </Label>
                                         </StackPanel>
-                                        <Button Visibility="Visible" Name="OcultarVerDatos" Margin="0 10 0 0" HorizontalAlignment="Center" Height="30" Width="150" Click="OcultarVerDatos_OnClick" Style="{StaticResource gridEditButton}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <!--
-<iconPacks:PackIconMaterial Kind="AccountPlus" Height="20" Width="20"
-                            Style="{StaticResource gridButtonIcon}" />
--->
-                                                <TextBlock Padding="7 0 0 0 " FontWeight="SemiBold"> Ocultar</TextBlock>
-                                            </StackPanel>
-                                        </Button>
                                     </StackPanel>
                                 </Grid>
 

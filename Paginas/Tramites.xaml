@@ -49,6 +49,7 @@
                             HorizontalAlignment="Right">
 
                     <ComboBox Margin="5 0 15 0" Width="150" Height="25" SelectedIndex="0">
+                        <ComboBoxItem Content="Todos" />
                         <ComboBoxItem Content="En Curso" />
                         <ComboBoxItem Content="En Progreso" />
                         <ComboBoxItem Content="Finalizados" />

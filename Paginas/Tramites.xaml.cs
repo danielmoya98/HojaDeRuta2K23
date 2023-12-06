@@ -277,7 +277,14 @@ public partial class Tramites : Page
         LimpiarTodosLosCampos();
 
         txtCI.Text = string.Empty;
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 280;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
 
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Visible;
+        miBotonV1.Visibility = Visibility.Collapsed;
     }
     private int ObtenerFuncionarioIdPorCargo(int cargoId)
     {

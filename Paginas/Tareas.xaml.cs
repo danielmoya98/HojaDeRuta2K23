@@ -12,6 +12,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Media.Media3D;
+using System.Windows.Navigation;
 
 namespace HojadeRuta2K23.Paginas;
 
@@ -22,7 +24,10 @@ public partial class Tareas : Page
     byte[] fileBytes;
     private bool isDetailsVisible = false;
     private List<Tarea> tareas;
+    List<TareaSTRING> tareasSTRING = new List<TareaSTRING>();
     int Asignador = App.MiVariableGlobal;
+
+  
     public class Tarea
     {
         public int Id { get; set; }
@@ -35,6 +40,25 @@ public partial class Tareas : Page
         public DateTime FechaAsignacion { get; set; }
         public DateTime FechaLimite { get; set; }
         public DateTime? FechaFinalizacion { get; set; }
+        public int EstadoRegistro { get; set; }
+        public string CodigoTarea { get; set; }
+        public string NombreDestinatario { get; set; }
+    }
+
+    Tarea z;
+
+    public class TareaSTRING
+    {
+        public int Id { get; set; }
+        public int RemitenteId { get; set; }
+        public int DestinatarioId { get; set; }
+        public string EstadoTarea { get; set; }
+        public string Accion { get; set; }
+        public string Prioridad { get; set; }
+        public string Descripcion { get; set; }
+        public string FechaAsignacion { get; set; }
+        public string FechaLimite { get; set; }
+        public string? FechaFinalizacion { get; set; }
         public int EstadoRegistro { get; set; }
         public string CodigoTarea { get; set; }
         public string NombreDestinatario { get; set; }
@@ -78,9 +102,15 @@ public partial class Tareas : Page
         //ComboBoxVistas.Items.Add("Vista Cuadriculada");
         //ComboBoxVistas.Items.Add("Vista Lista");
         tareas = new List<Tarea>();
+        CargarDatosTareasDesdeBDSTRING();
         CargarDatosTareasDesdeBD();
 
         CargarDatosComboBox();
+
+        FiltrosAsignacion.SelectedIndex = 0;
+        Filtros.SelectedIndex = 0;
+        Destinatario.SelectedIndex = 0;
+        Prioridad.SelectedIndex = 0;
     }
 
     static string GenerarCodigoUnico()
@@ -156,7 +186,6 @@ public partial class Tareas : Page
     {
         var BaseDeDatos = Coneccion.Instance;
 
-        // Modifica la consulta SQL para incluir una condición WHERE que filtre por idCargo
         string query = "SELECT T.IdTarea, T.RemitenteId, T.DestinatarioId, T.CodigoTarea, T.EstadoTarea, T.Accion, T.Prioridad, T.Descripcion, " +
                        "T.FechaAsignacion, T.FechaLimite, T.FechaFinalizacion, T.EstadoRegistro " +
                        "FROM TAREAS T " +
@@ -192,6 +221,45 @@ public partial class Tareas : Page
                         };
 
                         tareas.Add(tarea);
+                    }
+                }
+            }
+        }
+    }
+
+    private void CargarDatosTareasDesdeBDSTRING()
+    {
+        var BaseDeDatos = Coneccion.Instance;
+
+        string query = "SELECT T.IdTarea, T.RemitenteId, T.DestinatarioId, T.CodigoTarea, T.EstadoTarea, T.Accion, T.Prioridad, T.Descripcion, T.FechaAsignacion, T.FechaLimite, T.FechaFinalizacion, T.EstadoRegistro  FROM TAREAS T  JOIN FUNCIONARIOS F ON T.RemitenteId = F.IdFuncionario JOIN FUNCIONARIO_CARGO FC ON F.IdFuncionario = FC.FuncionarioId";
+        using (SqlConnection connection = BaseDeDatos.GetConnection())
+        {
+            connection.Open();
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+
+                        TareaSTRING tarea = new TareaSTRING
+                        {
+                            Id = reader.GetInt32(0),
+                            RemitenteId = reader.GetInt32(1),
+                            DestinatarioId = reader.GetInt32(2),
+                            CodigoTarea = reader.GetString(3),
+                            EstadoTarea = reader.GetString(4),
+                            Accion = reader.GetString(5),
+                            Prioridad = reader.GetString(6),
+                            Descripcion = reader.GetString(7),
+                            FechaAsignacion = reader.GetDateTime(8).ToString().Substring(0,9),
+                            FechaLimite = reader.GetDateTime(9).ToString().Substring(0, 9),
+                            FechaFinalizacion = reader.IsDBNull(10) ? (string?)null : reader.GetDateTime(10).ToString().Substring(0,9),
+                            EstadoRegistro = reader.GetInt32(11)
+                        };
+
+                        tareasSTRING.Add(tarea);
                     }
                 }
             }
@@ -237,18 +305,22 @@ public partial class Tareas : Page
 
     private void CrearTarea_Click(object sender, RoutedEventArgs e)
     {
-        string fechaActual = DateTime.Today.ToString("dd/MM/yyyy");
+        DoubleAnimation animation = new DoubleAnimation();
+        animation.From = 165;
+        animation.To = 0;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        hola3.BeginAnimation(StackPanel.HeightProperty, animation);
+        miBotonV.Visibility = Visibility.Visible;
+        miBotonV1.Visibility = Visibility.Collapsed;
         DateTime? selectedDate = datepickerTarea.SelectedDate;
 
         if (selectedDate.HasValue && Destinatario.Text != "" && Prioridad.Text != "" && Descripcion.Text != "")
         {
-            DateTime date = selectedDate.Value;
-            string usuario = "";
+            DateTime date = selectedDate.Value.Date;
             string descripcion = Descripcion.Text;
-            DateTime fechaAsignacion = DateTime.Now;
-            string fecha_asignacion = fechaAsignacion.ToString("yyyy-MM-dd HH:mm:ss");
-            string fecha_conclusion = date.ToString("yyyy-MM-dd HH:mm:ss");
-            string estado = "Recepcionada";
+            DateTime fechaAsignacion = DateTime.Now.Date;
+            string fecha_asignacion = fechaAsignacion.ToString("yyyy-MM-dd");
+            string fecha_conclusion = date.ToString();
             string prioridad = Prioridad.Text;
 
             string codigo = GenerarCodigoUnico();
@@ -305,19 +377,42 @@ public partial class Tareas : Page
                             anexoCommand.ExecuteNonQuery();
                         }
                     }
+                    Tarea nuevaTarea = new Tarea
+                    {
+                        Id = tareaId,
+                        RemitenteId = Asignador,
+                        DestinatarioId = destinatarioId,
+                        CodigoTarea = codigo,
+                        EstadoTarea = "Recepcionada",
+                        Accion = "Falta hacer???",
+                        Prioridad = prioridad,
+                        Descripcion = descripcion,
+                        FechaAsignacion = fechaAsignacion,
+                        FechaLimite = date,
+                        FechaFinalizacion = null,  // O ajusta según sea necesario
+                        EstadoRegistro = 1  // O ajusta según sea necesario
+                    };
+
+                    // Agregar la nueva tarea a la lista existente
+                    tareas.Add(nuevaTarea);
+                    membersDataGrid.ItemsSource = tareas;
+
                 }
             }
 
             Descripcion.Text = string.Empty;
-            Prioridad.Text = string.Empty;
+            Prioridad.SelectedIndex = 0;
             datepickerTarea.SelectedDate = null;
-            Destinatario.SelectedIndex = -1;
-            System.Windows.MessageBox.Show("Tarea insertada");
+            Destinatario.SelectedIndex = 0;
+
         }
         else
         {
             System.Windows.MessageBox.Show("Falta llenar datos");
         }
+
+
+
     }
 
     private void propiedades_Click(object sender, RoutedEventArgs e)
@@ -337,26 +432,36 @@ public partial class Tareas : Page
             {
                 // Buscar la tarea correspondiente en la lista de tareas por el ID
                 Tarea tareaSeleccionada = tareas.FirstOrDefault(t => t.Id == taskId);
+                z = tareaSeleccionada;
+            
                 TareaID_ParaOperaciones = tareaSeleccionada.Id;
                 if (tareaSeleccionada != null)
                 {
                     if (tareaSeleccionada.DestinatarioId == cargo)
                     {
                         jajaja.IsEnabled = false;
+                        RechazarT.IsEnabled = true;
                     }
                     else
                     {
                         jajaja.IsEnabled = true;
+                        RechazarT.IsEnabled = false;
                     }
                     CodigoTarea.Content = tareaSeleccionada.CodigoTarea;
                     NombreDestinatario.Content = tareaSeleccionada.DestinatarioId;
                     PrioridadLBL.Content = tareaSeleccionada.Prioridad;
 
-                    FechaAsignacion.Content = tareaSeleccionada.FechaAsignacion.ToString();
-                    FechaLimite.Content = tareaSeleccionada.FechaLimite.ToString();
+                    string sub = tareaSeleccionada.FechaAsignacion.ToString().Substring(0, 9);
+                    FechaAsignacion.Content = sub;
+
+                    string sub2 = tareaSeleccionada.FechaLimite.ToString().Substring(0, 9);
+                    FechaLimite.Content = sub2;
+
+
                     if (tareaSeleccionada.FechaFinalizacion != null)
                     {
-                        FechaFinalizacion.Content = tareaSeleccionada.FechaFinalizacion.ToString();
+                        string sub3 = tareaSeleccionada.FechaFinalizacion.ToString().Substring(0, 9);
+                        FechaFinalizacion.Content = sub3;
                     }
                     else
                     {
@@ -404,12 +509,12 @@ public partial class Tareas : Page
 
             if (filtroSeleccionado == "Todos" && filtroSeleccionado2 == "Asignados por mi")
             {
-                List<Tarea> tareasAsignadasPorMi = tareas.Where(t => t.RemitenteId == Asignador).ToList();
+                List<TareaSTRING> tareasAsignadasPorMi = tareasSTRING.Where(t => t.RemitenteId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasAsignadasPorMi; // Muestra todas las tareas asignadas por el usuario actual
             }
             if (filtroSeleccionado == "Todos" && filtroSeleccionado2 == "Asignados hacia mi")
             {
-                List<Tarea> tareasAsignadasHaciaMi = tareas.Where(t => t.DestinatarioId == Asignador).ToList();
+                List<TareaSTRING> tareasAsignadasHaciaMi = tareasSTRING.Where(t => t.DestinatarioId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasAsignadasHaciaMi; // Muestra todas las tareas asignadas hacia el usuario actual
             }
 
@@ -417,24 +522,35 @@ public partial class Tareas : Page
 
             if (filtroSeleccionado == "Finalizado" && filtroSeleccionado2 == "Asignados por mi")
             {
-                List<Tarea> tareasFinalizadasPorMi = tareas.Where(t => t.EstadoTarea == "Finalizado" && t.RemitenteId == Asignador).ToList();
+                List<TareaSTRING> tareasFinalizadasPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizado" && t.RemitenteId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasFinalizadasPorMi;
             }
             if (filtroSeleccionado == "Finalizado" && filtroSeleccionado2 == "Asignados hacia mi")
             {
-                List<Tarea> tareasFinalizadasHaciaMi = tareas.Where(t => t.EstadoTarea == "Finalizado" && t.DestinatarioId == Asignador).ToList();
+                List<TareaSTRING> tareasFinalizadasHaciaMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizado" && t.DestinatarioId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasFinalizadasHaciaMi;
+            }
+
+            if (filtroSeleccionado == "Rechazado" && filtroSeleccionado2 == "Asignados por mi")
+            {
+                List<TareaSTRING> tareasRechazadasPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Rechazado" && t.RemitenteId == Asignador).ToList();
+                membersDataGrid.ItemsSource = tareasRechazadasPorMi;
+            }
+            if (filtroSeleccionado == "Rechazado" && filtroSeleccionado2 == "Asignados hacia mi")
+            {
+                List<TareaSTRING> tareasRechazadasHaciaMi = tareasSTRING.Where(t => t.EstadoTarea == "Rechazado" && t.DestinatarioId == Asignador).ToList();
+                membersDataGrid.ItemsSource = tareasRechazadasHaciaMi;
             }
 
 
             if (filtroSeleccionado == "En Curso" && filtroSeleccionado2 == "Asignados por mi")
             {
-                List<Tarea> tareasEnCursoPorMi = tareas.Where(t => t.EstadoTarea == "Recepcionada" && t.RemitenteId == Asignador).ToList();
+                List<TareaSTRING> tareasEnCursoPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Recepcionada" && t.RemitenteId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasEnCursoPorMi; // Muestra las tareas en curso asignadas por el usuario actual
             }
             if (filtroSeleccionado == "En Curso" && filtroSeleccionado2 == "Asignados hacia mi")
             {
-                List<Tarea> tareasEnCursoHaciaMi = tareas
+                List<TareaSTRING> tareasEnCursoHaciaMi = tareasSTRING
                     .Where(t => t.EstadoTarea == "Recepcionada" && t.DestinatarioId == cargo)
                     .ToList();
 
@@ -448,11 +564,6 @@ public partial class Tareas : Page
                     // Agrega más propiedades según la estructura de tu clase Tarea
                 }
             }
-
-
-
-
-
         }
     }
 
@@ -480,14 +591,18 @@ public partial class Tareas : Page
     //COSITAS DEL DANIEL
     private void rechazar_OnClick(object sender, RoutedEventArgs e)
     {
-        RechazarTarea rechazar = new RechazarTarea();
+        RechazarTarea rechazar = new RechazarTarea(z);
         rechazar.ShowDialog();
+        NavigationService navigationService = NavigationService.GetNavigationService(this);
+        navigationService.Navigate(new Tareas());
     }
 
     private void Modificar_OnClick(object sender, RoutedEventArgs e)
     {
-        EditarTarea edit = new EditarTarea();
+        EditarTarea edit = new EditarTarea(z);
         edit.ShowDialog();
+        NavigationService navigationService = NavigationService.GetNavigationService(this);
+        navigationService.Navigate(new Tareas());
     }
 
     private void ocultar_OnClick(object sender, RoutedEventArgs e)
@@ -503,8 +618,8 @@ public partial class Tareas : Page
     {
         DoubleAnimation animation = new DoubleAnimation();
         animation.From = 0;
-        animation.To = 250;
-        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        animation.To = 165;
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.3));
         hola3.BeginAnimation(StackPanel.HeightProperty, animation);
         miBotonV.Visibility = Visibility.Collapsed;
         miBotonV1.Visibility = Visibility.Visible;
@@ -513,9 +628,9 @@ public partial class Tareas : Page
     private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
-        animation.From = 250;
+        animation.From = 165;
         animation.To = 0;
-        animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
+        animation.Duration = new Duration(TimeSpan.FromSeconds(0.3));
         hola3.BeginAnimation(StackPanel.HeightProperty, animation);
         miBotonV.Visibility = Visibility.Visible;
         miBotonV1.Visibility = Visibility.Collapsed;

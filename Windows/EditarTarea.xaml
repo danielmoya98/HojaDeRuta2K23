@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:HojadeRuta2K23.Windows"
         mc:Ignorable="d"
-        Title="EditarTarea" Height="350" Width="300"
+        Title="EditarTarea" Height="450" Width="300"
+        BorderBrush="Black"
         AllowsTransparency="True"  WindowStyle="None" Background="Transparent" WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -26,35 +27,41 @@
             
             
             <StackPanel Grid.Row="1" HorizontalAlignment="Left" Orientation="Vertical">
-                <Label Foreground="DarkRed" Margin="90 30 0 0" FontSize="15" FontWeight="SemiBold"  >Modificar Tarea</Label>
+                <Label Foreground="DarkRed" Margin="90 20 0 0" FontSize="15" FontWeight="SemiBold"  >Modificar Tarea</Label>
               </StackPanel>
             
             <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 0 0 0 ">
                 <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva fecha limite:</Label>
-                <DatePicker  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </DatePicker>
-                <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva Prioridad:</Label>
-                <ComboBox  BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </ComboBox>
-                <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Documentos Adjuntos:</Label>
-                <Button Margin="30 0 0  0" Height="30" Width="225" BorderBrush="Transparent"
+                <DatePicker  x:Name="datepickerTarea" Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 -5 0 0 " Width="225" > </DatePicker>
+                <Label Foreground="DarkRed" Margin="30 20 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva Prioridad:</Label>
+                <ComboBox  x:Name="Prioridad" BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 -5 0 0 " Width="225" >
+                    <ComboBoxItem>Alta</ComboBoxItem>
+                    <ComboBoxItem>Media</ComboBoxItem>
+                    <ComboBoxItem>Baja</ComboBoxItem>
+                </ComboBox>
+                <Label Foreground="DarkRed" Margin="30 20 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva Destinatario:</Label>
+                <ComboBox x:Name="Destinatario" BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 -5 0 0 " Width="225" ></ComboBox>
+                <Label Foreground="DarkRed" Margin="30 20 0 0" FontSize="10" FontWeight="SemiBold"  >Documentos Adjuntos:</Label>
+                <Button Margin="30 5 0  0" Height="30" Width="225" BorderBrush="Transparent"  Click="AddDocumento_Click"
                         Style="{StaticResource gridEditButton}" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  FontWeight="SemiBold"> Adjuntar </TextBlock>
                     </StackPanel>
                 </Button>
-                <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva descripcion:</Label>
-                <TextBox Style="{StaticResource TextBoxWithRoundedCorners}"  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" Height="50" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" > </TextBox>
+                <Label Foreground="DarkRed" Margin="30 10 0 0" FontSize="10" FontWeight="SemiBold"  >Nueva descripcion:</Label>
+                <TextBox x:Name="Descripcion" Style="{StaticResource TextBoxWithRoundedCorners}"  Padding="5"  BorderBrush="DarkRed" Foreground="DimGray" Height="50" FontWeight="Thin" Background="Transparent" Margin="35 4 0 0 " Width="225" > </TextBox>
 
                 
             </StackPanel>
             
-            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
+            <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 0 0 0">
                 <Button Margin="0 0 0 0 " Height="30" Width="100" BorderBrush="Transparent"
                         Style="{StaticResource gridEditButton}" Click="ButtonBase_OnClick" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  FontWeight="SemiBold"> Cancelar </TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Margin="0 0 0 0 " Height="30" Width="100" BorderBrush="Transparent"
+                <Button Margin="0 0 0 0 " Height="30" Width="100" BorderBrush="Transparent" Click="ModificarTarea_Click"
                         Style="{StaticResource gridEditButton}" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  FontWeight="SemiBold"> Modificar </TextBlock>

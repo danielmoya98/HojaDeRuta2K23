@@ -30,7 +30,7 @@ public partial class Tramites : Page
     byte[] fileBytes = new byte[] { 0x00 };
     private bool isDetailsVisible = false;
     string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion,prioridad, tipoTramiteString;
-    int tipoTramite;
+    int tipoTramite, idUbicacion;
 
     FirebaseConfig config = new FirebaseConfig
     {
@@ -184,7 +184,7 @@ public partial class Tramites : Page
 
 
     private async void cod_OnClick(object sender, RoutedEventArgs e)
-    { 
+    {
         ci = txtCI.Text;
         nombre = txtNombre.Text;
         appPaterno = txtApellidoP.Text;
@@ -197,6 +197,9 @@ public partial class Tramites : Page
         diccion = txtDireccion.Text;
         descripcion = txtDescripcionTramite.Text;
         prioridad = txtPriodidad.Text;
+        idUbicacion = txtUbicacion.SelectedIndex;
+
+        MessageBox.Show("" + idUbicacion);
 
         int clienteId = ObtenerClienteIdPorCI(ci);
 
@@ -208,7 +211,7 @@ public partial class Tramites : Page
         {
             if (clienteId != -1)
             {
-                int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, clienteId, descripcion);
+                int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, clienteId, descripcion, idUbicacion);
 
                 if (nuevoTramiteId != -1)
                 {
@@ -243,7 +246,8 @@ public partial class Tramites : Page
 
                 if (nuevoClienteId != -1)
                 {
-                    int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, nuevoClienteId, descripcion);
+                    int nuevoTramiteId = InsertarNuevoTramite(tipoTramite, nuevoClienteId, descripcion, idUbicacion);
+                    InsertarUsuarioFireSharp(nuevoClienteId, nombre, appPaterno, appMaterno, int.Parse(ci), int.Parse(celular), correo, diccion);
 
                     if (nuevoTramiteId != -1)
                     {
@@ -383,9 +387,15 @@ public partial class Tramites : Page
 
         }
     }
-    private int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion)
+    private int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion, int? ubicacionId)
     {
         string codigo = GenerarCodigoUnico();
+
+        if(ubicacionId == null)
+        {
+            ubicacionId = 0;
+        }
+
         DateTime fechaIni = DateTime.Now;
         try
         {
@@ -393,8 +403,8 @@ public partial class Tramites : Page
             {
                 connection.Open();
 
-                string query = "INSERT INTO TRAMITES (TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, Descripcion, FechaInicio, FechaFinalizacion, EstadoRegistro)" +
-                               "VALUES (@TipoTramiteId, @ClienteId, @CodigoTramite, 'En Proceso', @Descripcion, GETDATE(),NULL ,1);" +
+                string query = "INSERT INTO TRAMITES (TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, Descripcion, Ubicacion, FechaInicio, FechaFinalizacion, EstadoRegistro)" +
+                               "VALUES (@TipoTramiteId, @ClienteId, @CodigoTramite, 'En Proceso', @Descripcion, @Ubicacion ,GETDATE(),NULL ,1);" +
                 "SELECT SCOPE_IDENTITY();";
 
                 using (var command = new SqlCommand(query, connection))
@@ -403,10 +413,11 @@ public partial class Tramites : Page
                     command.Parameters.AddWithValue("@ClienteId", clienteId);
                     command.Parameters.AddWithValue("@Descripcion", descripcion);
                     command.Parameters.AddWithValue("@CodigoTramite", codigo);
+                    command.Parameters.AddWithValue("@Ubicacion", ubicacionId);
 
                     int tramiteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
 
-                    InsertarFireSharp(clienteId, codigo, tipoTramiteId, "En Proceso", descripcion, 1, fechaIni,null, tramiteId);
+                    InsertarFireSharp(clienteId, codigo, tipoTramiteId, "En Proceso", descripcion, ubicacionId, 1, fechaIni,null, tramiteId);
                     return tramiteId;
                 }
             }
@@ -418,7 +429,23 @@ public partial class Tramites : Page
             return -1;
         }
     }
-    private async Task InsertarFireSharp(int clienteId,string codigo, int tipoTramiteId, string estadoTramite, string descripcion, int estadoRegistro, DateTime fechaIni, DateTime? fechaFin, int tramiteId)
+    private async Task InsertarUsuarioFireSharp(int nuevoClienteId, string nombres, string apellidoPaterno, string apellidoMaterno, int ci, int celular, string correo, string direccion)
+    {
+        string userName = apellidoPaterno.Substring(0, 1) + apellidoMaterno.Substring(0, 1) + nombres.Substring(0, 1) + Convert.ToString(ci).Substring(0, 3);
+        var tramiteData = new
+        {
+            Id = Convert.ToString(nuevoClienteId),
+            Name = nombres,
+            Lastname = apellidoPaterno + " " + apellidoMaterno,
+            Username = userName,
+            Password = "123abc",
+            celular = celular.ToString(),
+            EstadoRegistro = 1,
+        };
+
+        await client.SetAsync("usuarios/" + userName, tramiteData);
+    }
+    private async Task InsertarFireSharp(int clienteId,string codigo, int tipoTramiteId, string estadoTramite, string descripcion,int? idUbicacion ,int estadoRegistro, DateTime fechaIni, DateTime? fechaFin, int tramiteId)
     {
         var tramiteData = new
         {
@@ -428,6 +455,7 @@ public partial class Tramites : Page
             Descripcion = descripcion,
             EstadoRegistro = estadoRegistro,
             EstadoTramite = estadoTramite,
+            UbicacionId = idUbicacion,
             FechaInicio = fechaIni,
             FechaFinalizacion = fechaFin
         };

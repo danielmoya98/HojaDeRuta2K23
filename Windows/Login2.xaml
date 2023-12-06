@@ -13,96 +13,99 @@
         WindowStyle="None"
         Background="{x:Null}"
         AllowsTransparency="True">
-    
-        <Border CornerRadius="25">
-                <Border.Background>
-                Black
-                        <!--
+
+    <Border  CornerRadius="25">
+        <Border.Background>
+            Black
+            <!--
                         <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Diseño sin título(1).png"></ImageBrush>
                 -->
-                </Border.Background>
-                <Grid >
-                        <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="400"></ColumnDefinition>
-                                <ColumnDefinition Width="400"></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        
-                        <Grid.RowDefinitions>
-                                <RowDefinition Height="150"></RowDefinition>
-                                <RowDefinition Height="150"></RowDefinition>
-                                <RowDefinition Height="*"></RowDefinition>
-                        </Grid.RowDefinitions>
-                        
-                        
-                        <StackPanel Grid.Row="0"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Vertical">
-                                <TextBlock FontWeight="SemiBold" FontSize="30" HorizontalAlignment="Center">Hola!</TextBlock>
-                                <TextBlock  FontSize="15">Ingresa con tu cuenta!</TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
-                                <TextBlock  Visibility=" Collapsed" TextAlignment="Center" Name="Info" TextWrapping="Wrap" Foreground="Black"  FontSize="15" Width="300"   >Se le enviara un contraseña temporal a su correo electronico.</TextBlock>
-                                <Border Name="Border" Visibility="Collapsed"  Width="300" Height="50" CornerRadius="15"  Margin="15"  BorderThickness="2" BorderBrush="#ffffff" >
-                                        <Border.Effect>
-                                                <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
-                                        </Border.Effect>
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                                <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Email"/>
-                                                <TextBox FontSize="15" Foreground="DimGray" Width="245" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="Ingrese su correo electronico"  BorderBrush="#ba0661" BorderThickness="0" >
-                                                </TextBox>
-                                        </StackPanel>
-                                        
-                                        
-                                </Border>
-                                <Border Name="Border1"  Width="300" Height="50" CornerRadius="15"  Margin="15"  BorderThickness="2" BorderBrush="#ffffff" >
-                                        <Border.Effect>
-                                                <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
-                                        </Border.Effect>
-                                                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                                        <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Email"/>
-                                                        <TextBox FontSize="15" Foreground="DimGray" Width="245" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="E-Mail"  BorderBrush="#ba0661" BorderThickness="0" >
-                                                        </TextBox>
-                                                </StackPanel>
-                                        
-                                        
-                                </Border>
-                                <Border Name="Border2" Width="300" Height="50" CornerRadius="15"  Margin="0" BorderThickness="2" BorderBrush="#ffffff" >
-                                        <Border.Effect>
-                                                <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
-                                        </Border.Effect>
-                                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
-                                                <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Key"/>
-                                                <TextBox FontSize="15" Foreground="DimGray" Width="245" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="Contraseña"  BorderBrush="#ba0661" BorderThickness="0" >
-                                                </TextBox>
-                                        </StackPanel>
-                                </Border>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
-                                <Label Name="olvidar" FontWeight="Thin" HorizontalAlignment="Center"  Margin="0 -15 0 10 " >
-                                        <Hyperlink Click="Hyperlink_OnClick" >
-                                                <Run Foreground="Black" >Olvidaste tu contraseña?</Run> 
-                                        </Hyperlink>
-                                </Label>
-                                <Label Name="tengor" Visibility="Collapsed" FontWeight="Thin" HorizontalAlignment="Center"  Margin="0 -15 0 10 " >
-                                        <Hyperlink Click="Hyperlink2_OnClick">
-                                                <Run Foreground="Black" >Ya tengo mi cuenta</Run> 
-                                        </Hyperlink>
-                                </Label>
-                                <Button Name="ingresar" Width="200" Height="45" materialDesign:ButtonAssist.CornerRadius="20" Background="#b8045f" >Ingresar</Button>
-                                <Button Name="enviar" Visibility="Collapsed" Width="200" Height="45" materialDesign:ButtonAssist.CornerRadius="20" Background="#b8045f" >Enviar Codigo</Button>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 10 0 0 ">
-                                <TextBlock FontWeight="SemiBold" FontSize="30" HorizontalAlignment="Center">Hermes.</TextBlock>
-                                <TextBlock TextWrapping="Wrap" TextAlignment="Center"  FontSize="15">Optimiza tu gestión y logra tus metas con eficiencia. Simplifica tu proceso de trabajo y alcanza tus objetivos de manera más rápida y efectiva.</TextBlock>
-                        </StackPanel>
-                        
-                        <StackPanel Grid.Column="1" Grid.Row="0" >
-                                <Button BorderBrush="Transparent"  Click="ButtonBase_OnClick" Background="#ba035f" Height="25" Width="25"  Margin="295 20 0 0" FontSize="25" Padding="0  -8 0 0 " > x </Button>
-                        </StackPanel>
-                        
-                        
-                </Grid>
-                
-        </Border>
+        </Border.Background>
+        <Grid >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="150"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <StackPanel Grid.Row="0"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock FontWeight="SemiBold" FontSize="30" HorizontalAlignment="Center">Hola!</TextBlock>
+                <TextBlock  FontSize="15">Ingresa con tu cuenta!</TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" Orientation="Vertical">
+                <TextBlock  Visibility=" Collapsed" TextAlignment="Center" Name="Info" TextWrapping="Wrap" Foreground="Black"  FontSize="15" Width="300"   >Se le enviara un contraseña temporal a su correo electronico.</TextBlock>
+                <Border Name="Border" Visibility="Collapsed"  Width="300" Height="50" CornerRadius="15"  Margin="15"  BorderThickness="2" BorderBrush="#ffffff" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Email"/>
+                        <TextBox FontSize="15" Foreground="DimGray" Width="245" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="Ingrese su correo electronico"  BorderBrush="#ba0661" BorderThickness="0" >
+                        </TextBox>
+                    </StackPanel>
+
+
+                </Border>
+                <Border Name="Border1"  Width="300" Height="50" CornerRadius="15"  Margin="15"  BorderThickness="2" BorderBrush="#ffffff" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Email"/>
+                        <TextBox x:Name="txtEmailUsuario" FontSize="15" Foreground="DimGray" Width="245" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="E-Mail"  BorderBrush="#ba0661" BorderThickness="0" >
+                        </TextBox>
+                    </StackPanel>
+
+
+                </Border>
+                <Border Name="Border2" Width="300" Height="50" CornerRadius="15"  Margin="0" BorderThickness="2" BorderBrush="#ffffff" >
+                    <Border.Effect>
+                        <DropShadowEffect Color="Black" Direction="315" ShadowDepth="3" BlurRadius="5" Opacity="0.5" />
+                    </Border.Effect>
+                    <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+                        <Icon:PackIconMaterial Margin="10 0 0 0" HorizontalAlignment="Center" Foreground="#ba0661" Height="30" Width="20" Kind="Key"/>
+                        <PasswordBox x:Name="PassContra" Visibility="Visible" FontSize="15" Foreground="DimGray" Width="240" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="Contraseña"  BorderBrush="#ba0661" BorderThickness="0"/>
+                        <TextBox x:Name="PassContra1" Visibility="Collapsed" FontSize="15" Foreground="DimGray" Width="240" Margin=" 8 0 0 0 " materialDesign:HintAssist.Hint="Contraseña"  BorderBrush="#ba0661" BorderThickness="0" >
+                        </TextBox>
+                        <CheckBox x:Name="chkMostrarContrasena" Height="20" Width="20" Margin="0 0 0 0"  />
+
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Vertical">
+                <Label Name="olvidar" FontWeight="Thin" HorizontalAlignment="Center"  Margin="0 -15 0 10 " >
+                    <Hyperlink Click="Hyperlink_OnClick" >
+                        <Run Foreground="Black" >Olvidaste tu contraseña?</Run>
+                    </Hyperlink>
+                </Label>
+                <Label Name="tengor" Visibility="Collapsed" FontWeight="Thin" HorizontalAlignment="Center"  Margin="0 -15 0 10 " >
+                    <Hyperlink Click="Hyperlink2_OnClick">
+                        <Run Foreground="Black" >Ya tengo mi cuenta</Run>
+                    </Hyperlink>
+                </Label>
+                <Button Name="ingresar" Width="200" Height="45" materialDesign:ButtonAssist.CornerRadius="20" Background="#b8045f"  >Ingresar</Button>
+                <Button Name="enviar" Visibility="Collapsed" Width="200" Height="45" materialDesign:ButtonAssist.CornerRadius="20" Background="#b8045f" >Enviar Codigo</Button>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="1"  VerticalAlignment="Top" HorizontalAlignment="Center" Orientation="Vertical" Margin="0 10 0 0 ">
+                <TextBlock FontWeight="SemiBold" FontSize="30" HorizontalAlignment="Center">Hermes.</TextBlock>
+                <TextBlock TextWrapping="Wrap" TextAlignment="Center"  FontSize="15">Optimiza tu gestión y logra tus metas con eficiencia. Simplifica tu proceso de trabajo y alcanza tus objetivos de manera más rápida y efectiva.</TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Grid.Row="0" >
+                <Button BorderBrush="Transparent"  Click="ButtonBase_OnClick" Background="#ba035f" Height="25" Width="25"  Margin="295 20 0 0" FontSize="25" Padding="0  -8 0 0 " >x</Button>
+            </StackPanel>
+
+
+        </Grid>
+
+    </Border>
 </Window>

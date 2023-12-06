@@ -48,4 +48,13 @@ public partial class Dashboard : Page
             NavigationService.Navigate(new Perfil());
         }
     }
+
+    private void CardTwo_OnClick(object sender, RoutedEventArgs e)
+    {
+        
+        if (NavigationService != null)
+        {
+            NavigationService.Navigate(new qr());
+        }
+    }
 }

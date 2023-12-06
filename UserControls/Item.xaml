@@ -43,7 +43,7 @@
             </Grid.ColumnDefinitions>
 
             <Border Background="White"
-                    CornerRadius="50"
+                    CornerRadius="10"
                     Width="43"
                     Height="43"
                     Margin="20 0 0 0">

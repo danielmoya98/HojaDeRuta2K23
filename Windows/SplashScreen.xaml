@@ -33,20 +33,22 @@
                 <ColumnDefinition Width="400"></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <MediaElement Name="video"  LoadedBehavior="Play" Height="450" Width="800" Grid.Column="0" Grid.ColumnSpan="2" />
+            <!--
+            <MediaElement Name="video"  Source="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\vecteezy_color-gradient-moving-background-on-screen_7704056_298.mp4"  LoadedBehavior="Play" Height="450" Width="800" Grid.Column="0" Grid.ColumnSpan="2" />
+            -->
 
             <StackPanel Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50 50 0 0" Orientation="Vertical">
                 <TextBlock Name="TEXTO1" FontWeight="Bold" FontSize="26" Foreground="White">HERMES.</TextBlock>
                 <TextBlock Name="TEXTO2" FontWeight="Bold" FontSize="15" Foreground="White">2023.0</TextBlock>
             </StackPanel>
 
-            <!--<StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <Rectangle Height="90" Width="90" Margin="0 30 50 70">
                     <Rectangle.Fill>
                         <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Group 6.png"></ImageBrush>
                     </Rectangle.Fill>
                 </Rectangle>
-            </StackPanel>-->
+            </StackPanel>
         </Grid>
     </Border>
 

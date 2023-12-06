@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -21,14 +22,43 @@ namespace HojadeRuta2K23
     /// </summary>
     public partial class MainWindow : Window
     {
-       private int clickCount2 = 0;
-        
+        private int clickCount2 = 0;
+
         private string foto = "C:\\Users\\Alienware\\RiderProjects\\SIVVALLE\\Images\\delivery-man.png";
 
         public MainWindow()
         {
             InitializeComponent();
             frame.NavigationService.Navigate(new Dashboard());
+            noticaciones.Click += noticaciones_Click;
+        }
+
+        private CustomPopupPlacement[] CustomPopupPlacementMethod(Size popupSize, Size targetSize, Point offset)
+        {
+            double left = (targetSize.Width - popupSize.Width) / 2;
+            double top = targetSize.Height;
+
+            CustomPopupPlacement placement = new CustomPopupPlacement(new Point(left, top), PopupPrimaryAxis.Vertical);
+
+            return new CustomPopupPlacement[] { placement };
+        }
+
+        private void noticaciones_Click(object sender, RoutedEventArgs e)
+        {
+            if (!NotificacionesPopup.IsOpen)
+            {
+                // Calcular la posición del Popup en relación con el botón de notificaciones
+                CustomPopupPlacementCallback placementCallback =
+                    new CustomPopupPlacementCallback(CustomPopupPlacementMethod);
+                NotificacionesPopup.CustomPopupPlacementCallback = placementCallback;
+
+                NotificacionesPopup.PlacementTarget = noticaciones;
+                NotificacionesPopup.IsOpen = true;
+            }
+            else
+            {
+                NotificacionesPopup.IsOpen = false; // Cerrar el Popup si ya está abierto
+            }
         }
 
 
@@ -145,10 +175,9 @@ namespace HojadeRuta2K23
                 Main_uno.Background = new SolidColorBrush(color3);
 
                 InventarioButton.Click += InventarioDark_OnClick;
-              
+
                 CategoriasButton.Click += CategoriasDark_OnClick;
                 ClientesButton.Click += ClientesDark_OnClick;
-             
             }
             else
             {
@@ -159,12 +188,11 @@ namespace HojadeRuta2K23
                 Color color3 = (Color)ColorConverter.ConvertFromString(mainColor);
 
                 Main_uno.Background = new SolidColorBrush(color3);
-                
+
                 InventarioButton.Click += Inventario_OnClick;
-                
+
                 CategoriasButton.Click += ButtonBase7_OnClick;
                 ClientesButton.Click += ButtonBase8_OnClick;
-             
             }
 
             clickCount2++;
@@ -218,8 +246,7 @@ namespace HojadeRuta2K23
         private void ComprasDark_OnClick(object sender, RoutedEventArgs e)
         {
         }
-        
-       
+
 
         // Lma a esta función cuando desees navegar a la nueva página con la animación de deslizamient
         private void PerfilClikck(object sender, RoutedEventArgs e)
@@ -229,7 +256,7 @@ namespace HojadeRuta2K23
 
         private void SalirClick(object sender, RoutedEventArgs e)
         {
-           Close();
+            Close();
         }
 
         private void ADministracionUsuariosClick(object sender, RoutedEventArgs e)
@@ -259,7 +286,6 @@ namespace HojadeRuta2K23
 
         private void Buscar_OnClick(object sender, RoutedEventArgs e)
         {
-
             frame.NavigationService.Navigate(new Buscador());
         }
     }

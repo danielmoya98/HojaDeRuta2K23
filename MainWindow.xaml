@@ -12,6 +12,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
+        xmlns:userControls="clr-namespace:HojadeRuta2K23.UserControls"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
@@ -30,7 +31,7 @@
     </Window.Resources>
 
     <Border Name="Main_uno" CornerRadius="25" Padding="15" Background="#F7F6F4">
-   
+
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -44,7 +45,7 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    
+
                     <Grid Grid.Column="0">
                         <Border
                             Margin="15 0 0 0"
@@ -78,7 +79,6 @@
                             </Border.Triggers>
                         </Border>
 
-
                         <Label Content="UNIVALLE"
                                Foreground="{DynamicResource PrimaryTextColor}"
                                FontWeight="Bold"
@@ -86,14 +86,13 @@
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Margin="60 0 0 0"
-                               MouseDoubleClick="Univalle_OnMouseDoubleClick"/>
-
+                               MouseDoubleClick="Univalle_OnMouseDoubleClick" />
 
                         <!-- Start: MenuItem -->
                         <StackPanel Orientation="Horizontal" Margin=" 210 0 0 0" HorizontalAlignment="Left">
 
-
-                            <Button Name="ClientesButton" Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center"
+                            <Button Name="ClientesButton" Style="{DynamicResource PopupButtonStyle}"
+                                    HorizontalContentAlignment="Center"
                                     Padding="10"
                                     HorizontalAlignment="Center" Click="Tramites_OnClick">
                                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -104,7 +103,8 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="CategoriasButton" Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center" Margin="5 0 0 0"
+                            <Button Name="CategoriasButton" Style="{DynamicResource PopupButtonStyle}"
+                                    HorizontalContentAlignment="Center" Margin="5 0 0 0"
                                     Padding="10"
                                     HorizontalAlignment="Left" Click="Tareas_OnClick">
                                 <StackPanel Orientation="Horizontal">
@@ -113,17 +113,18 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Name="InventarioButton" Style="{DynamicResource PopupButtonStyle}"
+                            <Button Visibility="Collapsed" Name="InventarioButton"
+                                    Style="{DynamicResource PopupButtonStyle}"
                                     Padding=" 22 0 0 0"
                                     HorizontalAlignment="Left" Click="Inventario_OnClick">
-                                
+
                                 <!--<StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Message"
                                                            Style="{StaticResource menuButtonIcon}" />
                                     <TextBlock Text="Mensajes" Style="{StaticResource menuButtonText}" />
                                 </StackPanel>-->
                             </Button>
-                      
+
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin=" 0 0 25 0" HorizontalAlignment="Right">
@@ -132,7 +133,8 @@
                             <Icon:PackIconMaterial Kind="SelectSearch" Foreground="White" VerticalAlignment="Center" Height="18" Width="18"/>
                             <TextBox BorderBrush="White" Width="100" Margin="15" Background="Transparent" Foreground="White" BorderThickness="0 0 0 2"></TextBox>
                         </StackPanel>-->
-                            <Button  Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center" Margin="5 0 50 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" HorizontalContentAlignment="Center"
+                                    Margin="5 0 50 0"
                                     Padding="10"
                                     HorizontalAlignment="Left" Click="Buscar_OnClick">
                                 <StackPanel Orientation="Horizontal">
@@ -140,8 +142,9 @@
                                     <TextBlock Text="Buscador" Style="{StaticResource menuButtonText}" />
                                 </StackPanel>
                             </Button>
-                            
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
+
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10"
+                                    HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ADministracionUsuariosClick">
                                 <StackPanel Orientation="Horizontal">
                                     <!--
@@ -152,7 +155,8 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10"
+                                    HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="PerfilClikck">
                                 <StackPanel Orientation="Horizontal">
                                     <!--
@@ -162,15 +166,43 @@
                                 </StackPanel>
                             </Button>
 
-
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
-                                    HorizontalAlignment="Left" Click="Notificaciones_OnClick">
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10"
+                                    HorizontalContentAlignment="Center" Margin="5 0 5 0"
+                                    Name="noticaciones" HorizontalAlignment="Left">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="Bell" Style="{StaticResource menuButtonIcon}" />
                                 </StackPanel>
                             </Button>
-                            
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center" Margin="5 0 5 0"
+
+                            <Popup Name="NotificacionesPopup" Placement="Custom" StaysOpen="False" IsOpen="False"
+                                   AllowsTransparency="True">
+                                <Border Background="White" Margin="0 10 0 0" Height="300" Width="250">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="40"> </RowDefinition>
+                                            <RowDefinition Height="*"> </RowDefinition>
+                                        </Grid.RowDefinitions>
+
+                                        <Border Background="Black">
+                                            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center"
+                                                        Orientation="Horizontal">
+                                                <Label Margin="3 -2 0 0" Foreground="White" FontSize="12"
+                                                       FontWeight="SemiBold" VerticalAlignment="Center">
+                                                    Notificaciones
+                                                </Label>
+                                                <Separator Height="20" Foreground="White" BorderThickness="4"
+                                                           BorderBrush="White" Width="160">
+                                                </Separator>
+                                            </StackPanel>
+                                        </Border>
+
+                                        <WrapPanel Grid.Row="1" Background="White" Orientation="Vertical"></WrapPanel>
+                                    </Grid>
+                                </Border>
+                            </Popup>
+
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10"
+                                    HorizontalContentAlignment="Center" Margin="5 0 5 0"
                                     HorizontalAlignment="Left" Click="ButtonBase7_OnClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="ThemeLightDark"
@@ -178,7 +210,8 @@
                                 </StackPanel>
                             </Button>
 
-                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10" HorizontalContentAlignment="Center"
+                            <Button Style="{DynamicResource PopupButtonStyle}" Padding=" 10"
+                                    HorizontalContentAlignment="Center"
                                     HorizontalAlignment="Left" Click="SalirClick">
                                 <StackPanel Orientation="Horizontal">
                                     <Icon:PackIconMaterial Kind="LogoutVariant"

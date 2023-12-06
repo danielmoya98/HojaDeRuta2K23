@@ -19,6 +19,7 @@ namespace HojadeRuta2K23.Paginas;
 
 public partial class Tareas : Page
 {
+    int tareaID;    
     int TareaID_ParaOperaciones; //id tarea para aceptar,rechazar,etc.
     int cargo = App.MiVariableGlobal; //variable global del cargo
     byte[] fileBytes;
@@ -27,7 +28,7 @@ public partial class Tareas : Page
     List<TareaSTRING> tareasSTRING = new List<TareaSTRING>();
     int Asignador = App.MiVariableGlobal;
 
-  
+
     public class Tarea
     {
         public int Id { get; set; }
@@ -253,9 +254,9 @@ public partial class Tareas : Page
                             Accion = reader.GetString(5),
                             Prioridad = reader.GetString(6),
                             Descripcion = reader.GetString(7),
-                            FechaAsignacion = reader.GetDateTime(8).ToString().Substring(0,9),
+                            FechaAsignacion = reader.GetDateTime(8).ToString().Substring(0, 9),
                             FechaLimite = reader.GetDateTime(9).ToString().Substring(0, 9),
-                            FechaFinalizacion = reader.IsDBNull(10) ? (string?)null : reader.GetDateTime(10).ToString().Substring(0,9),
+                            FechaFinalizacion = reader.IsDBNull(10) ? (string?)null : reader.GetDateTime(10).ToString().Substring(0, 9),
                             EstadoRegistro = reader.GetInt32(11)
                         };
 
@@ -432,8 +433,9 @@ public partial class Tareas : Page
             {
                 // Buscar la tarea correspondiente en la lista de tareas por el ID
                 Tarea tareaSeleccionada = tareas.FirstOrDefault(t => t.Id == taskId);
+                tareaID = tareaSeleccionada.Id;
                 z = tareaSeleccionada;
-            
+
                 TareaID_ParaOperaciones = tareaSeleccionada.Id;
                 if (tareaSeleccionada != null)
                 {
@@ -441,11 +443,13 @@ public partial class Tareas : Page
                     {
                         jajaja.IsEnabled = false;
                         RechazarT.IsEnabled = true;
+                        devolverT.IsEnabled = true;
                     }
                     else
                     {
                         jajaja.IsEnabled = true;
                         RechazarT.IsEnabled = false;
+                        devolverT.IsEnabled = false;
                     }
                     CodigoTarea.Content = tareaSeleccionada.CodigoTarea;
                     NombreDestinatario.Content = tareaSeleccionada.DestinatarioId;
@@ -520,14 +524,14 @@ public partial class Tareas : Page
 
 
 
-            if (filtroSeleccionado == "Finalizado" && filtroSeleccionado2 == "Asignados por mi")
+            if (filtroSeleccionado == "Finalizada" && filtroSeleccionado2 == "Asignados por mi")
             {
-                List<TareaSTRING> tareasFinalizadasPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizado" && t.RemitenteId == Asignador).ToList();
+                List<TareaSTRING> tareasFinalizadasPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizada" && t.RemitenteId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasFinalizadasPorMi;
             }
-            if (filtroSeleccionado == "Finalizado" && filtroSeleccionado2 == "Asignados hacia mi")
+            if (filtroSeleccionado == "Finalizada" && filtroSeleccionado2 == "Asignados hacia mi")
             {
-                List<TareaSTRING> tareasFinalizadasHaciaMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizado" && t.DestinatarioId == Asignador).ToList();
+                List<TareaSTRING> tareasFinalizadasHaciaMi = tareasSTRING.Where(t => t.EstadoTarea == "Finalizada" && t.DestinatarioId == Asignador).ToList();
                 membersDataGrid.ItemsSource = tareasFinalizadasHaciaMi;
             }
 
@@ -543,22 +547,35 @@ public partial class Tareas : Page
             }
 
 
+
             if (filtroSeleccionado == "En Curso" && filtroSeleccionado2 == "Asignados por mi")
             {
-                List<TareaSTRING> tareasEnCursoPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Recepcionada" && t.RemitenteId == Asignador).ToList();
-                membersDataGrid.ItemsSource = tareasEnCursoPorMi; // Muestra las tareas en curso asignadas por el usuario actual
+                List<TareaSTRING> tareasEn_CursoPorMi = tareasSTRING.Where(t => t.EstadoTarea == "En Curso" && t.RemitenteId == Asignador).ToList();
+                membersDataGrid.ItemsSource = tareasEn_CursoPorMi;
             }
             if (filtroSeleccionado == "En Curso" && filtroSeleccionado2 == "Asignados hacia mi")
             {
-                List<TareaSTRING> tareasEnCursoHaciaMi = tareasSTRING
+                List<TareaSTRING> tareasEn_CursoHaciaMi = tareasSTRING.Where(t => t.EstadoTarea == "En Curso" && t.DestinatarioId == Asignador).ToList();
+                membersDataGrid.ItemsSource = tareasEn_CursoHaciaMi;
+            }
+
+
+            if (filtroSeleccionado == "Recepcionada" && filtroSeleccionado2 == "Asignados por mi")
+            {
+                List<TareaSTRING> tareasRecepcionadaPorMi = tareasSTRING.Where(t => t.EstadoTarea == "Recepcionada" && t.RemitenteId == Asignador).ToList();
+                membersDataGrid.ItemsSource = tareasRecepcionadaPorMi; // Muestra las tareas en curso asignadas por el usuario actual
+            }
+            if (filtroSeleccionado == "Recepcionada" && filtroSeleccionado2 == "Asignados hacia mi")
+            {
+                List<TareaSTRING> tareasRecepcionadaHaciaMi = tareasSTRING
                     .Where(t => t.EstadoTarea == "Recepcionada" && t.DestinatarioId == cargo)
                     .ToList();
 
-                membersDataGrid.ItemsSource = tareasEnCursoHaciaMi; // Muestra las tareas en curso asignadas hacia el usuario actual 
+                membersDataGrid.ItemsSource = tareasRecepcionadaHaciaMi; // Muestra las tareas en curso asignadas hacia el usuario actual 
                 System.Windows.MessageBox.Show("Cargo " + cargo);
 
                 // Mostrar cada dato de la lista
-                foreach (var tarea in tareasEnCursoHaciaMi)
+                foreach (var tarea in tareasRecepcionadaHaciaMi)
                 {
                     System.Windows.MessageBox.Show($"ID: {tarea.Id}, Descripción: {tarea.Descripcion}");
                     // Agrega más propiedades según la estructura de tu clase Tarea
@@ -605,6 +622,50 @@ public partial class Tareas : Page
         navigationService.Navigate(new Tareas());
     }
 
+    private void Button_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            int tareaId = TareaID_ParaOperaciones;
+
+            var tareaSeleccionada = tareas.FirstOrDefault(t => t.Id == tareaId);
+
+            var BaseDeDatos = Coneccion.Instance;
+
+            // Actualizar la tarea en la base de datos
+            string query = "UPDATE TAREAS SET " +
+                           "DestinatarioId = @RemitenteId, " +
+                           "RemitenteId = @DestinatarioId, " +
+                           "EstadoTarea = 'Finalizada' " +
+                           "WHERE IdTarea = @IdTarea;";
+
+            using (var connection = BaseDeDatos.GetConnection())
+            {
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@RemitenteId", tareaSeleccionada.RemitenteId);
+                    command.Parameters.AddWithValue("@DestinatarioId", tareaSeleccionada.DestinatarioId);
+                    command.Parameters.AddWithValue("@IdTarea", tareaId);
+     
+                    command.ExecuteNonQuery();
+
+                    // Puedes agregar aquí cualquier otra lógica que necesites
+                }
+            }
+
+            System.Windows.MessageBox.Show("Tarea devuelta correctamente.");
+            NavigationService navigationService = NavigationService.GetNavigationService(this);
+            navigationService.Navigate(new Tareas());
+        }
+        catch (Exception ex)
+        {
+            System.Windows.MessageBox.Show("Error al devolver la tarea: " + ex.Message);
+        }
+    }
+
+
     private void ocultar_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
@@ -644,5 +705,25 @@ public partial class Tareas : Page
         animation.Duration = new Duration(TimeSpan.FromSeconds(0.5));
         VistaDetallesTarea.BeginAnimation(StackPanel.WidthProperty, animation);
 
+    }
+
+    private void btnAceptar_Click(object sender, RoutedEventArgs e)
+    {
+        var BaseDeDatos = Coneccion.Instance;
+
+        string query = "UPDATE TAREAS SET EstadoTarea = 'En Curso' WHERE IdTarea = @ID;";
+        using (var connection = BaseDeDatos.GetConnection())
+        {
+            connection.Open();
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@ID", tareaID);
+
+                command.ExecuteNonQuery();
+            }
+        }
+        NavigationService navigationService = NavigationService.GetNavigationService(this);
+        navigationService.Navigate(new Tareas());
     }
 }

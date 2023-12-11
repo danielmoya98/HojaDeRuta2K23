@@ -28,10 +28,13 @@
             </Grid.RowDefinitions>
             <Border Grid.Row="0" VerticalAlignment="Top" Height="130" CornerRadius="25 25 0 0" Width="300" >
                <Border.Background>
-                 
-                   <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png"  >
+                   Black
+                   <!--
+                 <ImageBrush ImageSource="C:\Users\Alienware\RiderProjects\HojadeRuta2K23\Imagenes\Vector 4.png"  >
                        
                    </ImageBrush>
+                   -->
+                   
               
                </Border.Background>
                 

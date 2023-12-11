@@ -31,7 +31,7 @@
             
             <StackPanel Grid.Row="2" HorizontalAlignment="Left" Orientation="Vertical"  Margin="0 0 0 0 ">
                 <Label Foreground="DarkRed" Margin="30 0 0 0" FontSize="10" FontWeight="SemiBold"  >Observacion a la Tarea</Label>
-                <TextBox TextWrapping="Wrap" Padding="5" Style="{StaticResource TextBoxWithRoundedCorners}" BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" Height="200"> </TextBox>
+                <TextBox x:Name="Observacion" TextWrapping="Wrap" Padding="5" Style="{StaticResource TextBoxWithRoundedCorners}" BorderBrush="DarkRed" Foreground="DimGray" FontWeight="Thin" Background="Transparent" Margin="35 0 0 0 " Width="225" Height="200"> </TextBox>
             </StackPanel>
             
             <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 15 0 0">
@@ -42,7 +42,7 @@
                     </StackPanel>
                 </Button>
                 <Button Margin="0 0 0 0 " Height="30" Width="100" BorderBrush="Transparent"
-                        Style="{StaticResource gridEditButton}" >
+                        Style="{StaticResource gridEditButton}" Click="Button_Click" >
                     <StackPanel Orientation="Horizontal">
                         <TextBlock  FontWeight="SemiBold"> Rechazar </TextBlock>
                     </StackPanel>

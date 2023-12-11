@@ -888,13 +888,17 @@ public partial class Tramites : Page
         using (var connection = Coneccion.Instance.GetConnection())
         {
             connection.Open();
+            int personaDestinada = 9;
 
-            string query = "SELECT IdTramite, TipoTramiteId, ClienteId, CodigoTramite, EstadoTramite, " +
-                           "FechaInicio, FechaFinalizacion, EstadoRegistro " +
-                           "FROM TRAMITES";
+            string query = "SELECT t.IdTramite, t.TipoTramiteId, t.ClienteId, t.CodigoTramite, t.EstadoTramite, " +
+                       "t.FechaInicio, t.FechaFinalizacion, t.EstadoRegistro " +
+                       "FROM TRAMITES t " +
+                       "INNER JOIN FLUJO_HOJA_DE_RUTA f ON t.IdTramite = f.TramiteId " +
+                       "WHERE f.RemitenteId = @PersonaDestinada AND f.EstadoTramite != 'Mandado' AND t.EstadoRegistro != 0;";
 
             using (var command = new SqlCommand(query, connection))
             {
+                command.Parameters.AddWithValue("@PersonaDestinada", personaDestinada);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())

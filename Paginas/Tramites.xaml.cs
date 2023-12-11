@@ -24,20 +24,20 @@ namespace HojadeRuta2K23.Paginas;
 
 public partial class Tramites : Page
 {
-    List<Tramite> listaTramites = new List<Tramite>();
-    List<Persona> listaPersonas = new List<Persona>();
-    List<Cliente> listaCliente = new List<Cliente>();
-    byte[] fileBytes = new byte[] { 0x00 };
-    private bool isDetailsVisible = false;
-    string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion;
-    int tipoTramite;
+    public List<Tramite> listaTramites = new List<Tramite>();
+    public List<Persona> listaPersonas = new List<Persona>();
+    public List<Cliente> listaCliente = new List<Cliente>();
+    public byte[] fileBytes = new byte[] { 0x00 };
+    public bool isDetailsVisible = false;
+    public string ci, nombre, appPaterno, appMaterno, celular, celularRef, correo, diccion, descripcion;
+    public int tipoTramite;
 
-    FirebaseConfig config = new FirebaseConfig
+    public FirebaseConfig config = new FirebaseConfig
     {
         AuthSecret = "J9UqvtxZbtcl8hEDkZvVkPnfQOsTbyS5iwNbXtuF",
         BasePath = "https://tramites-y-tareas-default-rtdb.firebaseio.com/"
     };
-    FirebaseClient client;
+    public FirebaseClient client;
     public Tramites()
     {
         InitializeComponent();
@@ -56,7 +56,7 @@ public partial class Tramites : Page
         public string NombreTramite { get; set; }
     }
 
-    private void CargarDatosComboBoxTipoTramite()
+    public void CargarDatosComboBoxTipoTramite()
     {
         List<TipoTramite> tiposTramite = new List<TipoTramite>();
 
@@ -96,12 +96,12 @@ public partial class Tramites : Page
         txtTipoTramite.SelectedValuePath = "IdTipoTramite";
     }
 
-    private void CargarTramitesEnDataGrid()
+    public void CargarTramitesEnDataGrid()
     {
         listaTramites = ObtenerTramitesDesdeLaBaseDeDatos();
         membersDataGrid.ItemsSource = listaTramites;
     }
-    private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+    public void ButtonBase_OnClick(object sender, RoutedEventArgs e)
     {
         if (NavigationService != null)
         {
@@ -130,6 +130,8 @@ public partial class Tramites : Page
         public int EstadoRegistro { get; set; }
     }
 
+
+
     public class Cliente
     {
         public int IdCliente { get; set; }
@@ -139,7 +141,9 @@ public partial class Tramites : Page
         public int CelularReferencia { get; set; }
         public int EstadoRegistro { get; set; }
     }
-    private void CheckBox1_OnChecked(object sender, RoutedEventArgs e)
+
+
+    public void CheckBox1_OnChecked(object sender, RoutedEventArgs e)
     {
         if (CheckBox1.IsChecked == true)
         {
@@ -148,7 +152,7 @@ public partial class Tramites : Page
 
     }
 
-    private void CheckBox1_OnUnchecked(object sender, RoutedEventArgs e)
+    public void CheckBox1_OnUnchecked(object sender, RoutedEventArgs e)
     {
         if (CheckBox1.IsChecked == false)
         {
@@ -156,32 +160,20 @@ public partial class Tramites : Page
         }
     }
 
-    private void Admitir_OnClick(object sender, RoutedEventArgs e)
-    {
-        BtnAdmitir admitir = new BtnAdmitir();
-        admitir.ShowDialog();
-    }
 
-    private void vdoc_OnClick(object sender, RoutedEventArgs e)
+
+    public void vdoc_OnClick(object sender, RoutedEventArgs e)
     {
         DocumentosAdjuntos doc = new DocumentosAdjuntos();
         doc.ShowDialog();
     }
 
-    private void Rechazar_OnClick(object sender, RoutedEventArgs e)
-    {
-        RechazarTramite tra = new RechazarTramite();
-        tra.ShowDialog();
-    }
 
-    private void Observar_OnClick(object sender, RoutedEventArgs e)
-    {
-        ObservarRechazarTramite tra = new ObservarRechazarTramite();
-        tra.ShowDialog();
-    }
+
+
 
     //BOTÓN PARA CREAR EL TRÁMITE
-    private async void cod_OnClick(object sender, RoutedEventArgs e)
+    public async void cod_OnClick(object sender, RoutedEventArgs e)
     {
         ci = txtCI.Text;
         nombre = txtNombre.Text;
@@ -215,7 +207,7 @@ public partial class Tramites : Page
                 }
                 else
                 {
-                    MessageBox.Show("Error");
+                    MessageBox.Show("Error1");
                 }
             }
             else
@@ -245,7 +237,7 @@ public partial class Tramites : Page
                     }
                     else
                     {
-                        MessageBox.Show("Error");
+                        MessageBox.Show("Error2");
                     }
                 }
                 else
@@ -259,7 +251,9 @@ public partial class Tramites : Page
             }
         }
     }
-    private int ObtenerFuncionarioIdPorCargo(int cargoId)
+
+
+    public int ObtenerFuncionarioIdPorCargo(int cargoId)
     {
         using (var connection = Coneccion.Instance.GetConnection())
         {
@@ -276,7 +270,7 @@ public partial class Tramites : Page
             }
         }
     }
-    static string GenerarCodigoUnico()
+    public static string GenerarCodigoUnico()
     {
         const string prefijo = "TRM-";
         const int longitudCodigo = 10;
@@ -300,7 +294,7 @@ public partial class Tramites : Page
         return new string(codigoArray);
     }
 
-    private void InsertarNuevoAnexoTramite(int funcionario, int nuevoTramiteId, byte[] fileBytes)
+    public void InsertarNuevoAnexoTramite(int funcionario, int nuevoTramiteId, byte[] fileBytes)
     {
         try
         {
@@ -320,6 +314,8 @@ public partial class Tramites : Page
 
                     command.ExecuteNonQuery();
                 }
+
+
             }
         }
         catch (Exception ex)
@@ -327,7 +323,7 @@ public partial class Tramites : Page
 
         }
     }
-    private int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion)
+    public int InsertarNuevoTramite(int tipoTramiteId, int clienteId, string descripcion)
     {
         string codigo = GenerarCodigoUnico();
         DateTime fechaIni = DateTime.Now;
@@ -351,8 +347,25 @@ public partial class Tramites : Page
                     int tramiteId = Convert.ToInt32(command.ExecuteScalar()); // Ejecutar y obtener el ID generado
 
                     InsertarFireSharp(clienteId, codigo, tipoTramiteId, "En Proceso", descripcion, 1, fechaIni,null, tramiteId);
+
+
+                    int RemitenteId = 9;
+                    MessageBox.Show(RemitenteId + "");
+                    
+                    int destinatarioId = EncontrarDestinatarioId(tipoTramiteId, RemitenteId);
+
+                    int numerodelaInstancia = encontrarNumeroInstancia(tipoTramiteId, destinatarioId);
+
+                    InsertarHojaDeRuta(RemitenteId, destinatarioId, tramiteId, "Nuevo", numerodelaInstancia, "Normal", "Nose", "Noise", 1);
+
+
+
+
                     return tramiteId;
                 }
+
+
+
             }
         }
         catch (Exception ex)
@@ -362,7 +375,142 @@ public partial class Tramites : Page
             return -1;
         }
     }
-    private async Task InsertarFireSharp(int clienteId,string codigo, int tipoTramiteId, string estadoTramite, string descripcion, int estadoRegistro, DateTime fechaIni, DateTime? fechaFin, int tramiteId)
+    public int encontrarNumeroInstancia(int tipoTramiteId, int destinatarioId)
+    {
+        int numeroInstancia = 0;
+
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            connection.Open();
+
+            string query = "SELECT NumeroInstancia FROM TIPO_TRAMITE_FLUJO WHERE TipoTramiteId = @TipoTramiteId AND CargoId = @DestinatarioId;";
+
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+                command.Parameters.AddWithValue("@DestinatarioId", destinatarioId);
+
+                object result = command.ExecuteScalar();
+                numeroInstancia = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            }
+        }
+
+        return numeroInstancia;
+    }
+
+
+    public void InsertarHojaDeRuta(int remitenteId, int destinatarioId, int tramiteId, string estadoTramite, int numeroInstancia, string prioridad, string detallesObservaciones, string tipoFlujo, int estadoRegistro)
+    {
+        MessageBox.Show("Llego aca");
+        try
+        {
+            MessageBox.Show("Llego aca");
+            using (var connection = Coneccion.Instance.GetConnection())
+            {
+                connection.Open();
+
+                // Buscar el último ID y sumarle uno
+                int nuevoId;
+                string queryGetMaxId = "SELECT ISNULL(MAX(IdFlujo), 0) FROM FLUJO_HOJA_DE_RUTA;";
+                using (var commandMaxId = new SqlCommand(queryGetMaxId, connection))
+                {
+                    nuevoId = Convert.ToInt32(commandMaxId.ExecuteScalar()) + 1;
+                }
+
+                string query = "INSERT INTO FLUJO_HOJA_DE_RUTA (RemitenteId, DestinatarioId, TramiteId, EstadoTramite, NumeroInstancia, Prioridad, DetallesYObservaciones, FechaFinalizacion, TipoFlujo, EstadoRegistro)" +
+                               "VALUES (@RemitenteId, @DestinatarioId, @TramiteId, @EstadoTramite, @NumeroInstancia, @Prioridad, @DetallesYObservaciones, GETDATE(), @TipoFlujo, @EstadoRegistro);";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Id", nuevoId);
+                    command.Parameters.AddWithValue("@RemitenteId", remitenteId);
+                    command.Parameters.AddWithValue("@DestinatarioId", destinatarioId);
+                    command.Parameters.AddWithValue("@TramiteId", tramiteId);
+                    command.Parameters.AddWithValue("@EstadoTramite", estadoTramite);
+                    command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                    command.Parameters.AddWithValue("@Prioridad", prioridad);
+                    command.Parameters.AddWithValue("@DetallesYObservaciones", detallesObservaciones);
+                    command.Parameters.AddWithValue("@TipoFlujo", tipoFlujo);
+                    command.Parameters.AddWithValue("@EstadoRegistro", estadoRegistro);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show(remitenteId + " " + destinatarioId);
+            MessageBox.Show($"Se produjo un error al intentar insertar en la tabla FLUJO_HOJA_DE_RUTA: {ex.Message}");
+        }
+    }
+
+
+    public int EncontrarDestinatarioId(int tipoTramiteId, int cargoId)
+    {
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            connection.Open();
+
+            string query = "SELECT NumeroInstancia FROM TIPO_TRAMITE_FLUJO WHERE TipoTramiteId = @TipoTramiteId AND CargoId = @CargoId;";
+
+            int numeroInstanciaActual;
+
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+                command.Parameters.AddWithValue("@CargoId", cargoId);
+
+                object result = command.ExecuteScalar();
+                numeroInstanciaActual = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            }
+
+            string query2 = "SELECT MAX(NumeroInstancia) AS NumeroInstanciaMayor FROM TIPO_TRAMITE_FLUJO WHERE TipoTramiteId = @TipoTramiteId;";
+
+            int numeroInstanciaMayor;
+
+            using (var command = new SqlCommand(query2, connection))
+            {
+                command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+
+                object result = command.ExecuteScalar();
+                numeroInstanciaMayor = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+            }
+
+            numeroInstanciaActual++;
+
+            while (true && numeroInstanciaActual != numeroInstanciaMayor)
+            {
+                query = "SELECT CargoId FROM TIPO_TRAMITE_FLUJO WHERE TipoTramiteId = @TipoTramiteId AND NumeroInstancia = @NumeroInstanciaActual;";
+
+                using (var command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@TipoTramiteId", tipoTramiteId);
+                    command.Parameters.AddWithValue("@NumeroInstanciaActual", numeroInstanciaActual);
+
+                    object result = command.ExecuteScalar();
+
+                    if (result != DBNull.Value)
+                    {
+                        cargoId = Convert.ToInt32(result);
+                        break; // Salir del bucle al encontrar un CargoId
+                    }
+
+                    numeroInstanciaActual++;
+                }
+            }
+
+            if (numeroInstanciaActual == numeroInstanciaMayor)
+            {
+                MessageBox.Show("¡Has llegado al final del flujo!");
+                return 0;
+            }
+
+            return cargoId; // Devolver el último CargoId encontrado o el inicial
+        }
+    }
+
+
+    public async Task InsertarFireSharp(int clienteId,string codigo, int tipoTramiteId, string estadoTramite, string descripcion, int estadoRegistro, DateTime fechaIni, DateTime? fechaFin, int tramiteId)
     {
         var tramiteData = new
         {
@@ -379,7 +527,7 @@ public partial class Tramites : Page
         await client.SetAsync("tramites/" + tramiteId, tramiteData);
     }
 
-    private int ObtenerClienteIdPorCI(string ci)
+    public int ObtenerClienteIdPorCI(string ci)
     {
         try
         {
@@ -411,7 +559,7 @@ public partial class Tramites : Page
         return -1; // Valor predeterminado si no se encontró el ID del cliente o ocurrió un error
     }
 
-    private int InsertarNuevoUsuario(string nombres, string apellidoPaterno, string apellidoMaterno, int ci, int celular)
+    public int InsertarNuevoUsuario(string nombres, string apellidoPaterno, string apellidoMaterno, int ci, int celular)
     {
         try
         {
@@ -446,7 +594,7 @@ public partial class Tramites : Page
         }
     }
 
-    private int InsertarNuevoCliente(int personaId, string correo, string direccion, int celularReferencia)
+    public int InsertarNuevoCliente(int personaId, string correo, string direccion, int celularReferencia)
     {
         try
         {
@@ -480,7 +628,7 @@ public partial class Tramites : Page
         }
     }
 
-    private bool VerificarExistenciaUsuario(string ci)
+    public bool VerificarExistenciaUsuario(string ci)
     {
         bool existeUsuario = false;
 
@@ -515,7 +663,7 @@ public partial class Tramites : Page
     }
 
 
-    private void MiBotonV_OnClick(object sender, RoutedEventArgs e)
+    public void MiBotonV_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
         animation.From = 0;
@@ -527,7 +675,7 @@ public partial class Tramites : Page
         miBotonV1.Visibility = Visibility.Visible;
     }
 
-    private void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
+    public void MiBotonV1_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
         animation.From = 280;
@@ -541,7 +689,7 @@ public partial class Tramites : Page
 
 
 
-    private void AddDocumento_Click(object sender, RoutedEventArgs e)
+    public void AddDocumento_Click(object sender, RoutedEventArgs e)
     {
         OpenFileDialog openFileDialog = new OpenFileDialog();
         openFileDialog.Filter = "Archivos PDF (*.pdf)|*.pdf";
@@ -563,7 +711,7 @@ public partial class Tramites : Page
         }
     }
 
-    private void TxtCI_TextChanged(object sender, TextChangedEventArgs e)
+    public void TxtCI_TextChanged(object sender, TextChangedEventArgs e)
     {
         string ciText = txtCI.Text;
         // Verificar si el CI tiene 7 u 8 caracteres
@@ -589,7 +737,7 @@ public partial class Tramites : Page
     }
 
 
-    private void LlenarCamposConPersona(Persona persona)
+    public void LlenarCamposConPersona(Persona persona)
     {
         // Habilitar todos los TextBox para que sean editables
 
@@ -628,7 +776,7 @@ public partial class Tramites : Page
     }
 
 
-    private Cliente BuscarClientePorIdPersona(int idPersona)
+    public Cliente BuscarClientePorIdPersona(int idPersona)
     {
         using (var connection = Coneccion.Instance.GetConnection())
         {
@@ -663,7 +811,7 @@ public partial class Tramites : Page
         return null;
     }
 
-    private void LimpiarCamposAdicionales()
+    public void LimpiarCamposAdicionales()
     {
         // Limpiar los campos adicionales
         txtCorreoElectronico.Text = string.Empty;
@@ -672,7 +820,7 @@ public partial class Tramites : Page
         // Otros campos según tu interfaz
     }
 
-    private void LimpiarTodosLosCampos()
+    public void LimpiarTodosLosCampos()
     {
         // Limpiar todos los campos
         LimpiarCamposAdicionales();
@@ -683,7 +831,7 @@ public partial class Tramites : Page
         txtCelular.Text = string.Empty;
     }
 
-    private bool BuscarPersonaPorCI(string ci, out Persona persona)
+    public bool BuscarPersonaPorCI(string ci, out Persona persona)
     {
         persona = null;
 
@@ -734,7 +882,7 @@ public partial class Tramites : Page
 
 
 
-    private List<Tramite> ObtenerTramitesDesdeLaBaseDeDatos()
+    public List<Tramite> ObtenerTramitesDesdeLaBaseDeDatos()
     {
 
         using (var connection = Coneccion.Instance.GetConnection())
@@ -773,7 +921,8 @@ public partial class Tramites : Page
     }
 
 
-    private List<Cliente> ObtenerClientesDesdeLaBaseDeDatos()
+
+    public List<Cliente> ObtenerClientesDesdeLaBaseDeDatos()
     {
 
 
@@ -818,7 +967,7 @@ public partial class Tramites : Page
     }
 
 
-    private List<Persona> ObtenerPersonasDesdeLaBaseDeDatos()
+    public List<Persona> ObtenerPersonasDesdeLaBaseDeDatos()
     {
 
         try
@@ -863,7 +1012,7 @@ public partial class Tramites : Page
     }
 
 
-    private void ver_OnClick(object sender, RoutedEventArgs e)
+    public void ver_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
         animation.From = 0;
@@ -873,7 +1022,7 @@ public partial class Tramites : Page
         VistaDetallesTramite.BeginAnimation(StackPanel.WidthProperty, animation);
     }
 
-    private void ocultar_OnClick(object sender, RoutedEventArgs e)
+    public void ocultar_OnClick(object sender, RoutedEventArgs e)
     {
         DoubleAnimation animation = new DoubleAnimation();
         animation.From = 500;
@@ -884,13 +1033,177 @@ public partial class Tramites : Page
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public int taskiid = 0;
+
+    public void Admitir_OnClick(object sender, RoutedEventArgs e)
+    {
+        // BtnAdmitir admitir = new BtnAdmitir();
+        //admitir.ShowDialog();
+
+
+
+
+
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            int TramiteId = taskiid;
+
+            string query2 = "SELECT ISNULL(MAX(NumeroInstancia), 0) FROM FLUJO_HOJA_DE_RUTA WHERE TramiteId = @TramiteId;";
+
+            int numeroInstancia = 0;
+
+            using (var command = new SqlCommand(query2, connection))
+            {
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+
+                connection.Open(); // Asegúrate de abrir la conexión antes de ejecutar la consulta
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    numeroInstancia = Convert.ToInt32(result);
+                }
+
+                connection.Close(); // No olvides cerrar la conexión después de usarla
+            }
+
+
+
+            string query = "SELECT DestinatarioId FROM FLUJO_HOJA_DE_RUTA WHERE TramiteId = @TramiteId AND NumeroInstancia = @NumeroInstancia;";
+
+            int RemitenteId = 0; // Se inicializa en 0 para manejar posibles valores nulos o no encontrados
+
+            using (var command = new SqlCommand(query, connection))
+            {
+
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    RemitenteId = Convert.ToInt32(result);
+                }
+                else
+                {
+                    // Manejar el caso cuando no se encuentra ningún RemitenteId para la TramiteId y NumeroInstancia proporcionadas
+                    // Puede mostrar un mensaje de error, lanzar una excepción o tomar cualquier otra acción necesaria.
+                }
+                connection.Close();
+            }
+
+
+            string query3 = "SELECT TipoTramiteId FROM TRAMITES WHERE IdTramite = @TramiteId;";
+
+            int tipoTramiteId = 0;
+
+            using (var command = new SqlCommand(query3, connection))
+            {
+                
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                connection.Open();
+                object result = command.ExecuteScalar();
+                tipoTramiteId = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                connection.Close();
+            }
+
+
+
+
+            
+
+
+
+            int destinatarioId = EncontrarDestinatarioId(tipoTramiteId, RemitenteId);
+
+
+            if(destinatarioId != 0)
+            {
+
+
+
+                string query4 = "UPDATE FLUJO_HOJA_DE_RUTA " +
+               "SET EstadoTramite = 'Mandado' " +
+               "WHERE TramiteId = @TramiteId " +
+               "AND NumeroInstancia = @NumeroInstancia " +
+               "AND EstadoTramite NOT IN ('Devuelto', 'Rechazado', 'Mandado');";
+
+                using (var command = new SqlCommand(query4, connection))
+                {
+                    command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                    command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    connection.Close();
+                }
+
+
+
+
+                MessageBox.Show(RemitenteId + " " + destinatarioId + " " + numeroInstancia + " " + taskiid);
+
+
+                int numerodelaInstancia = encontrarNumeroInstancia(tipoTramiteId, destinatarioId);
+
+                InsertarHojaDeRuta(RemitenteId, destinatarioId, TramiteId, "Nuevo", numerodelaInstancia, "Normal", "Nose", "Noise", 1);
+            }
+
+            
+        }
+
+
+
+
+
+
+
+
+    }
+            
+
+
     private void propiedades_Click(object sender, RoutedEventArgs e)
     {
         Button btn = sender as Button;
         if (btn != null)
         {
             int taskId = (int)btn.Tag;
-
+            taskiid = taskId;
             MessageBox.Show("" + taskId);
 
 
@@ -923,6 +1236,222 @@ public partial class Tramites : Page
             isDetailsVisible = !isDetailsVisible;
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private void Observar_OnClick(object sender, RoutedEventArgs e)
+    {
+        ObservarRechazarTramite tra = new ObservarRechazarTramite(this);
+        tra.ShowDialog();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+    private void AprobaryFinalizar(object sender, RoutedEventArgs e)
+    {
+
+
+
+
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            int TramiteId = taskiid;
+
+            string query2 = "SELECT ISNULL(MAX(NumeroInstancia), 0) FROM FLUJO_HOJA_DE_RUTA WHERE TramiteId = @TramiteId;";
+
+            int numeroInstancia = 0;
+
+            using (var command = new SqlCommand(query2, connection))
+            {
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+
+                connection.Open(); // Asegúrate de abrir la conexión antes de ejecutar la consulta
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    numeroInstancia = Convert.ToInt32(result);
+                }
+
+                connection.Close(); // No olvides cerrar la conexión después de usarla
+            }
+
+
+
+            string query = "SELECT DestinatarioId FROM FLUJO_HOJA_DE_RUTA WHERE TramiteId = @TramiteId AND NumeroInstancia = @NumeroInstancia;";
+
+            int RemitenteId = 0; // Se inicializa en 0 para manejar posibles valores nulos o no encontrados
+
+            using (var command = new SqlCommand(query, connection))
+            {
+
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null && result != DBNull.Value)
+                {
+                    RemitenteId = Convert.ToInt32(result);
+                }
+                else
+                {
+                    // Manejar el caso cuando no se encuentra ningún RemitenteId para la TramiteId y NumeroInstancia proporcionadas
+                    // Puede mostrar un mensaje de error, lanzar una excepción o tomar cualquier otra acción necesaria.
+                }
+                connection.Close();
+            }
+
+
+            string query3 = "SELECT TipoTramiteId FROM TRAMITES WHERE IdTramite = @TramiteId;";
+
+            int tipoTramiteId = 0;
+
+            using (var command = new SqlCommand(query3, connection))
+            {
+
+                command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                connection.Open();
+                object result = command.ExecuteScalar();
+                tipoTramiteId = result != DBNull.Value ? Convert.ToInt32(result) : 0;
+                connection.Close();
+            }
+
+
+
+
+
+
+
+
+            int destinatarioId = EncontrarDestinatarioId(tipoTramiteId, RemitenteId);
+
+
+            
+            {
+
+
+
+                string query4 = "UPDATE FLUJO_HOJA_DE_RUTA " +
+               "SET EstadoTramite = 'Finalizado' " +
+               "WHERE TramiteId = @TramiteId " +
+               "AND NumeroInstancia = @NumeroInstancia " +
+               "AND EstadoTramite NOT IN ('Devuelto', 'Rechazado', 'Mandado');";
+
+                using (var command = new SqlCommand(query4, connection))
+                {
+                    command.Parameters.AddWithValue("@TramiteId", TramiteId);
+                    command.Parameters.AddWithValue("@NumeroInstancia", numeroInstancia);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    connection.Close();
+                }
+
+
+
+
+                MessageBox.Show(RemitenteId + " " + destinatarioId + " " + numeroInstancia + " " + taskiid);
+
+
+                int numerodelaInstancia = encontrarNumeroInstancia(tipoTramiteId, destinatarioId);
+
+
+
+
+
+
+
+
+
+                string query7 = "UPDATE TRAMITES SET EstadoTramite = @estadito WHERE IdTramite = @IdTramite;";
+
+                
+                {
+                    using (var command = new SqlCommand(query7, connection))
+                    {
+                        command.Parameters.AddWithValue("@IdTramite", taskiid);
+                        command.Parameters.AddWithValue("@estadito", "Finalizado");
+
+                        connection.Open();
+                        command.ExecuteNonQuery();
+                        connection.Close();
+                    }
+                }
+
+                //InsertarHojaDeRuta(RemitenteId, destinatarioId, TramiteId, "Finalizado", numerodelaInstancia, "Normal", "Nose", "Noise", 1);
+            }
+
+
+        }
+
+    }
+
+    private void Rechazar_OnClick(object sender, RoutedEventArgs e)
+    {
+        //RechazarTramite tra = new RechazarTramite();
+        //tra.ShowDialog();
+
+
+        string query = "UPDATE TRAMITES SET EstadoRegistro = 0 WHERE IdTramite = @IdTramite;";
+
+        using (var connection = Coneccion.Instance.GetConnection())
+        {
+            using (var command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@IdTramite", taskiid);
+
+                connection.Open();
+                command.ExecuteNonQuery();
+                connection.Close();
+            }
+        }
+
+
+    }
+
+
+
+
+
+
 }
 
 
